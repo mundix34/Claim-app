@@ -5,6 +5,7 @@ const app = express();
 axios = require('axios');
 massive = require('massive');
 require('dotenv').config();
+const claim = require('./controllers/claim_controller')
 
 
 const { SERVER_PORT, REACT_APP_DOMAIN, REACT_APP_CLIENT_ID, CLIENT_SECRET, SESSION_SECRET, CONNECTION_STRING} = process.env;
@@ -57,6 +58,9 @@ app.get('/api/logout', (req, res) => {
     req.session.destroy();
     res.send()
 })
+
+app.post('/api/register', claim.register);
+app.get('/api/claims/:id', claim.getClaim);
 
 
 

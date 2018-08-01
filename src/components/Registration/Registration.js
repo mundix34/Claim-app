@@ -24,9 +24,9 @@ class Registration extends Component {
             <div className="App">
                 <h1>Account Information</h1>
                 {
-                    user.user_name? (
+                    user.first_last? (
                         <div>
-                            <h3> Hi  {user.user_name} !</h3>
+                            <h3> Hi  {user.first_last} !</h3>
                             {/* <p>  Email: {user.email}</p> */}
                             {/* <p> Account Number: {user.auth_id}</p> */}
                             {/* <img src ={user.picture} alt = ""/> */}

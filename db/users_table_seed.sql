@@ -1,7 +1,7 @@
 create table users(
     id serial primary key,
     ref_id integer references claims(reference_id),
-    user_name VARCHAR(180),
+    first_last VARCHAR(180),
     email VARCHAR(300),
     auth_id text,
     picture text,
