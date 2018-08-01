@@ -9,8 +9,8 @@ class Login extends Component {
     render() {
       return (
         <div className="App">
-          <h1>Login</h1>
-          <button onClick = {this.login}> Login</button>
+          <h1>Please Login</h1>
+          <button className = "btn" onClick = {this.login}> Login</button>
         </div>
       );
     }

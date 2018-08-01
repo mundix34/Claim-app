@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import {Link} from 'react-router-dom';
 import { connect } from 'react-redux';
 import {addUserInfo} from '../../ducks/reducer';
 
@@ -25,11 +26,13 @@ class Registration extends Component {
                 {
                     user.user_name? (
                         <div>
-                            <p> Username: {user.user_name}</p>
-                            <p>  Email: {user.email}</p>
-                            <p> Account Number: {user.auth_id}</p>
-                            <img src ={user.picture} alt = ""/>
+                            <h3> Hi  {user.user_name} !</h3>
+                            {/* <p>  Email: {user.email}</p> */}
+                            {/* <p> Account Number: {user.auth_id}</p> */}
+                            {/* <img src ={user.picture} alt = ""/> */}
+                            <p> Please register on the next page to proceed</p>
                             <button onClick = { () => this.logOut()}>Logout</button>
+                            <Link to = "/input"><button className = "btn" >Register</button></Link>
                         </div>
                     ): "Please login"
                 }
