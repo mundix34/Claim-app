@@ -4,7 +4,7 @@ import {getClaimSummary} from '../../ducks/reducer';
 import { connect } from 'react-redux';
 
 
-class Summary extends Component {
+class Dashboard extends Component {
     componentDidMount() {
         console.log(this.props.reference)
         axios.get(`/api/claim/${this.props.reference}`).then(res => {
@@ -15,6 +15,7 @@ class Summary extends Component {
     
 
     render() {
+        // console.log(this.props.summary);
 
         const newSummary = this.props.summary.map((claim, i) => (      
             <div className = "list" key={ i }>
@@ -27,6 +28,7 @@ class Summary extends Component {
               <p> Tax { claim.taxes } </p>
               <p> License Fees { claim.license_fees } </p>
               <p> Title Fees { claim.title_fees } </p>
+              <p> Less Deductible { claim.deductible } </p>
               <p> Net Settlement { claim.settlement } </p>
               <p> Reference ID { claim.reference_id } </p>
               
@@ -34,12 +36,13 @@ class Summary extends Component {
           ));
         return (
             <div className="App">
-                <h1>Claimant's Claim Summary</h1>
+                <h1>Insured's Claim Summary</h1>
                 {newSummary}
-                <h3>Dear Claimant,</h3>
+                <h3>Dear Insured,</h3>
                 <p>Please review and confirm that you agree with the Actual Cash Value presented by the adjuster as shown above.<br/>
                 Click Agree to continue.</p>
                 <button className="btn" onClick={() => this.props.clearFields()}>Cancel</button>
+
                 {/* {
                     user.user_name? (
                         <div>
@@ -60,4 +63,4 @@ function mapStateToProps(state){
     }
 }
 
-export default connect(mapStateToProps, { getClaimSummary })(Summary)
+export default connect(mapStateToProps, { getClaimSummary })(Dashboard)

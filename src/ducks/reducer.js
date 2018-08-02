@@ -7,7 +7,8 @@ const initialState = {
     city: '',
     state: '',
     zip: '',
-    reference: ''
+    reference: '',
+    insured: ''
 
 };
 const ADD_ADDRESSONE = "ADD_ADDRESSONE";
@@ -16,6 +17,7 @@ const ADD_CITY = "ADD_CITY";
 const ADD_STATE = "ADD_STATE";
 const ADD_ZIP = "ADD_ZIP";
 const ADD_REFERENCE = "ADD_REFERENCE";
+const IS_INSURED = "IS_INSURED";
 const ADD_USER_INFO = "ADD_USER_INFO";
 const GET_CLAIM_SUMMARY = "GET_CLAIM_SUMMARY";
 const ADD_PROFILE = "ADD_PROFILE";
@@ -76,6 +78,12 @@ export function addReference(ref) {
         payload: ref
     }
 }
+export function isInsured(bool) {
+    return {
+        type: IS_INSURED,
+        payload: bool
+    }
+}
 export function clearFields() {
     return {
         type: CLEAR_FIELDS,
@@ -106,6 +114,8 @@ export default function reducer(state = initialState, action) {
             return Object.assign({}, state, { zip: action.payload })
         case ADD_REFERENCE:
             return Object.assign({}, state, { reference: action.payload })
+        case IS_INSURED:
+            return Object.assign({}, state, { insured: action.payload })
         case GET_CLAIM_SUMMARY:
             return Object.assign({}, state, { summary: action.payload })
         case ADD_PROFILE:
