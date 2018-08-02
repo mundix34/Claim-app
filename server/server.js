@@ -6,6 +6,7 @@ axios = require('axios');
 massive = require('massive');
 require('dotenv').config();
 const claim = require('./controllers/claim_controller')
+const us = require('./controllers/user_controller')
 
 
 const { SERVER_PORT, REACT_APP_DOMAIN, REACT_APP_CLIENT_ID, CLIENT_SECRET, SESSION_SECRET, CONNECTION_STRING} = process.env;
@@ -27,13 +28,13 @@ app.get('/auth/callback', async (req, res) => {
     }
 
     let resWithToken= await axios.post(`https://${REACT_APP_DOMAIN}/oauth/token`, payload)
-    console.log(resWithToken.data.access_token);
+    // console.log(resWithToken.data.access_token);
 
     
 
     let resWithUserData = await axios.get(`https://${REACT_APP_DOMAIN}/userinfo?access_token=${resWithToken.data.access_token}`)
-    console.log(resWithUserData.data);
-    const dbSet = req.app.get('db')
+    // console.log(resWithUserData.data);
+    const dbSet = req.app.get('db');
     let {sub, email, name, picture} = resWithUserData.data
     let foundUser = await dbSet.find_user([sub])
     if(foundUser[0]){
@@ -43,8 +44,11 @@ app.get('/auth/callback', async (req, res) => {
        let createdUser=  await dbSet.create_user([name, email, sub, picture])
        req.session.user = createdUser[0]
        res.redirect('/#/registration')
+// console.log("i am", req.session.user);
+
     }
 });
+
 
 app.get('/api/user_data', (req, res) => {
     if(req.session.user){
@@ -59,8 +63,8 @@ app.get('/api/logout', (req, res) => {
     res.send()
 })
 
-app.post('/api/register', claim.register);
-app.get('/api/claims/:id', claim.getClaim);
+app.post('/api/register/:id', us.register);
+app.get('/api/claim/:id', claim.getClaim);
 
 
 

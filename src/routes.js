@@ -9,7 +9,7 @@ export default (
         <Route exact path="/" component={ Login } />
         <Route path="/registration" component={ Registration } />
         <Route path="/input" component={ Input } />
-        <Route path="/summary" component={ Summary } />
+        <Route path="/summary/:id" component={ Summary } />
 
     </Switch>
 )

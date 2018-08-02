@@ -1,4 +1,4 @@
 select * from claims
 join users
-on reference_id.claims = ref_id.users
-WHERE id = $1;
+on claims.reference_id = users.ref_id
+WHERE reference_id = $1;
