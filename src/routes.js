@@ -19,7 +19,7 @@ export default (
         <Route path="/end" component={ End } />
         <Route path="/profile" component={ Profile } />
         <Route path="/title/:id" component={ Title } />
-        <Route path="/review/:id" component={ Review } />
+        <Route path="/review" component={ Review } />
 
 
     </Switch>
