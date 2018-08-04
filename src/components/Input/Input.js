@@ -15,7 +15,7 @@ class Input extends Component {
     }
 
     addProfile() {
-        axios.post(`/api/register/${this.props.user.id}`, this.props.newUser).then(res => {
+        axios.post(`/api/register/${this.props.user.user_id}`, this.props.newUser).then(res => {
             this.props.addProfile(res.data)
             this.setState({
                 ref_id: res.data.ref_id
@@ -25,7 +25,7 @@ class Input extends Component {
     nextPage() {
         this.props.newUser.insured==="yes"? 
         this.props.history.push(`/dashboard/${this.state.ref_id}`):
-        this.props.history.push(`/summary/${this.state.ref_id}`) 
+        this.props.history.push(`/summary/${this.state.ref_id}`)
     }
     render() {        
         return (
@@ -36,8 +36,8 @@ class Input extends Component {
                     <label>Address 2 (Optional)</label><input className="input" placeholder="Address Line 2" value = {this.props.newUser.addressTwo} onChange={(e) => this.props.addAddressTwo(e.target.value)}></input><br />
                     <label>City *</label><input className="input" placeholder="City" value = {this.props.newUser.city} onChange={(e) => this.props.addCity(e.target.value)}></input> <br />
                     <label>State *</label> <input className="input" placeholder="State" value = {this.props.newUser.state} onChange={(e) => this.props.addState(e.target.value)}></input><br />
-                    <label>Zip Code *</label> <input className="input" placeholder="Zip Code" value = {this.props.newUser.zip} onChange={(e) => this.props.addZip(e.target.value)}></input> <br />
-                    Reference ID ? <input className="input" placeholder="Reference ID" value = {this.props.newUser.reference} onChange={(e) => this.props.addReference(e.target.value)}></input> <br />
+                    <label>Zip Code *</label> <input className="input" value = {this.props.newUser.zip} placeholder="Zip Code" onChange={(e) => this.props.addZip(e.target.value)}></input> <br />
+                    Reference ID ? <input className="input" value = {this.props.newUser.reference} placeholder="Reference ID" onChange={(e) => this.props.addReference(e.target.value)}></input> <br />
                     <p> Are you insured with Claim Co?</p>
                     <select onChange={(e) => this.props.isInsured(e.target.value)}>
 

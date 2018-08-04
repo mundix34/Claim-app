@@ -19,10 +19,12 @@ class Summary extends Component {
         const newSummary = this.props.summary.map((claim, i) => (      
             <div className = "list" key={ i }>
               {/* <img src={ claim.picture } alt = "pic"/> */}
-              <p> Tax { claim.first_last } </p>
+              <p> { claim.first_last } </p>
               <p> Vehicle Year { claim.vehicle_year } </p>                 
               <p> Make { claim.make } </p>
               <p> model { claim.model } </p>
+              <p> Vin Number: { claim.vin } </p>
+              <p> Odometer: { claim.odometer } miles </p>
               <p> ACV { claim.acv } </p>
               <p> Tax { claim.taxes } </p>
               <p> License Fees { claim.license_fees } </p>
@@ -35,10 +37,10 @@ class Summary extends Component {
         return (
             <div className="App">
                 <h1>Claimant's Claim Summary</h1>
-                {newSummary}
                 <h3>Dear Claimant,</h3>
                 <p>Please review and confirm that you agree with the Actual Cash Value presented by the adjuster as shown above.<br/>
                 Click Agree to continue.</p>
+                {newSummary}
                 <button className="btn" onClick={() => this.props.clearFields()}>Cancel</button>
                 {/* {
                     user.user_name? (

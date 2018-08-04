@@ -6,9 +6,9 @@ const initialState = {
     addressTwo: '',
     city: '',
     state: '',
-    zip: '',
-    reference: '',
-    insured: ''
+    zip: null,
+    reference: null,
+    insured: null
 
 };
 const ADD_ADDRESSONE = "ADD_ADDRESSONE";
@@ -92,8 +92,8 @@ export function clearFields() {
             addressTwo: '',
             city: '',
             state: '',
-            zip: '',
-            reference: ''
+            zip: 0,
+            reference: 0
         }
     }
 }

@@ -34,7 +34,7 @@ app.get('/auth/callback', async (req, res) => {
     
 
     let resWithUserData = await axios.get(`https://${REACT_APP_DOMAIN}/userinfo?access_token=${resWithToken.data.access_token}`)
-    // console.log(resWithUserData.data);
+    console.log(resWithUserData.data);
     const dbSet = req.app.get('db');
     let {sub, email, name, picture} = resWithUserData.data
     let foundUser = await dbSet.find_user([sub])
@@ -68,6 +68,7 @@ app.post('/api/register/:id', us.register);
 app.get('/api/claim/:id', claim.getClaim);
 app.get('/api/reviews', review.getReviews);
 app.post('/api/review', review.postReview);
+app.delete('/api/review/:id', review.deleteReview);
 
 
 
