@@ -8,7 +8,8 @@ const initialState = {
     state: '',
     zip: null,
     reference: null,
-    insured: null
+    insured: null,
+    disableInput: false
 
 };
 const ADD_ADDRESSONE = "ADD_ADDRESSONE";
@@ -22,6 +23,7 @@ const ADD_USER_INFO = "ADD_USER_INFO";
 const GET_CLAIM_SUMMARY = "GET_CLAIM_SUMMARY";
 const ADD_PROFILE = "ADD_PROFILE";
 const CLEAR_FIELDS = "CLEAR_FIELDS";
+// const DISABLE_INPUT = "DISABLE_INPUT";
 
 export function addUserInfo(user) {
     return {
@@ -35,10 +37,10 @@ export function getClaimSummary(summary) {
         payload: summary
     }
 }
-export function addProfile(profile) {
+export function addProfile(response) {
     return {
         type: ADD_PROFILE,
-        payload: profile
+        payload: response,
     }
 }
 
@@ -119,8 +121,8 @@ export default function reducer(state = initialState, action) {
         case GET_CLAIM_SUMMARY:
             return Object.assign({}, state, { summary: action.payload })
         case ADD_PROFILE:
-            let newUser = {...state.user, ...action.payload}
-            return Object.assign({}, state, { user: newUser })
+            let newUser = { ...state.user, ...action.payload }
+            return Object.assign({}, state, { user: newUser, addressOne: '', addressTwo: '', city: '', state: '', zip: '', reference: '' })
         case CLEAR_FIELDS:
             return Object.assign({}, state, { addressOne: '', addressTwo: '', city: '', state: '', zip: '', reference: '' })
         default:

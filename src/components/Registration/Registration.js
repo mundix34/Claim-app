@@ -7,6 +7,8 @@ import {addUserInfo} from '../../ducks/reducer';
 class Registration extends Component {
     componentDidMount() {
         axios.get('/api/user_data').then(res => {
+            // console.log([res.data]);
+            
             this.props.addUserInfo(res.data)
         })
     }

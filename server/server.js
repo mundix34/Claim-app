@@ -65,6 +65,7 @@ app.get('/api/logout', (req, res) => {
 })
 
 app.post('/api/register/:id', us.register);
+app.put('/api/update_user/:id', us.updateUser);
 app.get('/api/claim/:id', claim.getClaim);
 app.get('/api/reviews', review.getReviews);
 app.post('/api/review', review.postReview);
