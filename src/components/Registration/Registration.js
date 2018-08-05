@@ -6,9 +6,7 @@ import {addUserInfo} from '../../ducks/reducer';
 
 class Registration extends Component {
     componentDidMount() {
-        axios.get('/api/user_data').then(res => {
-            // console.log([res.data]);
-            
+        axios.get('/api/user_data').then(res => {            
             this.props.addUserInfo(res.data)
         })
     }
@@ -31,7 +29,7 @@ class Registration extends Component {
                             <h3> Hi  {user.first_last} !</h3>
                             {/* <p>  Email: {user.email}</p> */}
                             {/* <p> Account Number: {user.auth_id}</p> */}
-                            {/* <img src ={user.picture} alt = ""/> */}
+                            <img src ={user.picture} alt = ""/>
                             <p> Please register on the next page to proceed</p>
                             <button onClick = { () => this.logOut()}>Logout</button>
                             <Link to = "/input"><button className = "btn" >Register</button></Link>

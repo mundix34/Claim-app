@@ -5,17 +5,32 @@ import { connect } from 'react-redux';
 
 
 class Dashboard extends Component {
+    constructor(){
+        super()
+        this.state={
+            ref_id: ''
+
+        }
+    }
     componentDidMount() {
         console.log(this.props.reference)
         axios.get(`/api/claim/${this.props.reference}`).then(res => {
             console.log(res);
             this.props.getClaimSummary(res.data)
+            this.setState({
+                ref_id: res.data.ref_id,
+            })
         })
+    }
+    nextPage() {
+            this.props.history.push(`/title-status/${this.state.ref_id}`)
+    }
+    backPage() {
+        this.props.history.push("/input")
     }
     
 
     render() {
-        // console.log(this.props.summary);
 
         const newSummary = this.props.summary.map((claim, i) => (      
             <div className = "list" key={ i }>
@@ -41,16 +56,12 @@ class Dashboard extends Component {
                 <h3>Dear Insured,</h3>
                 <p>Please review and confirm that you agree with the Actual Cash Value presented by the adjuster as shown above.<br/>
                 Click Agree to continue.</p>
-                <button className="btn" onClick={() => this.props.clearFields()}>Cancel</button>
+                <button className="btn" onClick={() => this.backPage()}>Back</button>
 
-                {/* {
-                    user.user_name? (
-                        <div>
-                            <h3> Hi  {user.user_name} !</h3>
-                            
-                        </div>
-                    ): "Please login"
-                } */}
+                <button className="btn" onClick={() => this.nextPage()}>Continue</button>
+
+
+                
 
             </div>
         );

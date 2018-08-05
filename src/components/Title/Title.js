@@ -1,6 +1,13 @@
 import React from 'react';
+import {Link } from 'react-router-dom';
 
-export default function Title (){
+export default function Title (props){
+    function previousPage(){
+        props.history.push('/title-status')
+    }
+    function nextPage(){
+        props.history.push('/payment')
+    }
     return(
         <div>
         <h3>Title Instructions for the State of Washington</h3>
@@ -12,6 +19,9 @@ export default function Title (){
         <p>Please see the sample image on the side as a guide</p>
 
         <p>Proceed to the next page for the payment info section</p>
+      <button className="btn" onClick = {() =>previousPage()}>Back to Title Status</button>
+      <button className="btn" onClick = {() =>nextPage()}>Payment Preference</button>
+
 
 
         
