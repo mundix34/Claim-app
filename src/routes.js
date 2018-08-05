@@ -8,7 +8,10 @@ import Dashboard from './components/Dashboard/Dashboard';
 import End from './components/End/End';
 import Title from './components/Title/Title';
 import TitleStatus from './components/TitleStatus/TitleStatus';
+import Payment from './components/Payment/Payment';
+import Stripe from './components/Stripe/Stripe';
 import Review from './components/Review/Review';
+
 export default (
     <Switch>
         <Route exact path="/" component={ Login } />
@@ -19,7 +22,8 @@ export default (
         <Route path="/end" component={ End } />
         <Route path="/title-status" component={ TitleStatus } />
         <Route path="/title" component={ Title } />
-        <Route path="/payment" component={ Title } />
+        <Route path="/payment" component={ Payment } />
+        <Route path="/stripe" component={ Stripe } />
         <Route path="/review" component={ Review } />
 
 

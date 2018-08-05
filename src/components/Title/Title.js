@@ -1,5 +1,4 @@
 import React from 'react';
-import {Link } from 'react-router-dom';
 
 export default function Title (props){
     function previousPage(){
@@ -20,7 +19,7 @@ export default function Title (props){
 
         <p>Proceed to the next page for the payment info section</p>
       <button className="btn" onClick = {() =>previousPage()}>Back to Title Status</button>
-      <button className="btn" onClick = {() =>nextPage()}>Payment Preference</button>
+      <button className="btn" onClick = {() =>nextPage()}>Payment</button>
 
 
 

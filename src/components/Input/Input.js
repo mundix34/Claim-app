@@ -2,9 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addAddressOne, addAddressTwo, addCity, addReference, isInsured, addState, addZip, addProfile, clearFields } from '../../ducks/reducer';
 import axios from 'axios';
-// import Button from '../Button/Button';
-// import { Link } from 'react-router-dom';
-
 
 
 class Input extends Component {
@@ -18,15 +15,25 @@ class Input extends Component {
     }
 
     addProfile() {
+        if(!this.props.newUser.addressOne){
+            alert('Address is required')
+    } else if (!this.props.newUser.city){
+        alert('City is required')
+    } else if(!this.props.newUser.zip){
+        alert('Zip Code is required')
+    }
+     else if(!this.props.newUser.reference){
+        alert('Reference Number is required')
+    }
+    else {
         axios.post(`/api/register/${this.props.user.user_id}`, this.props.newUser).then(res => {
             this.props.addProfile(res.data)
-            // console.log([res.data]);
-
             this.setState({
                 ref_id: res.data.ref_id,
                 stateUser: [res.data]
             })
         })
+    }
     }
     editProfile() {
         axios.put(`/api/update_user/${this.props.user.user_id}`, this.props.newUser).then(res => {
@@ -39,9 +46,10 @@ class Input extends Component {
         })
     }
     nextPage() {
-        this.props.newUser.insured === "yes" ?
-            this.props.history.push(`/dashboard/${this.state.ref_id}`) :
-            this.props.history.push(`/summary/${this.state.ref_id}`)
+        // !this.newStateUser? alert('must complete'):
+        this.props.newUser.insured === "yes" ? this.props.history.push(`/dashboard/${this.state.ref_id}`) :
+        this.props.newUser.insured === "other" ? this.props.history.push(`/summary/${this.state.ref_id}`): 
+        alert('please make a selection')
     }
     render() {
         const newStateUser = this.state.stateUser.map((item, i) => (
@@ -85,8 +93,8 @@ class Input extends Component {
                         <option type="text" value="no" >No</option>
                     </select> <br />
 
-                    <button type="submit" className="btn" onClick={() => this.addProfile()}>Submit</button>
                     <button className="btn" onClick={() => this.props.clearFields()}>Cancel</button>
+                    <button type="submit" className="btn" onClick={() => this.addProfile()}>Submit</button>
                     <button onClick={() => this.nextPage()} className="btn" >Continue</button>
 
 
