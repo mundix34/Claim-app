@@ -22,7 +22,7 @@ class Summary extends Component {
         })
     }
     nextPage() {
-            this.props.history.push(`/title-status/${this.state.ref_id}`)
+            this.props.history.push(`/comparables`)
     }
     backPage() {
             this.props.history.push("/input")

@@ -10,7 +10,7 @@ module.exports = {
     
         
     },
-    getComparable: (req, res, next) =>{
+    getComparables: (req, res, next) =>{
         let {params} = req;
         const dbSet = req.app.get('db');
         dbSet.find_comparable(params.id)        

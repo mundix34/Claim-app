@@ -10,16 +10,11 @@ class Payment extends Component {
         }
     }
     
-    // nextPage() {
-    //     this.state.haveTitle ==="Yes"?
-    //         this.props.history.push(`/title/${this.state.ref_id}`):
-    //         this.props.history.push(`/End/${this.state.ref_id}`)
-
-    // }
-    handlePage() {
-        this.state.handleTitle ==='yes'?
-        this.props.history.push("/title"):
-        this.props.history.push("/End")
+    
+    nextPage() {
+        this.state.selectMethod ==='stripe'? this.props.history.push("/stripe"):
+        this.state.selectMethod ==='check'?this.props.history.push("/input"):
+        this.props.history.push("/maps")
 
     }
     backPage() {
@@ -38,17 +33,17 @@ class Payment extends Component {
         
         return (
             <div className="App">
-                <h3>Payments are now conveniently issued using Stripe App , You also have the option of picking up a check at your Agent's office if you are insured. Otherwise you can opt to simply receive a check at your mailing address</h3>
+                <h4>Payments are now conveniently issued using Stripe App , You also have the option of picking up a check at your Agent's office if you are insured. Otherwise you can opt to simply receive a check at your mailing address</h4>
                 <select onChange={(e) => this.handleTitleStatus(e.target.value)}>
 
                         <option className = "option-title" type="text" value="select" >select</option>
-                        <option className = "option-title" type="text" value="Stripe Method" >Stripe Pay</option>
-                        <option className = "option-title" type="text" value="Mail me A Check" >Check in the Mail</option>
-                        <option className = "option-title" type="text" value="Find an agent's office near Me" >Find An Agent's Office</option>
+                        <option className = "option-title" type="text" value="stripe" >Stripe Pay</option>
+                        <option className = "option-title" type="text" value="check" >Receive a Check</option>
+                        <option className = "option-title" type="text" value="agent" >Title for Check</option>
                     </select> <br />
                 <button className="btn" onClick={() => this.backPage()}>Back to Profile</button>
 
-                <button className="btn" onClick={() => this.handlePage()}>Continue</button>
+                <button className="btn" onClick={() => this.nextPage()}>Continue</button>
 
 
                 

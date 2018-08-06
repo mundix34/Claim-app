@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import Title from '../Title/Title';
-
+import Sidebar from '../Sidebar/Sidebar';
 
 class TitleStatus extends Component {
     constructor(props){
@@ -23,7 +22,7 @@ class TitleStatus extends Component {
 
     }
     backPage() {
-        this.props.history.push("/input")
+        this.props.history.push("/title-status")
 
     }
     handleTitleStatus(val){
@@ -38,17 +37,17 @@ class TitleStatus extends Component {
         
         return (
             <div className="App">
-                <h3>In this section you will identify the status of your title, if you have lost or misplaced your title please select "Other"</h3>
-                <select onChange={(e) => this.handleTitleStatus(e.target.value)}>
+                <h4 className = "semi-heading">In this section you will identify the status of your title, if you have lost or misplaced your title please select "Other"</h4>
+                <label>Do you possess your vehicle's title </label> <select onChange={(e) => this.handleTitleStatus(e.target.value)}>
 
                         <option className = "option-title" type="text" value="select" >select</option>
                         <option className = "option-title" type="text" value="yes" >Yes</option>
                         <option className = "option-title" type="text" value="other" >Other</option>
                     </select> <br />
-                <button className="btn" onClick={() => this.backPage()}>Back to Profile</button>
+                <button className="btn" onClick={() => this.backPage()}>Back</button>
 
                 <button className="btn" onClick={() => this.handlePage()}>Continue</button>
-    <Title/>
+                <Sidebar/>
 
 
 

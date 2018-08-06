@@ -23,7 +23,7 @@ class Dashboard extends Component {
         })
     }
     nextPage() {
-            this.props.history.push(`/title-status/${this.state.ref_id}`)
+            this.props.history.push('/comparables')
     }
     backPage() {
         this.props.history.push("/input")
@@ -35,7 +35,7 @@ class Dashboard extends Component {
         const newSummary = this.props.summary.map((claim, i) => (      
             <div className = "list" key={ i }>
               {/* <img src={ claim.picture } alt = "pic"/> */}
-              <p> Tax { claim.first_last } </p>
+              <p> { claim.first_last } </p>
               <p> Vehicle Year { claim.vehicle_year } </p>                 
               <p> Make { claim.make } </p>
               <p> model { claim.model } </p>

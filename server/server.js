@@ -70,7 +70,7 @@ app.get('/api/claim/:id', claim.getClaim);
 app.get('/api/reviews', review.getReviews);
 app.post('/api/review', review.postReview);
 app.delete('/api/review/:id', review.deleteReview);
-app.get('/api/comparable/:id', claim.getComparable);
+app.get('/api/comparables/:id', claim.getComparables);
 
 
 

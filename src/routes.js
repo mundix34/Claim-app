@@ -11,6 +11,8 @@ import TitleStatus from './components/TitleStatus/TitleStatus';
 import Payment from './components/Payment/Payment';
 import Stripe from './components/Stripe/Stripe';
 import Review from './components/Review/Review';
+import Comparables from './components/Comparables/Comparables';
+import Maps from './components/Maps/Maps';
 
 export default (
     <Switch>
@@ -19,11 +21,13 @@ export default (
         <Route path="/input" component={ Input } />
         <Route path="/summary/:id" component={ Summary } />
         <Route path="/dashboard/:id" component={ Dashboard } />
+        <Route path="/comparables" component={ Comparables } />
         <Route path="/end" component={ End } />
         <Route path="/title-status" component={ TitleStatus } />
         <Route path="/title" component={ Title } />
         <Route path="/payment" component={ Payment } />
         <Route path="/stripe" component={ Stripe } />
+        <Route path="/maps" component={ Maps } />
         <Route path="/review" component={ Review } />
 
 

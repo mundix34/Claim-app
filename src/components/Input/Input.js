@@ -20,6 +20,9 @@ class Input extends Component {
     } else if (!this.props.newUser.city){
         alert('City is required')
     } else if(!this.props.newUser.zip){
+    } else if (!this.props.newUser.state){
+        alert('State is required')
+    } else if(!this.props.newUser.zip){
         alert('Zip Code is required')
     }
      else if(!this.props.newUser.reference){
@@ -46,9 +49,8 @@ class Input extends Component {
         })
     }
     nextPage() {
-        // !this.newStateUser? alert('must complete'):
         this.props.newUser.insured === "yes" ? this.props.history.push(`/dashboard/${this.state.ref_id}`) :
-        this.props.newUser.insured === "other" ? this.props.history.push(`/summary/${this.state.ref_id}`): 
+        this.props.newUser.insured === "no" ? this.props.history.push(`/summary/${this.state.ref_id}`): 
         alert('please make a selection')
     }
     render() {
