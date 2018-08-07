@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Button } from 'react-bootstrap';
+
 
 
 class Maps extends Component {
@@ -10,7 +12,11 @@ class Maps extends Component {
 
         }
     }
-    
+    handleText(val){
+        this.setState({
+            text: val
+        })
+    }
     
     nextPage() {
         this.props.history.push("/end")
@@ -28,11 +34,10 @@ class Maps extends Component {
         return (
             <div className="App">
                 <h4>Now you can find an Agent's office near you to complete a check for title exchange</h4>
-                <label>Search for Office</label> <input value = {this.state.text} placeholder = "search by zip code" ></input><br/>
+                <label>Search for Office</label> <input value = {this.state.text} placeholder = "search by zip code" onChange = {(e) => this.handleText(e.target.value)} ></input><br/>
                 
-                <button className="btn" onClick={() => this.backPage()}>Back to Profile</button>
-
-                <button className="btn" onClick={() => this.nextPage()}>Continue</button>
+                <Button className="btn" onClick={() => this.backPage()}>Payment Options</Button>
+                <Button className="btn" onClick={() => this.nextPage()}>Continue</Button>
 
 
                 

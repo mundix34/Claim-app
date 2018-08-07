@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Button } from 'react-bootstrap';
+
 
 
 class Stripe extends Component {
@@ -29,9 +31,9 @@ class Stripe extends Component {
             <div className="App">
                 <h4>Sign up for Stripe Pay</h4>
                 
-                <button className="btn" onClick={() => this.backPage()}>Back to Payment Options</button>
+                <Button className="btn" onClick={() => this.backPage()}>Back to Payment Options</Button>
 
-                <button className="btn" onClick={() => this.nextPage()}>Complete</button>
+                <Button className="btn" onClick={() => this.nextPage()}>Complete</Button>
 
 
                 

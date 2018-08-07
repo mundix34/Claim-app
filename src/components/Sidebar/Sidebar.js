@@ -18,8 +18,7 @@ export default function Sidebar(){
         <h3 className ="sub-heading">Side Bar</h3>
         <Para className ="Paraara">Please see pertinent information on your left</Para>
         <p>Thank you for doing business with Insurance Inc.</p>
-        <button className = "btn"></button>
-
+        <h>Id velit irure consequat aliquip laboris ex eu quis culpa amet tempor.</h>
         </Outer>
 
         

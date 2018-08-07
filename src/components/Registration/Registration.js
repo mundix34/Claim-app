@@ -1,50 +1,53 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import {addUserInfo} from '../../ducks/reducer';
+import { addUserInfo } from '../../ducks/reducer';
+import { Grid, Button } from 'react-bootstrap';
+import './Registration.css';
 
 class Registration extends Component {
     componentDidMount() {
-        axios.get('/api/user_data').then(res => {            
+        axios.get('/api/user_data').then(res => {
             this.props.addUserInfo(res.data)
         })
     }
-    logOut(){
-        axios.get('/api/logout').then( res =>{
+    logOut() {
+        axios.get('/api/logout').then(res => {
             this.props.history.push('/')
         })
     }
 
     render() {
-        let {user} = this.props;
+        let { user } = this.props;
         console.log(user);
-        
+
         return (
             <div className="App">
-                <h1>Account Information</h1>
-                {
-                    user.first_last? (
-                        <div>
-                            <h3> Hi  {user.first_last} !</h3>
-                            {/* <p>  Email: {user.email}</p> */}
-                            {/* <p> Account Number: {user.auth_id}</p> */}
-                            <img src ={user.picture} alt = ""/>
-                            <p> Please register on the next page to proceed</p>
-                            <button onClick = { () => this.logOut()}>Logout</button>
-                            <Link to = "/input"><button className = "btn" >Register</button></Link>
-                        </div>
-                    ): "Please login"
-                }
-
+                <Grid>
+                    <h1>Account Information</h1>
+                    {
+                        user.first_last ? (
+                            <div>
+                                <h3> Hi  {user.first_last} !</h3>
+                                {/* <p>  Email: {user.email}</p> */}
+                                {/* <p> Account Number: {user.auth_id}</p> */}
+                                <img src={user.picture} alt="" />
+                                <p> Please proceed to register</p>
+                                <Button bsStyle="primary" onClick={() => this.logOut()}>Logout</Button>
+                                <Link to="/input"><Button bsStyle="primary" className="btn" >Register</Button></Link>
+                            </div>
+                        ) : "Please login"
+                    }
+                </Grid>
             </div>
         );
     }
 }
-function mapStateToProps(state){
-    return{
+function mapStateToProps(state) {
+    return {
         user: state.user
     }
 }
 
-export default connect( mapStateToProps, {addUserInfo})(Registration)
+export default connect(mapStateToProps, { addUserInfo })(Registration)

@@ -1,8 +1,18 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import './End.css'
+import './End.css';
+import { Grid, Button } from 'react-bootstrap';
 
-export default function End(){
+
+export default function End(props){
+    function nextPage() {
+        props.history.push("/review")
+
+    }
+    function backPage() {
+        props.history.push("/payment")
+
+    }
     return(
         <div>
         <h3>Please contact Insurance Inc's Claim Office at 1 800 889 0045 to speak with a representative.</h3>
@@ -10,7 +20,9 @@ export default function End(){
         <p>claims@insuranceinc.org</p>
         <p>Once your email has been received, an adjuster will be in touch with you within 48 hours</p>
         <p>Thank you for doing business with Insurance Inc.</p>
-        <Link to="/"><button className="btn">Logout</button></Link>
+        <Button bsStyle="primary" onClick={() => nextPage()}>Leave a Feedback</Button>
+
+        {/* <Link to="/"><button className="btn">Logout</button></Link> */}
 
         </div>
 

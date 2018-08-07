@@ -22,8 +22,10 @@ class Payment extends Component {
 
     }
     handleTitleStatus(val){
+        console.log('val', val);
+        
         this.setState({
-            handleTitle: val
+            selectMethod: val
         })
 
     }

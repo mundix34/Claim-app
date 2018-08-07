@@ -7,8 +7,8 @@ const initialState = {
     addressTwo: '',
     city: '',
     state: '',
-    zip: null,
-    reference: null,
+    zip: 0,
+    reference: 0,
     insured: null,
     disableInput: false
 

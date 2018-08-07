@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import { Jumbotron, Row, Column, Grid, Image, Button } from 'react-bootstrap';
+import './Login.css';
 class Login extends Component {
     login(){
         let {REACT_APP_DOMAIN, REACT_APP_CLIENT_ID} = process.env;
@@ -10,7 +12,7 @@ class Login extends Component {
       return (
         <div className="App">
           <h1>Please Login</h1>
-          <button className = "btn" onClick = {this.login}> Login</button>
+          <Button bsStyle="primary"className = "btn" onClick = {this.login}> Login</Button>
         </div>
       );
     }

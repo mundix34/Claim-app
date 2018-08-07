@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import {getClaimSummary} from '../../ducks/reducer';
 import { connect } from 'react-redux';
+import {Jumbotron, Row, Column, Grid, Image, Button} from 'react-bootstrap';
+import './Dashboard.css';
 
 
 class Dashboard extends Component {
@@ -52,10 +54,11 @@ class Dashboard extends Component {
         return (
             <div className="App">
                 <h1>Insured's Claim Summary</h1>
-                {newSummary}
                 <h3>Dear Insured,</h3>
                 <p>Please review and confirm that you agree with the Actual Cash Value presented by the adjuster as shown above.<br/>
                 Click Agree to continue.</p>
+                {newSummary}
+
                 <button className="btn" onClick={() => this.backPage()}>Back</button>
 
                 <button className="btn" onClick={() => this.nextPage()}>Continue</button>
