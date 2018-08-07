@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { getComparables } from '../../ducks/reducer';
 import { connect } from 'react-redux';
+import { Button} from 'react-bootstrap';
+
 
 
 class Comparables extends Component {
@@ -33,9 +35,12 @@ class Comparables extends Component {
 
         const newComparables = this.props.comparables.map((comparable, i) => (
             <div className="table" key={i}>
-                <table>
+                <tbody>
                     <tr>
-                        <th> Similar {comparable.vehicle_year} {comparable.make} {comparable.model}</th>
+                        <th> Similar {comparable.vehicle_year} {comparable.make} {comparable.model} Reference ID: {comparable.refer_id}</th>
+                    </tr>
+                    <tr>
+                        <th> Reference ID: {comparable.refer_id}</th>
                     </tr>
                     <tr>
                         <th>Your Vehicle</th>
@@ -61,36 +66,36 @@ class Comparables extends Component {
                     </tr>
                     <tr>
                         <td>Condition</td>
-                        <td>{comparable.odometer}</td>
+                        <td>{comparable.condition}</td>
                         <td>{comparable.cond_1}</td>
                         <td>{comparable.cond_2}</td>
                         <td>{comparable.cond_3}</td>
                         <td>{comparable.cond_4}</td>
                     </tr>
-                    
-                        </table>
-              </div>
-                    ));
-                  return (
+
+                </tbody>
+            </div>
+        ));
+        return (
             <div className="App">
-                        <h1>View Comparables</h1>
-                        <p> See how your vehicle's Actual Cash Value(ACV) compares with other similar vehicles within a 500 miles radius of your Zip Code</p>
-                        <p>Please note that your value is an aggregate of the tabulated values adjusting for Condition and mileage among other things.</p>
-                        
-                        {newComparables}
-                        <button className="btn" onClick={() => this.backPage()}>Back</button>
+                <h1>View Comparables</h1>
+                <p> See how your vehicle's Actual Cash Value(ACV) compares with other similar vehicles within a 500 miles radius of your Zip Code</p>
+                <p>Please note that your value is an aggregate of the tabulated values adjusting for Condition and mileage among other things.</p>
 
-                        <button className="btn" onClick={() => this.nextPage()}>Continue</button>
+                {newComparables}
+                <Button className="btn" onClick={() => this.backPage()}>Back</Button>
 
-                    </div>
-                    );
-                }
-            }
-function mapStateToProps(state){
+                <Button className="btn" onClick={() => this.nextPage()}>Continue</Button>
+
+            </div>
+        );
+    }
+}
+function mapStateToProps(state) {
     return {
-                        reference: state.user.ref_id,
-                    comparables: state.comparables
-                }
-            }
-            
-export default connect(mapStateToProps, {getComparables})(Comparables)
+        reference: state.user.ref_id,
+        comparables: state.comparables
+    }
+}
+
+export default connect(mapStateToProps, { getComparables })(Comparables)

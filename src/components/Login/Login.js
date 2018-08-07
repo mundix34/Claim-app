@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Jumbotron, Row, Column, Grid, Image, Button } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 import './Login.css';
 class Login extends Component {
     login(){

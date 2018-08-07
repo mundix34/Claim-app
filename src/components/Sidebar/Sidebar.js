@@ -1,6 +1,8 @@
 import React from 'react';
-import './Sidebar.css'
+import './Sidebar.css';
 import styled from 'styled-components';
+
+
 const Outer = styled.div`
 text-align: center;
 color: blue;

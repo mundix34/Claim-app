@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { addUserInfo } from '../../ducks/reducer';
-import { Image, Button, Nav, Navbar, NavItem } from 'react-bootstrap';
+import { Image, Nav, Navbar, NavItem } from 'react-bootstrap';
 import './Header.css';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
@@ -9,13 +9,13 @@ import styled from 'styled-components';
 const Outer = styled.div`
 text-align: center;
 color: blue;
-font-size: 10px;
 background-color; #054aba;
+font-family: farquhar;
 `
 function Header(props) {
     return (
       props.user.first_last?(
-        <Outer className ="outer">
+        <Outer>
             <Navbar default collapseOnSelect>
         <Navbar.Header>
           <Navbar.Brand>
@@ -26,14 +26,14 @@ function Header(props) {
         </Navbar.Header>
         <Navbar.Collapse>
           <Nav pullRight>
-            <NavItem eventKey={1} componentClass={Link} href="/" to="/">
-              New
+            <NavItem eventKey={2} componentClass={Link} href="/dashboard" to="/dashboard">
+              Summary
             </NavItem>
-            <NavItem eventKey={2} componentClass={Link} href="/about" to="/about">
-              Account
-            </NavItem>
-            <NavItem eventKey={3} componentClass={Link} href="/news" to="/news">
+            <NavItem eventKey={3} componentClass={Link} href="/end" to="/end">
               Help
+            </NavItem>
+            <NavItem eventKey={3} componentClass={Link} href="/" to="/">
+              Logout
             </NavItem>
           </Nav>
         </Navbar.Collapse>

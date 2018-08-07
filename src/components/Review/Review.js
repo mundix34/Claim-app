@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-// import { connect } from 'react-redux';
-// import Button from '../Button/Button'
+import { Button } from 'react-bootstrap';
+
 
 class Review extends Component {
   constructor() {
@@ -15,6 +15,10 @@ class Review extends Component {
 
     }
   }
+
+  logOut(){
+    this.props.history.push("/")
+    }
   addTitle(val) {
     this.setState({
       title: val
@@ -42,6 +46,7 @@ class Review extends Component {
       title: this.state.title,
       content: this.state.content
     }
+    
 
     axios.post(`/api/review`, review).then(res => {
       console.log(res);
@@ -68,8 +73,7 @@ class Review extends Component {
         <img src={review.picture} alt="pic" />
         <p> Title: {review.title} </p>
         <p> Message: {review.content} </p>
-        <button onClick={() => this.deleteReview(review.id)}> Delete </button>
-        <button onClick={() => this.addReview()}> Edit </button>
+        <Button onClick={() => this.deleteReview(review.id)}> Remove </Button>
       </div>
     ));
     return (
@@ -79,7 +83,8 @@ class Review extends Component {
           <h3> Post Your Review</h3>
           Title: <input className="Input" onChange={(e) => this.addTitle(e.target.value)} value={this.state.title}></input><br />
           Content: <input className="Input" onChange={(e) => this.addContent(e.target.value)} value={this.state.content}></input><br />
-          <button onClick={() => this.addReview()}> Add Review </button>
+          <Button onClick={() => this.addReview()}> Add Review </Button>
+          <Button onClick={() => this.logOut()}> Logout </Button>
 
         </form>
 

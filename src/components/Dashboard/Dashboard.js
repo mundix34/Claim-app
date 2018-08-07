@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import {getClaimSummary} from '../../ducks/reducer';
 import { connect } from 'react-redux';
-import {Jumbotron, Row, Column, Grid, Image, Button} from 'react-bootstrap';
+import { Button} from 'react-bootstrap';
 import './Dashboard.css';
 
 
@@ -59,9 +59,9 @@ class Dashboard extends Component {
                 Click Agree to continue.</p>
                 {newSummary}
 
-                <button className="btn" onClick={() => this.backPage()}>Back</button>
+                <Button className="btn" onClick={() => this.backPage()}>Back</Button>
 
-                <button className="btn" onClick={() => this.nextPage()}>Continue</button>
+                <Button className="btn" onClick={() => this.nextPage()}>Continue</Button>
 
 
                 

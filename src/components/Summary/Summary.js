@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import {getClaimSummary} from '../../ducks/reducer';
 import { connect } from 'react-redux';
+import { Button } from 'react-bootstrap';
+
 
 
 class Summary extends Component {
@@ -57,9 +59,9 @@ class Summary extends Component {
                 <p>Please review and confirm that you agree with the Actual Cash Value presented by the adjuster as shown above.<br/>
                 Click Agree to continue.</p>
                 {newSummary}
-                <button className="btn" onClick={() => this.backPage()}>Back</button>
+                <Button onClick={() => this.backPage()}>Back</Button>
 
-                <button className="btn" onClick={() => this.nextPage()}>Continue</button>
+                <Button onClick={() => this.nextPage()}>Continue</Button>
                 {/* {
                     user.user_name? (
                         <div>

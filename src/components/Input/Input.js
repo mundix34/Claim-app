@@ -2,6 +2,13 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addAddressOne, addAddressTwo, addCity, addReference, isInsured, addState, addZip, addProfile, clearFields } from '../../ducks/reducer';
 import axios from 'axios';
+import styled from 'styled-components';
+import { Button } from 'react-bootstrap';
+
+
+const Outer = styled.div`
+color: ddd;
+`
 
 
 class Input extends Component {
@@ -9,7 +16,9 @@ class Input extends Component {
         super(props)
         this.state = {
             ref_id: '',
-            stateUser: []
+            stateUser: [],
+            disableInput: false
+
         }
         this.nextPage = this.nextPage.bind(this);
     }
@@ -55,7 +64,7 @@ class Input extends Component {
     }
     render() {
         const newStateUser = this.state.stateUser.map((item, i) => (
-            <div className="list" key={i}>
+            <Outer className="list" key={i}>
                 <p> AddressOne: {item.address_1} </p>
                 <p> AddressTwo: {item.address_2} </p>
                 <p> city: {item.city} </p>
@@ -65,46 +74,45 @@ class Input extends Component {
                 <button type="submit" className="btn" onClick={() => this.editProfile()}>Edit</button>
 
 
-            </div>))
+            </Outer>))
         return (
-            <div className="app">
+            <Outer>
                 <form onSubmit={e => e.preventDefault()}>
                     <label> Fields with an asterisk (*) are Required</label><br />
                     <span>{this.props.newUser.addressOne}</span>
-                    <label>Address 1 * </label><input name="addressOne" className="input" placeholder="Address Line 1" value={this.props.newUser.addressOne} onChange={(e) => this.props.addAddressOne(e.target.value)}></input> <br />
+                    <label>Address 1 * </label><input className="input" type ="text" placeholder="Address Line 1" value={this.props.newUser.addressOne} onChange={(e) => this.props.addAddressOne(e.target.value.toUpperCase())}></input> <br />
                     <span>{this.props.newUser.addressTwo}</span>
 
-                    <label>Address 2 (Optional) </label><input className="input" placeholder="Address Line 2" value={this.props.newUser.addressTwo} onChange={(e) => this.props.addAddressTwo(e.target.value)}></input><br />
+                    <label>Address 2 (Optional) </label><input type ="text" className="input" placeholder="Address Line 2" value={this.props.newUser.addressTwo} onChange={(e) => this.props.addAddressTwo(e.target.value.toUpperCase())}></input><br />
                     <span>{this.props.newUser.city}</span>
 
-                    <label>City *</label><input className="input" placeholder="City" value={this.props.newUser.city} onChange={(e) => this.props.addCity(e.target.value)}></input> <br />
+                    <label>City *</label><input className="input" type ="text" placeholder="City" value={this.props.newUser.city} onChange={(e) => this.props.addCity(e.target.value.toUpperCase())}></input> <br />
                     <span>{this.props.newUser.state}</span>
 
-                    <label>State *</label> <input className="input" placeholder="State" value={this.props.newUser.state} onChange={(e) => this.props.addState(e.target.value)}></input><br />
+                    <label>State *</label> <input className="input" type ="text" placeholder="State" value={this.props.newUser.state} onChange={(e) => this.props.addState(e.target.value.toUpperCase())}></input><br />
                     <span>{this.props.newUser.zip}</span>
 
-                    <label>Zip Code *</label> <input className="input" value={this.props.newUser.zip} placeholder="Zip Code" onChange={(e) => this.props.addZip(e.target.value)}></input> <br />
+                    <label>Zip Code *</label> <input type ="number"className="input" value={this.props.newUser.zip} placeholder="Zip Code" onChange={(e) => this.props.addZip(e.target.value)}></input> <br />
                     <span>{this.props.newUser.reference}</span>
 
-                    <label>Reference ID ?</label> <input className="input" value={this.props.newUser.reference} placeholder="Reference ID" onChange={(e) => this.props.addReference(e.target.value)}></input> <br />
-                    <p> Are you insured with Claim Co?</p>
+                    <label>Reference ID ?</label> <input className="input" type ="number" value={this.props.newUser.reference} placeholder="Reference ID" onChange={(e) => this.props.addReference(e.target.value)}></input> <br />
+                    <p> Are you insured with Insurance Inc?</p>
                     <select onChange={(e) => this.props.isInsured(e.target.value)}>
-
                         <option type="text" value="select" >select</option>
                         <option type="text" value="yes" >Yes</option>
                         <option type="text" value="no" >No</option>
                     </select> <br />
 
-                    <button className="btn" onClick={() => this.props.clearFields()}>Cancel</button>
-                    <button type="submit" className="btn" onClick={() => this.addProfile()}>Submit</button>
-                    <button onClick={() => this.nextPage()} className="btn" >Continue</button>
+                    <Button className="btn" onClick={() => this.props.clearFields()}>Cancel</Button>
+                    <Button type="submit" className="btn" onClick={() => this.addProfile()}>Submit</Button>
+                    <Button onClick={() => this.nextPage()} className="btn" >Continue</Button>
 
 
 
                 </form>
                 <span>{newStateUser}</span>
 
-            </div>
+            </Outer>
         );
     }
 }

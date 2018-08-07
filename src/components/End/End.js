@@ -1,16 +1,17 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import { connect } from 'react-redux';
+import { addUserInfo } from '../../ducks/reducer';
 import './End.css';
-import { Grid, Button } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 
 
-export default function End(props){
+function End(props){
     function nextPage() {
         props.history.push("/review")
 
     }
-    function backPage() {
-        props.history.push("/payment")
+    function logOut() {
+        props.history.push("/")
 
     }
     return(
@@ -21,6 +22,7 @@ export default function End(props){
         <p>Once your email has been received, an adjuster will be in touch with you within 48 hours</p>
         <p>Thank you for doing business with Insurance Inc.</p>
         <Button bsStyle="primary" onClick={() => nextPage()}>Leave a Feedback</Button>
+        <Button bsStyle="primary" onClick={() => logOut()}>Logout</Button>
 
         {/* <Link to="/"><button className="btn">Logout</button></Link> */}
 
@@ -29,3 +31,10 @@ export default function End(props){
         
     )
 }
+function mapStateToProps(state) {
+    return {
+        user: state.user
+    }
+  }
+  
+  export default connect(mapStateToProps, { addUserInfo })(End)

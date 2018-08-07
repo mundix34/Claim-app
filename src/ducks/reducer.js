@@ -7,11 +7,9 @@ const initialState = {
     addressTwo: '',
     city: '',
     state: '',
-    zip: 0,
-    reference: 0,
-    insured: null,
-    disableInput: false
-
+    zip: '',
+    reference:'',
+    insured: ''
 };
 const ADD_ADDRESSONE = "ADD_ADDRESSONE";
 const ADD_ADDRESSTWO = "ADD_ADDRESSTWO";

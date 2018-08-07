@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Button } from 'react-bootstrap';
+
 
 
 class Payment extends Component {
@@ -43,9 +45,9 @@ class Payment extends Component {
                         <option className = "option-title" type="text" value="check" >Receive a Check</option>
                         <option className = "option-title" type="text" value="agent" >Title for Check</option>
                     </select> <br />
-                <button className="btn" onClick={() => this.backPage()}>Back to Profile</button>
+                <Button bsStyle="primary" className="btn" onClick={() => this.backPage()}>Back to Profile</Button>
 
-                <button className="btn" onClick={() => this.nextPage()}>Continue</button>
+                <Button bsStyle="primary" className="btn" onClick={() => this.nextPage()}>Continue</Button>
 
 
                 
