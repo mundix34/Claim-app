@@ -3,6 +3,15 @@ import { connect } from 'react-redux';
 import { addUserInfo } from '../../ducks/reducer';
 import './End.css';
 import { Button } from 'react-bootstrap';
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faStroopwafel } from '@fortawesome/free-solid-svg-icons'
+import styled from 'styled-components';
+const Img = styled.img`
+height: 60px;
+`
+
+library.add(faStroopwafel)
 
 
 function End(props){
@@ -21,6 +30,8 @@ function End(props){
         <p>claims@insuranceinc.org</p>
         <p>Once your email has been received, an adjuster will be in touch with you within 48 hours</p>
         <p>Thank you for doing business with Insurance Inc.</p>
+        {/* <FontAwesomeIcon icon = "stroopwafel"/> */}
+        <Img className = "stroop" src="../images/stroopwafel-solid.svg" alt='stroopwafel' rounded/>
         <Button bsStyle="primary" onClick={() => nextPage()}>Leave a Feedback</Button>
         <Button bsStyle="primary" onClick={() => logOut()}>Logout</Button>
 

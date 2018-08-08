@@ -1,12 +1,18 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: Roboto;
-  font-weight: 800;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  /* font-family: 'Hanalei Fill', cursive;
+font-family: 'Roboto', sans-serif;
+font-family: 'Lobster', cursive;
+font-family: 'Poiret One', cursive;
+font-family: 'Orbitron', sans-serif; */
 }
 
 h1, h2, h3, h4, h5, h6 {
   color: ddd;
+  font-weight: 700;
 }
 
 p {

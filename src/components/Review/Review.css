@@ -1,0 +1,6 @@
+.btnStyle {
+    background:#3862a5;
+  }
+.btnStyle:hover {
+    background: green;
+  }

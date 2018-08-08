@@ -1,6 +1,14 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Button } from 'react-bootstrap';
+import styled from 'styled-components';
+import './Review.css';
+
+const Img = styled.img`
+height: 80px;
+border-radius: 10px;
+margin: 1em;
+`
 
 
 class Review extends Component {
@@ -70,7 +78,7 @@ class Review extends Component {
   render() {
     const reviews = this.state.reviews.map((review, i) => (
       <div className="list" key={i}>
-        <img src={review.picture} alt="pic" />
+        <Img src={review.picture} alt="pic" />
         <p> Title: {review.title} </p>
         <p> Message: {review.content} </p>
         <Button onClick={() => this.deleteReview(review.id)}> Remove </Button>
@@ -78,15 +86,15 @@ class Review extends Component {
     ));
     return (
       <div className="Review">
-        <h3>{reviews}</h3>
         <form>
-          <h3> Post Your Review</h3>
+          <h3> <span role="img" aria-label="hand">😇 </span>Post Your Review <span role="img" aria-label="hand"> 👍 </span></h3>
           Title: <input className="Input" onChange={(e) => this.addTitle(e.target.value)} value={this.state.title}></input><br />
           Content: <input className="Input" onChange={(e) => this.addContent(e.target.value)} value={this.state.content}></input><br />
-          <Button onClick={() => this.addReview()}> Add Review </Button>
-          <Button onClick={() => this.logOut()}> Logout </Button>
-
+          <Button className ="btnStyle" onClick={() => this.addReview()}> Add Review </Button>
+          <Button className = "btnStyle" onClick={() => this.logOut()}> Logout </Button>
         </form>
+        <h3>{reviews}</h3>
+
 
       </div>
     );

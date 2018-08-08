@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { getComparables } from '../../ducks/reducer';
 import { connect } from 'react-redux';
-import { Button} from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 
 
 
@@ -37,10 +37,11 @@ class Comparables extends Component {
             <div className="table" key={i}>
                 <tbody>
                     <tr>
-                        <th> Similar {comparable.vehicle_year} {comparable.make} {comparable.model} Reference ID: {comparable.refer_id}</th>
+                        <th> Reference ID: {comparable.refer_id}</th>
+
                     </tr>
                     <tr>
-                        <th> Reference ID: {comparable.refer_id}</th>
+                        <th> Similar {comparable.vehicle_year} {comparable.make} {comparable.model}</th>
                     </tr>
                     <tr>
                         <th>Your Vehicle</th>
@@ -83,9 +84,9 @@ class Comparables extends Component {
                 <p>Please note that your value is an aggregate of the tabulated values adjusting for Condition and mileage among other things.</p>
 
                 {newComparables}
-                <Button className="btn" onClick={() => this.backPage()}>Back</Button>
+                <Button bsStyle="primary" className="btn" onClick={() => this.backPage()}>Back</Button>
 
-                <Button className="btn" onClick={() => this.nextPage()}>Continue</Button>
+                <Button bsStyle="primary" className="btn" onClick={() => this.nextPage()}>Continue</Button>
 
             </div>
         );

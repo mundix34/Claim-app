@@ -9,18 +9,21 @@ import styled from 'styled-components';
 const Outer = styled.div`
 text-align: center;
 color: blue;
-background-color; #054aba;
+background: #3862a5;
 font-family: farquhar;
 `
 function Header(props) {
     return (
       props.user.first_last?(
-        <Outer>
-            <Navbar default collapseOnSelect>
-        <Navbar.Header>
-          <Navbar.Brand>
-            <Image className = "logo" src="../images/images_logo_cropped.png" alt='logo' rounded/>
-            <h1>Insurance Inc.</h1>
+        <Outer >
+            <Navbar default collapseOnSelect >
+        <Navbar.Header className = "nav-header">
+          <Navbar.Brand >
+          <div style={{display: 'flex'}}>
+            <img className = "logo" src="../images/images_logo_cropped.png" alt='logo' rounded/>
+            <div>Insurance Inc.</div>
+              
+               </div>
           </Navbar.Brand>
           <Navbar.Toggle />
         </Navbar.Header>
@@ -38,12 +41,18 @@ function Header(props) {
           </Nav>
         </Navbar.Collapse>
       </Navbar>
-        </Outer>):<Outer className ="outer">
+        </Outer>)
+        :
+        
+        <Outer className ="outer">
             <Navbar default collapseOnSelect>
         <Navbar.Header>
           <Navbar.Brand>
+            <div style={{display: 'flex'}}>
             <Image className = "logo" src="../images/images_logo_cropped.png" alt='logo' rounded/>
             <h1>Insurance Inc.</h1>
+            </div>
+ 
           </Navbar.Brand>
           <Navbar.Toggle />
         </Navbar.Header>
