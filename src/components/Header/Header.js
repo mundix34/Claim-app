@@ -8,8 +8,7 @@ import styled from 'styled-components';
 
 const Outer = styled.div`
 text-align: center;
-color: blue;
-background: #3862a5;
+background: #133260;
 font-family: farquhar;
 `
 function Header(props) {
@@ -44,7 +43,7 @@ function Header(props) {
         </Outer>)
         :
         
-        <Outer className ="outer">
+        <Outer>
             <Navbar default collapseOnSelect>
         <Navbar.Header>
           <Navbar.Brand>

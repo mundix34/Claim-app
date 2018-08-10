@@ -6,7 +6,7 @@ module.exports = {
         dbSet.post_review([userId,title, content])
             .then((response) => res.status(200).send(response))
             .catch(err => {
-                res.status(500).send({ errorMessage: 'Oops, an error occured' })
+                res.status(500).send({ errorMessage: 'Oops, an error occured on your post review' })
                 console.log(err);
             })
     },

@@ -1,23 +1,41 @@
 import React, { Component } from 'react';
-import { Button } from 'react-bootstrap';
+import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
+import styled from 'styled-components';
 
+var { REACT_APP_GOOGLE_KEY } = process.env;
 
+const style = {
+    
+}
 
-class Maps extends Component {
-    constructor(){
+const Outer = styled.div`
+display: flex
+`
+const MapDiv = styled.div`
+height: '100%',
+width: '50%'
+`
+const NonMap = styled.div`
+height: '100%',
+width:'50%',
+background: 'red'
+`
+
+export class Maps extends Component {
+    constructor() {
         super()
-        this.state={
-            maps:[],
+        this.state = {
+            maps: [],
             text: ''
 
         }
     }
-    handleText(val){
+    handleText(val) {
         this.setState({
             text: val
         })
     }
-    
+
     nextPage() {
         this.props.history.push("/end")
 
@@ -26,24 +44,54 @@ class Maps extends Component {
         this.props.history.push("/payment")
 
     }
-    
-    
-
     render() {
-        
+        var points = [
+            { lat: 42.02, lng: -77.01 },
+            { lat: 42.03, lng: -77.02 },
+            { lat: 41.03, lng: -77.04 },
+            { lat: 42.05, lng: -77.02 }
+        ]
+        var bounds = new this.props.google.maps.LatLngBounds();
+        for (var i = 0; i < points.length; i++) {
+            bounds.extend(points[i]);
+        }
         return (
-            <div className="App">
-                <h4>Now you can find an Agent's office near you to complete a check for title exchange</h4>
-                <label>Search for Office</label> <input value = {this.state.text} placeholder = "search by zip code" onChange = {(e) => this.handleText(e.target.value)} ></input><br/>
-                
-                <Button className="btn" onClick={() => this.backPage()}>Payment Options</Button>
-                <Button className="btn" onClick={() => this.nextPage()}>Continue</Button>
+            <Outer>
+                <MapDiv>
+            <Map
+                google={this.props.google}
+                style={style}
+                initialCenter={{
+                    lat: 40.7608,
+                    lng: -111.8910
+                }}
+                zoom={8}
+                bounds={bounds}
+                onClick={this.onMapClicked}
+            >
 
+                <Marker onClick={this.onMarkerClick}
+                    name={'Current location'} />
+                <Marker
+                    name={'Provo'}
+                    position={{ lat: 40.2338, lng: -111.6585 }} />
+                <Marker
+                    name={'Ogden'}
+                    position={{ lat: 41.2230, lng: -111.9738 }} />
+                <InfoWindow onClose={this.onInfoWindowClose}>
+                    
+                </InfoWindow>
+          
+            </Map> 
+             </MapDiv>
+            <NonMap>
 
-                
-
-            </div>
+            </NonMap>
+            </Outer>
         );
     }
 }
-export default Maps;
+
+export default GoogleApiWrapper({
+    apiKey: REACT_APP_GOOGLE_KEY
+})(Maps)

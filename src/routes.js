@@ -33,6 +33,10 @@ export default (
         <Route path="/review" component={Review} />
         <Route path="/help" component={Help} />
         <Route path="/footer" component={Footer} />
+        <Route path='/facebook' component={() => window.location = 'https://facebook.com'}/>
+        <Route path='/twitter' component={() => window.location = 'https://twitter.com'}/>
+        <Route path='/youtube' component={() => window.location = 'https://youtube.com'}/>
+
 
 
     </Switch>

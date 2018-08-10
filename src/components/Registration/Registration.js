@@ -17,6 +17,19 @@ const Img = styled.img`
 height: 80px;
 border-radius: 60%;
 `
+const H3 = styled.h3`
+font-family: 'Poiret One', cursive;
+font-size: 1.5em;
+
+`
+const P = styled.p`
+font-size: 1.5em;
+`
+const btnStyle={
+    margin: '5px',
+    width: '70px',
+    background: '#26436d'
+}
 
 class Registration extends Component {
     componentDidMount() {
@@ -37,17 +50,17 @@ class Registration extends Component {
         return (
             <Outer>
                 <Grid>
-                    <h1>Account Information</h1>
+                    <h1 style ={{ fontFamily: 'Poiret One'}}>Welcome</h1>
                     {
                         user.first_last ? (
                             <div>
-                                <h3> Hi  {user.first_last} !</h3>
+                                <H3> {user.first_last} !</H3>
                                 {/* <p>  Email: {user.email}</p> */}
                                 {/* <p> Account Number: {user.auth_id}</p> */}
                                 <Img src={user.picture} alt="" />
-                                <p> Please proceed to register</p>
-                                <Button bsStyle="primary" onClick={() => this.logOut()}>Logout</Button>
-                                <Link to="/input"><Button bsStyle="primary" className="btn" >Register</Button></Link>
+                                <P> Please proceed to register</P>
+                                <Button style={btnStyle} bsStyle="primary" onClick={() => this.logOut()}>Logout</Button>
+                                <Link to="/input"><Button style={btnStyle} bsStyle="primary" className="btn" >Register</Button></Link>
                             </div>
                         ) : "Please login"
                     }

@@ -22,21 +22,21 @@ align-items: stretch;
 `
 const Head = styled.header`
 flex-shrink: 0;
-background: lightgreen;
+backgound: #26436d;
 
 
 `
 const Main = styled.main`
 justify-content: flex-start;
 flex-grow: 1;
-background: pink;
+background: #edf1f7;
 
 
 `
 const Foot = styled.footer`
 flex-shrink: 0;
 height:25%;
-background: skyblue;
+background: #d0dff4;
 
 
 `

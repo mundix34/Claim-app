@@ -3,6 +3,8 @@ import axios from 'axios';
 import { Button } from 'react-bootstrap';
 import styled from 'styled-components';
 import './Review.css';
+import { connect } from 'react-redux';
+import { addUserInfo } from '../../ducks/reducer';
 
 const Img = styled.img`
 height: 80px;
@@ -40,10 +42,18 @@ class Review extends Component {
   
   componentDidMount() {
     axios.get('/api/reviews').then((res) => {
-      console.log(res.data[0].user_id);
+      console.log('test', this.props.user.user_id);
       this.setState({
         reviews: res.data,
-        userId: res.data[0].user_id
+        userId: this.props.user.user_id
+      })
+    })
+  }
+  componentDidUpdate() {
+    axios.get('/api/reviews').then((res) => {
+      this.setState({
+        reviews: res.data,
+        userId: this.props.user.user_id
       })
     })
   }
@@ -79,8 +89,10 @@ class Review extends Component {
     const reviews = this.state.reviews.map((review, i) => (
       <div className="list" key={i}>
         <Img src={review.picture} alt="pic" />
+        <hr/>
         <p> Title: {review.title} </p>
         <p> Message: {review.content} </p>
+        <hr/>
         <Button onClick={() => this.deleteReview(review.id)}> Remove </Button>
       </div>
     ));
@@ -89,7 +101,7 @@ class Review extends Component {
         <form>
           <h3> <span role="img" aria-label="hand">😇 </span>Post Your Review <span role="img" aria-label="hand"> 👍 </span></h3>
           Title: <input className="Input" onChange={(e) => this.addTitle(e.target.value)} value={this.state.title}></input><br />
-          Content: <input className="Input" onChange={(e) => this.addContent(e.target.value)} value={this.state.content}></input><br />
+          Content: <textarea className="Input" onChange={(e) => this.addContent(e.target.value)} value={this.state.content}></textarea><br />
           <Button className ="btnStyle" onClick={() => this.addReview()}> Add Review </Button>
           <Button className = "btnStyle" onClick={() => this.logOut()}> Logout </Button>
         </form>
@@ -101,4 +113,10 @@ class Review extends Component {
   }
 }
 
-export default Review;
+function mapStateToProps(state) {
+  return {
+      user: state.user
+  }
+}
+
+export default connect(mapStateToProps, { addUserInfo })(Review)
