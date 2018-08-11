@@ -6,6 +6,12 @@ import './Header.css';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
+
+const Img = styled.img`
+height: 80px;
+border-radius: 60%;
+`
+
 const Outer = styled.div`
 text-align: center;
 background: #133260;
@@ -28,6 +34,9 @@ function Header(props) {
         </Navbar.Header>
         <Navbar.Collapse>
           <Nav pullRight>
+            <NavItem eventKey={2} componentClass={Link} href="/dashboard" to="/dashboard">
+        <Img src={props.user.picture} alt="pic" />
+            </NavItem>
             <NavItem eventKey={2} componentClass={Link} href="/dashboard" to="/dashboard">
               Summary
             </NavItem>

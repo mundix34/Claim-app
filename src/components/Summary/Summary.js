@@ -1,15 +1,24 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import {getClaimSummary} from '../../ducks/reducer';
+import { getClaimSummary } from '../../ducks/reducer';
 import { connect } from 'react-redux';
 import { Button } from 'react-bootstrap';
+
+const btnStyle = {
+    margin: '5px',
+    width: '80px',
+    background: '#26436d',
+    color: 'white',
+    padding: '0 1.5 rem'
+
+}
 
 
 
 class Summary extends Component {
-    constructor(){
+    constructor() {
         super()
-        this.state={
+        this.state = {
             ref_id: ''
         }
     }
@@ -24,44 +33,51 @@ class Summary extends Component {
         })
     }
     nextPage() {
-            this.props.history.push(`/comparables`)
+        this.props.history.push(`/comparables`)
     }
     backPage() {
-            this.props.history.push("/input")
+        this.props.history.push("/input")
     }
-    
-    
+
+
 
     render() {
 
-        const newSummary = this.props.summary.map((claim, i) => (      
-            <div className = "list" key={ i }>
-              {/* <img src={ claim.picture } alt = "pic"/> */}
-              <p> { claim.first_last } </p>
-              <p> Vehicle Year { claim.vehicle_year } </p>                 
-              <p> Make { claim.make } </p>
-              <p> model { claim.model } </p>
-              <p> Vin Number: { claim.vin } </p>
-              <p> Odometer: { claim.odometer } miles </p>
-              <p> ACV { claim.acv } </p>
-              <p> Tax { claim.taxes } </p>
-              <p> License Fees { claim.license_fees } </p>
-              <p> Title Fees { claim.title_fees } </p>
-              <p> Net Settlement { claim.settlement } </p>
-              <p> Reference ID { claim.reference_id } </p>
-              
-              </div>
-          ));
+        const newSummary = this.props.summary.map((claim, i) => (
+            <div className="list" key={i}>
+                <tbody>
+                    <tr>
+                        <th>
+                            {claim.first_last}
+                        </th>
+                        <th>
+                            {claim.first_last}
+                        </th>
+                    </tr>
+                </tbody>
+                <p> Vehicle Year {claim.vehicle_year} </p>
+                <p> Make {claim.make} </p>
+                <p> model {claim.model} </p>
+                <p> Vin Number: {claim.vin} </p>
+                <p> Odometer: {claim.odometer} miles </p>
+                <p> ACV {claim.acv} </p>
+                <p> Tax {claim.taxes} </p>
+                <p> License Fees {claim.license_fees} </p>
+                <p> Title Fees {claim.title_fees} </p>
+                <p> Net Settlement {claim.settlement} </p>
+                <p> Reference ID {claim.reference_id} </p>
+
+            </div>
+        ));
         return (
             <div className="App">
                 <h1>Claimant's Claim Summary</h1>
-                <h3>Dear Claimant,</h3>
-                <p>Please review and confirm that you agree with the Actual Cash Value presented by the adjuster as shown above.<br/>
-                Click Agree to continue.</p>
+                <p>Please review and confirm that you agree with the Actual Cash Value presented by the adjuster as shown above.<br />
+                    Click continue if you agree.</p>
                 {newSummary}
-                <Button onClick={() => this.backPage()}>Back</Button>
+                <Button style={btnStyle} onClick={() => this.backPage()}>Back</Button>
 
-                <Button onClick={() => this.nextPage()}>Continue</Button>
+                <Button style={btnStyle} onClick={() => this.nextPage()}>Continue</Button>
                 {/* {
                     user.user_name? (
                         <div>
@@ -75,8 +91,8 @@ class Summary extends Component {
         );
     }
 }
-function mapStateToProps(state){
-    return{
+function mapStateToProps(state) {
+    return {
         reference: state.user.ref_id,
         summary: state.summary
     }

@@ -13,18 +13,14 @@ import styled from 'styled-components';
 const Outer = styled.div`
 color: ddd;
 `
-const Img = styled.img`
-height: 80px;
-border-radius: 60%;
-`
+
 const H3 = styled.h3`
 font-family: 'Poiret One', cursive;
 font-size: 1.5em;
+margin-top: 2em;
 
 `
-const P = styled.p`
-font-size: 1.5em;
-`
+
 const btnStyle={
     margin: '5px',
     width: '70px',
@@ -33,6 +29,11 @@ const btnStyle={
 
 class Registration extends Component {
     componentDidMount() {
+        axios.get('/api/user_data').then(res => {
+            this.props.addUserInfo(res.data)
+        })
+    }
+    componentDidUpdate() {
         axios.get('/api/user_data').then(res => {
             this.props.addUserInfo(res.data)
         })
@@ -56,10 +57,6 @@ class Registration extends Component {
                             <div>
                                 <H3> {user.first_last} !</H3>
                                 {/* <p>  Email: {user.email}</p> */}
-                                {/* <p> Account Number: {user.auth_id}</p> */}
-                                <Img src={user.picture} alt="" />
-                                <P> Please proceed to register</P>
-                                <Button style={btnStyle} bsStyle="primary" onClick={() => this.logOut()}>Logout</Button>
                                 <Link to="/input"><Button style={btnStyle} bsStyle="primary" className="btn" >Register</Button></Link>
                             </div>
                         ) : "Please login"

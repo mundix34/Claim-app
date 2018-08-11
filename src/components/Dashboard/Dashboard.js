@@ -5,6 +5,15 @@ import { connect } from 'react-redux';
 import { Button} from 'react-bootstrap';
 import './Dashboard.css';
 
+const btnStyle = {
+    margin: '5px',
+    width: '80px',
+    background: '#26436d',
+    color: 'white',
+    padding: '0 1.5 rem'
+
+}
+
 
 class Dashboard extends Component {
     constructor(){
@@ -36,7 +45,6 @@ class Dashboard extends Component {
 
         const newSummary = this.props.summary.map((claim, i) => (      
             <div className = "list" key={ i }>
-              {/* <img src={ claim.picture } alt = "pic"/> */}
               <p> { claim.first_last } </p>
               <p> Vehicle Year { claim.vehicle_year } </p>                 
               <p> Make { claim.make } </p>
@@ -54,14 +62,13 @@ class Dashboard extends Component {
         return (
             <div className="App">
                 <h1>Insured's Claim Summary</h1>
-                <h3>Dear Insured,</h3>
                 <p>Please review and confirm that you agree with the Actual Cash Value presented by the adjuster as shown above.<br/>
-                Click Agree to continue.</p>
+                Click continue if you Agree.</p>
                 {newSummary}
 
-                <Button className="btn" onClick={() => this.backPage()}>Back</Button>
+                <Button style={btnStyle} className="btn" onClick={() => this.backPage()}>Back</Button>
 
-                <Button className="btn" onClick={() => this.nextPage()}>Continue</Button>
+                <Button style={btnStyle} className="btn" onClick={() => this.nextPage()}>Continue</Button>
 
 
                 

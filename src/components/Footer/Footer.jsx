@@ -23,9 +23,9 @@ export default function Footer(){
         <P> Service First. Service Fast</P>
         <hr style={{color: 'black'}}/>
         <div>
-        <Link to="/facebook" ><i style={icons} class="fab fa-facebook-square"></i></Link>
-        <Link to="/twitter" ><i style={icons} class="fab fa-twitter-square"></i></Link>
-        <Link to="/youtube" ><i style={icons} class="fab fa-youtube"></i></Link>
+        <Link to="/facebook" ><i style={icons} className="fab fa-facebook-square"></i></Link>
+        <Link to="/twitter" ><i style={icons} className="fab fa-twitter-square"></i></Link>
+        <Link to="/youtube" ><i style={icons} className="fab fa-youtube"></i></Link>
         </div>
         
 

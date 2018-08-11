@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
 import styled from 'styled-components';
+// import { Col, Row, Button } from 'react-bootstrap';
+
 
 var { REACT_APP_GOOGLE_KEY } = process.env;
 

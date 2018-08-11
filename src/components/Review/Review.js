@@ -11,6 +11,24 @@ height: 80px;
 border-radius: 10px;
 margin: 1em;
 `
+const Textarea = styled.textarea`
+border-radius: 6px;
+margin: 1.5rem;
+border: 1px solid grey;
+
+`
+const Input = styled.input`
+border-radius: 6px;
+margin: 1.5rem;
+box-shadow: none;
+border: 1px solid grey;
+`
+const btnStyle={
+  margin: '5px',
+  width: '90px',
+  background: '#26436d',
+  color: 'white'
+}
 
 
 class Review extends Component {
@@ -89,7 +107,6 @@ class Review extends Component {
     const reviews = this.state.reviews.map((review, i) => (
       <div className="list" key={i}>
         <Img src={review.picture} alt="pic" />
-        <hr/>
         <p> Title: {review.title} </p>
         <p> Message: {review.content} </p>
         <hr/>
@@ -100,10 +117,10 @@ class Review extends Component {
       <div className="Review">
         <form>
           <h3> <span role="img" aria-label="hand">😇 </span>Post Your Review <span role="img" aria-label="hand"> 👍 </span></h3>
-          Title: <input className="Input" onChange={(e) => this.addTitle(e.target.value)} value={this.state.title}></input><br />
-          Content: <textarea className="Input" onChange={(e) => this.addContent(e.target.value)} value={this.state.content}></textarea><br />
-          <Button className ="btnStyle" onClick={() => this.addReview()}> Add Review </Button>
-          <Button className = "btnStyle" onClick={() => this.logOut()}> Logout </Button>
+          <label>Title:</label> <Input className="Input" onChange={(e) => this.addTitle(e.target.value)} value={this.state.title}></Input><br />
+          <label>Content:</label> <Textarea className="Input" onChange={(e) => this.addContent(e.target.value)} value={this.state.content}></Textarea><br />
+          <Button style={btnStyle} onClick={() => this.addReview()}> Submit </Button>
+          <Button style = {btnStyle} onClick={() => this.logOut()}> Logout </Button>
         </form>
         <h3>{reviews}</h3>
 
