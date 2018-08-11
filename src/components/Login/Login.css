@@ -1,0 +1,15 @@
+.btnStyle {
+    margin: 5px;
+    width: 150px;
+    background: #26436d;
+    color: white;
+    border: 0;
+    text-transform: uppercase;
+  }
+.btnStyle:hover, .btnStyle:focus{
+    background: #b7c0ce;
+    color: #26292d;
+    outline: 0;
+    transition: background-color 1s ease-in;
+
+}

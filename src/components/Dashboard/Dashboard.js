@@ -45,18 +45,48 @@ class Dashboard extends Component {
 
         const newSummary = this.props.summary.map((claim, i) => (      
             <div className = "list" key={ i }>
-              <p> { claim.first_last } </p>
-              <p> Vehicle Year { claim.vehicle_year } </p>                 
-              <p> Make { claim.make } </p>
-              <p> model { claim.model } </p>
-              <p> ACV { claim.acv } </p>
-              <p> Tax { claim.taxes } </p>
-              <p> License Fees { claim.license_fees } </p>
-              <p> Title Fees { claim.title_fees } </p>
-              <p> Less Deductible { claim.deductible } </p>
-              <p> Net Settlement { claim.settlement } </p>
-              <p> Reference ID { claim.reference_id } </p>
-              
+            <tbody>
+
+            <tr>
+                        <th> Owner</th>
+                        <th>{claim.first_last}</th>
+                        <th> Reference ID - {claim.reference_id} </th>
+                    </tr>
+                    <tr>
+                        <th> Subject </th>
+                        <th> {claim.vehicle_year} {claim.make} {claim.model} </th>
+                    </tr>
+                    <tr>
+                        <th> Description </th>
+                        <th> VIN {claim.vin} </th>
+                        <th> {claim.odometer} Miles </th>
+                    </tr>
+                    <tr>
+                        <th> ACV </th>
+                        <td> ${claim.acv} </td>
+                    </tr>
+                    <tr>
+                        <th> Tax</th>
+                        <td>  ${claim.taxes}</td>
+                    </tr>
+
+                    <tr>
+                        <th> Title Fees</th>
+                        <td>  ${claim.title_fees}</td>
+                    </tr>
+                    <tr>
+                        <th> License Fees</th>
+                        <td>  ${claim.license_fees}</td>
+                    </tr>
+                    <tr className='deductible'>
+                        <th> Less Deductible</th>
+                        <td>  ${claim.deductible}</td>
+                    </tr>
+                    <tr>
+                        <th> Net Settlement</th>
+                        <td>  ${claim.settlement}</td>
+                    </tr>
+                </tbody>
               </div>
           ));
         return (

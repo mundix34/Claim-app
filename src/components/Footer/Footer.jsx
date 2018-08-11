@@ -20,12 +20,15 @@ export default function Footer(){
         <Outer>
         <h3>Insurance Inc.</h3>
         <hr/>
-        <P> Service First. Service Fast</P>
+        <P> Service First <span className="dot"> <i  class="fas fa-circle"></i></span>Service Fast</P>
         <hr style={{color: 'black'}}/>
         <div>
         <Link to="/facebook" ><i style={icons} className="fab fa-facebook-square"></i></Link>
         <Link to="/twitter" ><i style={icons} className="fab fa-twitter-square"></i></Link>
         <Link to="/youtube" ><i style={icons} className="fab fa-youtube"></i></Link>
+        {/* <i class="fas fa-phone"></i>
+        <i class="fas fa-envelope"></i>
+        <i class="fas fa-map-marker-alt"></i> */}
         </div>
         
 

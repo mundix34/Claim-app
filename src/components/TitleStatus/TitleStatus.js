@@ -1,5 +1,16 @@
 import React, { Component } from 'react';
 import Sidebar from '../Sidebar/Sidebar';
+import { Button } from 'react-bootstrap';
+
+
+const btnStyle = {
+    margin: '5px',
+    width: '80px',
+    background: '#26436d',
+    color: 'white',
+    padding: '0 1.5 rem'
+
+}
 
 class TitleStatus extends Component {
     constructor(props){
@@ -44,10 +55,9 @@ class TitleStatus extends Component {
                         <option className = "option-title" type="text" value="yes" >Yes</option>
                         <option className = "option-title" type="text" value="other" >Other</option>
                     </select> <br />
-                <button className="btn" onClick={() => this.backPage()}>Back</button>
+                <Button style={btnStyle} onClick={() => this.backPage()}>Back</Button>
 
-                <button className="btn" onClick={() => this.handlePage()}>Continue</button>
-                <Sidebar/>
+                <Button style={btnStyle} onClick={() => this.handlePage()}>Continue</Button>
 
 
 

@@ -16,6 +16,7 @@ height: 100%;
 width: 100%;
 display: flex;
 flex-direction: column;
+padding: 1em;
 
 
 `
@@ -29,6 +30,7 @@ const Main = styled.main`
 justify-content: flex-start;
 flex-grow: 1;
 background: #edf1f7;
+padding: 2em;
 
 
 `

@@ -4,6 +4,15 @@ import { getComparables } from '../../ducks/reducer';
 import { connect } from 'react-redux';
 import { Button } from 'react-bootstrap';
 
+const btnStyle = {
+    margin: '5px',
+    width: '80px',
+    background: '#26436d',
+    color: 'white',
+    padding: '0 1.5 rem'
+
+}
+
 
 
 class Comparables extends Component {
@@ -37,37 +46,40 @@ class Comparables extends Component {
             <div className="table" key={i}>
                 <tbody>
                     <tr>
-                        <th> Reference ID: {comparable.refer_id}</th>
+                        <th> Reference ID </th>
+                        <th> {comparable.refer_id}</th>
 
                     </tr>
                     <tr>
-                        <th> Similar {comparable.vehicle_year} {comparable.make} {comparable.model}</th>
+                        <th> Comparable {comparable.vehicle_year} {comparable.make} {comparable.model}</th>
+                        <th> Within 500 Miles radius </th>
                     </tr>
                     <tr>
-                        <th>Your Vehicle</th>
+                        <th>Comparison</th>
+                        <th style={{color: '#ba0343'}}>Your Vehicle</th>
                         <th>Vehicle 1</th>
                         <th>Vehicle 2</th>
                         <th>Vehicle 3</th>
                     </tr>
                     <tr>
-                        <td>ACV</td>
-                        <td>{comparable.acv}</td>
-                        <td>{comparable.value_1}</td>
-                        <td>{comparable.value_2}</td>
-                        <td>{comparable.value_3}</td>
-                        <td>{comparable.value_4}</td>
+                        <th>ACV</th>
+                        <th style={{color: '#ba0343'}}>$ {comparable.acv}</th>
+                        <td>$ {comparable.value_1}</td>
+                        <td>$ {comparable.value_2}</td>
+                        <td>$ {comparable.value_3}</td>
+                        <td>$ {comparable.value_4}</td>
                     </tr>
                     <tr>
-                        <td>Odometer</td>
-                        <td>{comparable.odometer}</td>
+                        <th>Odometer</th>
+                        <th style={{color: '#ba0343'}}>{comparable.odometer}</th>
                         <td>{comparable.odo_1}</td>
                         <td>{comparable.odo_2}</td>
                         <td>{comparable.odo_3}</td>
                         <td>{comparable.odo_4}</td>
                     </tr>
                     <tr>
-                        <td>Condition</td>
-                        <td>{comparable.condition}</td>
+                        <th>Condition</th>
+                        <th style={{color: '#ba0343'}}>{comparable.condition}</th>
                         <td>{comparable.cond_1}</td>
                         <td>{comparable.cond_2}</td>
                         <td>{comparable.cond_3}</td>
@@ -84,9 +96,9 @@ class Comparables extends Component {
                 <p>Please note that your value is an aggregate of the tabulated values adjusting for Condition and mileage among other things.</p>
 
                 {newComparables}
-                <Button bsStyle="primary" className="btn" onClick={() => this.backPage()}>Back</Button>
+                <Button style ={btnStyle} bsStyle="primary" className="btn" onClick={() => this.backPage()}>Back</Button>
 
-                <Button bsStyle="primary" className="btn" onClick={() => this.nextPage()}>Continue</Button>
+                <Button style ={btnStyle} bsStyle="primary" className="btn" onClick={() => this.nextPage()}>Continue</Button>
 
             </div>
         );

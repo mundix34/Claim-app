@@ -11,9 +11,11 @@ margin-top: 180px;
 `
 const btnStyle = {
   margin: '5px',
-  width: '80px',
+  width: '150px',
   background: '#26436d',
-  color: 'white'
+  color: 'white',
+  border: '0',
+  textTransform: 'uppercase'
 }
 const Icons = styled.div`
 font-size: 3em;

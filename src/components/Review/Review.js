@@ -6,11 +6,7 @@ import './Review.css';
 import { connect } from 'react-redux';
 import { addUserInfo } from '../../ducks/reducer';
 
-const Img = styled.img`
-height: 80px;
-border-radius: 10px;
-margin: 1em;
-`
+
 const Textarea = styled.textarea`
 border-radius: 6px;
 margin: 1.5rem;
@@ -106,11 +102,9 @@ class Review extends Component {
   render() {
     const reviews = this.state.reviews.map((review, i) => (
       <div className="list" key={i}>
-        <Img src={review.picture} alt="pic" />
-        <p> Title: {review.title} </p>
-        <p> Message: {review.content} </p>
-        <hr/>
-        <Button onClick={() => this.deleteReview(review.id)}> Remove </Button>
+        <h3> {review.title} </h3>
+        <p> {review.content} </p>
+        <Button className="delete" onClick={() => this.deleteReview(review.id)}> X </Button>
       </div>
     ));
     return (

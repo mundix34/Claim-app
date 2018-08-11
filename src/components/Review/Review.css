@@ -4,3 +4,22 @@
 .btnStyle:hover {
     background: green;
   }
+.list{
+  border: 0.2px solid grey;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  padding: 1em;
+}
+.delete{
+  align-self: flex-end;
+  
+}
+p{
+  font-weight: 300;
+  font-size: 1em;
+}
+h3{
+  font-size: 1.2em;
+}

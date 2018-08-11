@@ -1,0 +1,12 @@
+td, th {
+    border: 1px solid #ddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(odd) {
+    background-color: #eee;
+}
+.deductible{
+    color: #ba0343;
+}

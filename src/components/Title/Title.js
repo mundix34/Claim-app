@@ -1,4 +1,15 @@
 import React from 'react';
+import { Button } from 'react-bootstrap';
+
+
+const btnStyle = {
+    margin: '5px',
+    width: '150px',
+    background: '#26436d',
+    color: 'white',
+    padding: '0 1.5 rem'
+
+}
 
 export default function Title (props){
     function previousPage(){
@@ -18,8 +29,8 @@ export default function Title (props){
         <p>Please see the sample image on the side as a guide</p>
 
         <p>Proceed to the next page for the payment info section</p>
-      <button className="btn" onClick = {() =>previousPage()}>Back to Title Status</button>
-      <button className="btn" onClick = {() =>nextPage()}>Payment</button>
+      <Button style={btnStyle} onClick = {() =>previousPage()}>Back to Title Status</Button>
+      <Button style={btnStyle} onClick = {() =>nextPage()}>Payment</Button>
 
 
 
