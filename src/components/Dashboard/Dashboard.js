@@ -94,7 +94,7 @@ class Dashboard extends Component {
             </div>
         ));
         return (
-            <div className="App">
+            <div>
                 <h1>Insured's Claim Summary</h1>
                 <p>Please review and confirm that you agree with the Actual Cash Value presented by the adjuster as shown above.<br />
                     Click continue if you Agree.</p>

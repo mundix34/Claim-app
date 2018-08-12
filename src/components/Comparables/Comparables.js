@@ -3,6 +3,8 @@ import axios from 'axios';
 import { getComparables } from '../../ducks/reducer';
 import { connect } from 'react-redux';
 import { Button } from 'react-bootstrap';
+import styled from 'styled-components';
+
 
 const btnStyle = {
     margin: '5px',
@@ -14,8 +16,13 @@ const btnStyle = {
 }
 const listStyle = {
     boxShadow: '0 0 20px 0 rgba(72, 94, 116, 0.7)',
-    padding: '1.5rem'
+    padding: '1.5rem',
+    textAlign: 'center'
 }
+const P = styled.p`
+font-size: 1.5rem;
+font-weight: 500;
+`
 
 
 
@@ -96,8 +103,8 @@ class Comparables extends Component {
         return (
             <div className="App">
                 <h1>View Comparables</h1>
-                <p> See how your vehicle's Actual Cash Value(ACV) compares with other similar vehicles within a 500 miles radius of your Zip Code</p>
-                <p>Please note that your value is an aggregate of the tabulated values adjusting for Condition and mileage among other things.</p>
+                <P> See how your vehicle's Actual Cash Value(ACV) compares with other similar vehicles within a 500 miles radius of your Zip Code</P>
+                <P>Please note that your value is an aggregate of the tabulated values adjusting for Condition and mileage among other things.</P>
 
                 {newComparables}
                 <Button style={btnStyle} bsStyle="primary" className="btn" onClick={() => this.backPage()}>Back</Button>

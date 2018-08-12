@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addAddressOne, addAddressTwo, addCity, addReference, isInsured, addState, addZip, addProfile, clearFields } from '../../ducks/reducer';
+import { addAddressOne, addAddressTwo, addCity, addReference, isInsured, addState, addZip, addProfile, clearFields, addUserInfo } from '../../ducks/reducer';
 import axios from 'axios';
 import styled from 'styled-components';
 import { Col, Row, Button } from 'react-bootstrap';
@@ -107,6 +107,11 @@ class Input extends Component {
             })
         }
     }
+    componentDidUpdate() {
+        axios.get('/api/user_data').then(res => {
+            this.props.addUserInfo(res.data)
+        })
+    }
     editProfile() {
         axios.put(`/api/update_user/${this.props.user.user_id}`, this.props.newUser).then(res => {
             this.props.addProfile(res.data)
@@ -131,6 +136,7 @@ class Input extends Component {
                 <P> State: {item.state} </P>
                 <P> Zip Code: {item.zip} </P>
                 <P> Reference Number: {item.ref_id} </P>
+                <P> Email Address: {this.props.user.email} </P>
                 <Button style={btnStyle} type="submit" className="btn" onClick={() => this.editProfile()}>Edit</Button>
 
 
@@ -208,4 +214,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps, { addAddressOne, addAddressTwo, addCity, addReference, isInsured, addState, addZip, addProfile, clearFields })(Input)
+export default connect(mapStateToProps, { addAddressOne, addAddressTwo, addCity, addReference, isInsured, addState, addZip, addProfile, clearFields, addUserInfo })(Input)

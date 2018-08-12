@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Sidebar from '../Sidebar/Sidebar';
 import { Button } from 'react-bootstrap';
 
 
@@ -40,9 +39,6 @@ class TitleStatus extends Component {
     
 
     render() {
-        <Sidebar haveTitle={this.state.haveTitle}/>
-
-        
         return (
             <div className="App">
                 <h4 className = "semi-heading">In this section you will identify the status of your title, if you have lost or misplaced your title please select "Other"</h4>

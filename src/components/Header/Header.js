@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-// import axios from 'axios';
 import { addUserInfo } from '../../ducks/reducer';
 import { Image, Nav, Navbar, NavItem } from 'react-bootstrap';
 import './Header.css';
@@ -78,8 +77,14 @@ function Header(props) {
         </Navbar.Header>
         <Navbar.Collapse>
           <Nav pullRight>
-            <NavItem eventKey={3} componentClass={Link} href="/news" to="/news">
-              Help
+            <NavItem eventKey={3} componentClass={Link} href="/end" to="/end">
+              Help Center
+            </NavItem>
+            <NavItem>
+              |
+            </NavItem>
+            <NavItem eventKey={4} componentClass={Link} href="/" to="/">
+              Login
             </NavItem>
           </Nav>
         </Navbar.Collapse>

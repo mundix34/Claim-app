@@ -10,8 +10,8 @@ font-size: 10px;
 background-color; #054aba;
 `
 const P = styled.p`
-font-color: pink;
-font-size: 16px;
+font-size: 1.5rem;
+font-weight: 500;
 `
 
 export default function Sidebar(){
