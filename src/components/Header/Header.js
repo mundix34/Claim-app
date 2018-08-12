@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+// import axios from 'axios';
 import { addUserInfo } from '../../ducks/reducer';
 import { Image, Nav, Navbar, NavItem } from 'react-bootstrap';
 import './Header.css';
@@ -17,6 +18,17 @@ text-align: center;
 background: #133260;
 font-family: farquhar;
 `
+
+// function componentDidMount() {
+//   axios.get('/api/user_data').then(res => {
+//       this.props.addUserInfo(res.data)
+//   })
+// }
+// function componentDidUpdate() {
+//   axios.get('/api/user_data').then(res => {
+//       this.props.addUserInfo(res.data)
+//   })
+// }
 function Header(props) {
     return (
       props.user.first_last?(

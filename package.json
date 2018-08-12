@@ -6,6 +6,7 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.0-14",
     "@fortawesome/free-solid-svg-icons": "^5.1.0-11",
     "@fortawesome/react-fontawesome": "0.1.0-11",
+    "animate.css": "^3.7.0",
     "axios": "^0.18.0",
     "dotenv": "^6.0.0",
     "express": "^4.16.3",

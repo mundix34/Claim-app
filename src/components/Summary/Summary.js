@@ -13,6 +13,10 @@ const btnStyle = {
     padding: '0 1.5 rem'
 
 }
+const listStyle = {
+    boxShadow: '0 0 20px 0 rgba(72, 94, 116, 0.7)',
+    padding: '1.5rem'
+}
 
 
 
@@ -45,8 +49,8 @@ class Summary extends Component {
     render() {
 
         const newSummary = this.props.summary.map((claim, i) => (
-            <div className="list" key={i}>
-                <tbody>
+            <div className="list animated bounceInLeft" key={i}>
+                <tbody style={listStyle}>
                     <tr>
                         <th> Owner</th>
                         <th>{claim.first_last}</th>
@@ -93,7 +97,7 @@ class Summary extends Component {
                 <p>Please review and confirm that you agree with the Actual Cash Value presented by the adjuster as shown above.<br />
                     Click continue if you agree.</p>
                 {newSummary}
-                <Button style={btnStyle} onClick={() => this.backPage()}>Back</Button>
+                <Button style={btnStyle} onClick={() => this.backPage()}>Previous</Button>
 
                 <Button style={btnStyle} onClick={() => this.nextPage()}>Continue</Button>
                 {/* {

@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import { Col, Row, Button } from 'react-bootstrap';
 
 
+
 const Outer = styled.div`
 color: ddd;
 display: flex;
@@ -56,14 +57,18 @@ box-shadow: none;
 border: 1px solid grey;
 flexBasis: 4px;
 `
-const ButtonDiv= styled.div`
+const ButtonDiv = styled.div`
 display: flex;
 justify-content: center;
 
 `
-const P= styled.p`
+const P = styled.p`
 font-weight: 600;
 `
+const listStyle={
+boxShadow: '0 0 20px 0 rgba(72, 94, 116, 0.7)',
+padding: '1.5rem'
+}
 
 
 class Input extends Component {
@@ -119,7 +124,7 @@ class Input extends Component {
     }
     render() {
         const newStateUser = this.state.stateUser.map((item, i) => (
-            <Outer className="list" key={i}>
+            <Outer style={listStyle} className=" animated bounceInRight" key={i}>
                 <P> AddressOne: {item.address_1} </P>
                 <P> AddressTwo: {item.address_2} </P>
                 <P> city: {item.city} </P>
@@ -132,55 +137,55 @@ class Input extends Component {
             </Outer>))
         return (
             <Outer1>
-            <Row>
-          <Col xs="6">
-                <FormDiv>
-                    <form style={formStyle} onSubmit={e => e.preventDefault()}>
-                        <label> Fields with an asterisk (*) are Required</label>
-                        <span>{this.props.newUser.addressOne}</span>
-                        <label>Address 1  </label><InputField className="input" type="text" placeholder="Address Line 1   * " value={this.props.newUser.addressOne} onChange={(e) => this.props.addAddressOne(e.target.value.toUpperCase())} />
-                        <span>{this.props.newUser.addressTwo}</span>
+                <Row>
+                    <Col xs="6">
+                        <FormDiv className="animated slideInLeft">
+                            <form style={formStyle} onSubmit={e => e.preventDefault()}>
+                                <label> Fields with an asterisk (*) are Required</label>
+                                <span>{this.props.newUser.addressOne}</span>
+                                <label>Address 1  </label><InputField className="input" type="text" placeholder="Address Line 1   * " value={this.props.newUser.addressOne} onChange={(e) => this.props.addAddressOne(e.target.value.toUpperCase())} />
+                                <span>{this.props.newUser.addressTwo}</span>
 
-                        <label>Address 2 (Optional) </label><InputField type="text" className="input" placeholder="Address Line 2" value={this.props.newUser.addressTwo} onChange={(e) => this.props.addAddressTwo(e.target.value.toUpperCase())} />
-                        <span>{this.props.newUser.city}</span>
+                                <label>Address 2 (Optional) </label><InputField type="text" className="input" placeholder="Address Line 2" value={this.props.newUser.addressTwo} onChange={(e) => this.props.addAddressTwo(e.target.value.toUpperCase())} />
+                                <span>{this.props.newUser.city}</span>
 
-                        <label>City </label><InputField className="input" type="text" placeholder="City  *" value={this.props.newUser.city} onChange={(e) => this.props.addCity(e.target.value.toUpperCase())} />
-                        <span>{this.props.newUser.state}</span>
+                                <label>City </label><InputField className="input" type="text" placeholder="City  *" value={this.props.newUser.city} onChange={(e) => this.props.addCity(e.target.value.toUpperCase())} />
+                                <span>{this.props.newUser.state}</span>
 
-                        <label>State </label> <InputField className="input" type="text" placeholder="State *" value={this.props.newUser.state} onChange={(e) => this.props.addState(e.target.value.toUpperCase())} />
-                        <span>{this.props.newUser.zip}</span>
+                                <label>State </label> <InputField className="input" type="text" placeholder="State *" value={this.props.newUser.state} onChange={(e) => this.props.addState(e.target.value.toUpperCase())} />
+                                <span>{this.props.newUser.zip}</span>
 
-                        <label>Zip Code </label> <InputField type="number" className="input" value={this.props.newUser.zip} placeholder="Zip Code *" onChange={(e) => this.props.addZip(e.target.value)} />
-                        <span>{this.props.newUser.reference}</span>
+                                <label>Zip Code </label> <InputField type="number" className="input" value={this.props.newUser.zip} placeholder="Zip Code *" onChange={(e) => this.props.addZip(e.target.value)} />
+                                <span>{this.props.newUser.reference}</span>
 
-                        <label>Reference ID ?</label> <InputField className="input" type="number" value={this.props.newUser.reference} placeholder="Reference ID *" onChange={(e) => this.props.addReference(e.target.value)} />
-                        <SelectDiv>
-                            <label style={pStyle}> Are you insured with Insurance Inc?</label>
-                            <select onChange={(e) => this.props.isInsured(e.target.value)}>
-                                <option type="text" value="select" >select</option>
-                                <option type="text" value="yes" >Yes</option>
-                                <option type="text" value="no" >No</option>
-                            </select>
-                        </SelectDiv>
-                        <ButtonDiv>
+                                <label>Reference ID ?</label> <InputField className="input" type="number" value={this.props.newUser.reference} placeholder="Reference ID *" onChange={(e) => this.props.addReference(e.target.value)} />
+                                <SelectDiv>
+                                    <label style={pStyle}> Are you insured with Insurance Inc?</label>
+                                    <select onChange={(e) => this.props.isInsured(e.target.value)}>
+                                        <option type="text" value="select" >select</option>
+                                        <option type="text" value="yes" >Yes</option>
+                                        <option type="text" value="no" >No</option>
+                                    </select>
+                                </SelectDiv>
+                                <ButtonDiv>
 
-                            <Button style={btnStyle} className="btn" onClick={() => this.props.clearFields()}>Cancel</Button>
-                            <Button style={btnStyle} type="submit" className="btn" onClick={() => this.addProfile()}>Submit</Button>
-                            <Button style={btnStyle} onClick={() => this.nextPage()} className="btn" >Continue</Button>
-                        </ButtonDiv>
-
-
-
-                    </form>
-                </FormDiv>
-                </Col>
-                
-          <Col xs="6">
-          <span>{newStateUser}</span>
-          </Col>
+                                    <Button style={btnStyle} className="btn" onClick={() => this.props.clearFields()}>Cancel</Button>
+                                    <Button style={btnStyle} type="submit" className="btn" onClick={() => this.addProfile()}>Submit</Button>
+                                    <Button style={btnStyle} onClick={() => this.nextPage()} className="btn" >Continue</Button>
+                                </ButtonDiv>
 
 
-        </Row>
+
+                            </form>
+                        </FormDiv>
+                    </Col>
+
+                    <Col xs="6">
+                        <span>{newStateUser}</span>
+                    </Col>
+
+
+                </Row>
 
 
             </Outer1>

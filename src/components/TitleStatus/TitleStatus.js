@@ -21,15 +21,9 @@ class TitleStatus extends Component {
         }
     }
     
-    // nextPage() {
-    //     this.state.haveTitle ==="Yes"?
-    //         this.props.history.push(`/title/${this.state.ref_id}`):
-    //         this.props.history.push(`/End/${this.state.ref_id}`)
-
-    // }
     handlePage() {
-        this.state.handleTitle ==='yes'? this.props.history.push("/title"):
-        this.state.handleTitle ==='other'? this.props.history.push("/End"): alert('Please make a selection') 
+        this.state.haveTitle ==='yes'? this.props.history.push("/title"):
+        this.state.haveTitle ==='other'? this.props.history.push("/End"): alert('Please make a selection') 
 
     }
     backPage() {
@@ -38,13 +32,16 @@ class TitleStatus extends Component {
     }
     handleTitleStatus(val){
         this.setState({
-            handleTitle: val
+            haveTitle: val
         })
 
     }
     
+    
 
     render() {
+        <Sidebar haveTitle={this.state.haveTitle}/>
+
         
         return (
             <div className="App">
@@ -55,6 +52,7 @@ class TitleStatus extends Component {
                         <option className = "option-title" type="text" value="yes" >Yes</option>
                         <option className = "option-title" type="text" value="other" >Other</option>
                     </select> <br />
+
                 <Button style={btnStyle} onClick={() => this.backPage()}>Back</Button>
 
                 <Button style={btnStyle} onClick={() => this.handlePage()}>Continue</Button>

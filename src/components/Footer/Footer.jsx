@@ -9,6 +9,7 @@ color: eee;
 `
 const P = styled.p`
 font-size: 16px;
+font-family: MedievalSharp;
 `
 const icons={
     margin: '5px',

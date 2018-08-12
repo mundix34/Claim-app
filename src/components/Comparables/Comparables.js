@@ -12,6 +12,10 @@ const btnStyle = {
     padding: '0 1.5 rem'
 
 }
+const listStyle = {
+    boxShadow: '0 0 20px 0 rgba(72, 94, 116, 0.7)',
+    padding: '1.5rem'
+}
 
 
 
@@ -44,7 +48,7 @@ class Comparables extends Component {
 
         const newComparables = this.props.comparables.map((comparable, i) => (
             <div className="table" key={i}>
-                <tbody>
+                <tbody style={listStyle} >
                     <tr>
                         <th> Reference ID </th>
                         <th> {comparable.refer_id}</th>
@@ -56,14 +60,14 @@ class Comparables extends Component {
                     </tr>
                     <tr>
                         <th>Comparison</th>
-                        <th style={{color: '#ba0343'}}>Your Vehicle</th>
+                        <th style={{ color: '#ba0343' }}>Your Vehicle</th>
                         <th>Vehicle 1</th>
                         <th>Vehicle 2</th>
                         <th>Vehicle 3</th>
                     </tr>
                     <tr>
                         <th>ACV</th>
-                        <th style={{color: '#ba0343'}}>$ {comparable.acv}</th>
+                        <th style={{ color: '#ba0343' }}>$ {comparable.acv}</th>
                         <td>$ {comparable.value_1}</td>
                         <td>$ {comparable.value_2}</td>
                         <td>$ {comparable.value_3}</td>
@@ -71,7 +75,7 @@ class Comparables extends Component {
                     </tr>
                     <tr>
                         <th>Odometer</th>
-                        <th style={{color: '#ba0343'}}>{comparable.odometer}</th>
+                        <th style={{ color: '#ba0343' }}>{comparable.odometer}</th>
                         <td>{comparable.odo_1}</td>
                         <td>{comparable.odo_2}</td>
                         <td>{comparable.odo_3}</td>
@@ -79,7 +83,7 @@ class Comparables extends Component {
                     </tr>
                     <tr>
                         <th>Condition</th>
-                        <th style={{color: '#ba0343'}}>{comparable.condition}</th>
+                        <th style={{ color: '#ba0343' }}>{comparable.condition}</th>
                         <td>{comparable.cond_1}</td>
                         <td>{comparable.cond_2}</td>
                         <td>{comparable.cond_3}</td>
@@ -96,9 +100,9 @@ class Comparables extends Component {
                 <p>Please note that your value is an aggregate of the tabulated values adjusting for Condition and mileage among other things.</p>
 
                 {newComparables}
-                <Button style ={btnStyle} bsStyle="primary" className="btn" onClick={() => this.backPage()}>Back</Button>
+                <Button style={btnStyle} bsStyle="primary" className="btn" onClick={() => this.backPage()}>Back</Button>
 
-                <Button style ={btnStyle} bsStyle="primary" className="btn" onClick={() => this.nextPage()}>Continue</Button>
+                <Button style={btnStyle} bsStyle="primary" className="btn" onClick={() => this.nextPage()}>Continue</Button>
 
             </div>
         );

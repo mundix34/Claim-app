@@ -1,9 +1,4 @@
-.btnStyle {
-    background:#3862a5;
-  }
-.btnStyle:hover {
-    background: green;
-  }
+
 .list{
   border: 0.2px solid grey;
   display: flex;

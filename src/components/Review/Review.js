@@ -110,7 +110,7 @@ class Review extends Component {
     return (
       <div className="Review">
         <form>
-          <h3> <span role="img" aria-label="hand">😇 </span>Post Your Review <span role="img" aria-label="hand"> 👍 </span></h3>
+          <h3> <span role="img" aria-label="hand">😇 </span> Leave a Feedback <span role="img" aria-label="hand"> 👍 </span></h3>
           <label>Title:</label> <Input className="Input" onChange={(e) => this.addTitle(e.target.value)} value={this.state.title}></Input><br />
           <label>Content:</label> <Textarea className="Input" onChange={(e) => this.addContent(e.target.value)} value={this.state.content}></Textarea><br />
           <Button style={btnStyle} onClick={() => this.addReview()}> Submit </Button>

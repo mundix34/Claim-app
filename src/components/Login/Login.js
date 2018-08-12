@@ -36,7 +36,6 @@ class Login extends Component {
         <Icons>
 
           <i style={{ margin: '1.5rem' }} className="fas fa-car-crash"></i>
-          {/* <i class="far fa-arrow-alt-circle-right"></i> */}
           <i style={{ margin: '1.5rem' }} className="fas fa-angle-double-right"></i>
           <i style={{ margin: '1.5rem' }} className="fas fa-car"></i>
         </Icons>
