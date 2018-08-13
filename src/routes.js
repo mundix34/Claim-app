@@ -15,6 +15,7 @@ import Comparables from './components/Comparables/Comparables';
 import Maps from './components/Maps/Maps';
 import Help from './components/Help/Help';
 import Footer from './components/Footer/Footer';
+import StripeDone from './components/Stripe/StripeDone';
 
 export default (
     <Switch>
@@ -29,6 +30,7 @@ export default (
         <Route path="/title" component={Title} />
         <Route path="/payment" component={Payment} />
         <Route path="/stripe" component={Stripe} />
+        <Route path="/stripedone" component={StripeDone} />
         <Route path="/maps" component={Maps} />
         <Route path="/review" component={Review} />
         <Route path="/help" component={Help} />
@@ -36,6 +38,7 @@ export default (
         <Route path='/facebook' component={() => window.location = 'https://facebook.com'}/>
         <Route path='/twitter' component={() => window.location = 'https://twitter.com'}/>
         <Route path='/youtube' component={() => window.location = 'https://youtube.com'}/>
+        <Route path='/stripesite' component={() => window.location = 'https://connect.stripe.com/oauth/authorize?'}/>
 
 
 

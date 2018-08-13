@@ -4,6 +4,7 @@ import { addAddressOne, addAddressTwo, addCity, addReference, isInsured, addStat
 import axios from 'axios';
 import styled from 'styled-components';
 import { Col, Row, Button } from 'react-bootstrap';
+import './Input.css';
 
 
 
@@ -25,12 +26,14 @@ margin-top: 20px;
 const FormDiv = styled.div`
 box-shadow: 0 0 20px 0 rgba(72, 94, 116, 0.7);
 padding: 1.5rem;
+
 `
+
 const formStyle = {
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-evenly',
-    alignItems: 'flex start'
+    alignItems: 'flex start',
 }
 const btnStyle = {
     margin: '5px',
@@ -65,9 +68,9 @@ justify-content: center;
 const P = styled.p`
 font-weight: 600;
 `
-const listStyle={
-boxShadow: '0 0 20px 0 rgba(72, 94, 116, 0.7)',
-padding: '1.5rem'
+const listStyle = {
+    boxShadow: '0 0 20px 0 rgba(72, 94, 116, 0.7)',
+    padding: '1.5rem'
 }
 
 
@@ -78,11 +81,14 @@ class Input extends Component {
             ref_id: '',
             stateUser: [],
             edit: false,
-            inputDisabled: false
+            inputDisabled: false,
+            form: true
 
         }
         this.nextPage = this.nextPage.bind(this);
         this.showEdit = this.showEdit.bind(this);
+        this.addProfile = this.addProfile.bind(this);
+        this.editProfile = this.editProfile.bind(this);
     }
     componentDidMount() {
         axios.get('/api/user_data').then(res => {
@@ -115,37 +121,28 @@ class Input extends Component {
                 this.setState({
                     ref_id: res.data.ref_id,
                     stateUser: [res.data],
-                    inputDisabled: !this.state.inputDisabled,
-                    // edit: true
+                    form: false
+
                 })
             })
         }
     }
-    
-    showEdit(){
+
+    showEdit() {
         this.setState({
+            form: true,
             edit: true
         })
     }
-    hideEdit(){
-        this.setState({
-            edit: false
-        })
-    }
-    showHistoryModal() {
-        this.setState({ showHistory: true });
-      }
-      closeHistoryModal() {
-        this.setState({ showHistory: false });
-      }
-      
-    
+
+
     editProfile() {
         axios.put(`/api/update_user/${this.props.user.user_id}`, this.props.newUser).then(res => {
             this.props.addProfile(res.data)
             this.setState({
                 ref_id: res.data.ref_id,
-                stateUser: [res.data]
+                stateUser: [res.data],
+                form: false
 
             })
         })
@@ -165,7 +162,10 @@ class Input extends Component {
                 <P> Zip Code: {item.zip} </P>
                 <P> Reference Number: {item.ref_id} </P>
                 <P> Email Address: {this.props.user.email} </P>
-                <Button style={btnStyle} type="submit" className="btn" onClick={() => this.editProfile()}>Edit</Button>
+                <P> Email Address: {this.props.user.insured} </P>
+                <Button style={btnStyle} type="submit" className="btn" onClick={() => this.showEdit()}>Edit</Button>
+                <Button style={btnStyle} onClick={() => this.nextPage()} className="btn" >Continue</Button>
+
 
 
             </Outer>))
@@ -173,29 +173,29 @@ class Input extends Component {
             <Outer1>
                 <Row>
                     <Col xs="6">
-                        <FormDiv className="animated slideInLeft">
+                        <FormDiv className={this.state.form ? "animated slideInLeft" : "not-showing animated slideInLeft"}>
                             <form style={formStyle} onSubmit={e => e.preventDefault()}>
-                                <label> Fields with an asterisk (*) are Required</label>
+                                <label> Fields marked with an asterisk (*) are Required</label>
                                 <span>{this.props.newUser.addressOne}</span>
-                                <label>Address 1  </label><InputField className="input" type="text" disabled={this.state.inputDisabled} placeholder="Address Line 1   * " value={this.props.newUser.addressOne} onChange={(e) => this.props.addAddressOne(e.target.value.toUpperCase())} />
+                                <label>Address 1  </label><InputField className="input" type="text" placeholder="Address Line 1   * " value={this.props.newUser.addressOne} onChange={(e) => this.props.addAddressOne(e.target.value.toUpperCase())} />
                                 <span>{this.props.newUser.addressTwo}</span>
 
-                                <label>Address 2 (Optional) </label><InputField type="text" disabled={this.state.inputDisabled} className="input" placeholder="Address Line 2" value={this.props.newUser.addressTwo} onChange={(e) => this.props.addAddressTwo(e.target.value.toUpperCase())} />
+                                <label>Address 2 (Optional) </label><InputField type="text" className="input" placeholder="Address Line 2" value={this.props.newUser.addressTwo} onChange={(e) => this.props.addAddressTwo(e.target.value.toUpperCase())} />
                                 <span>{this.props.newUser.city}</span>
 
-                                <label>City </label><InputField className="input" type="text" disabled={this.state.inputDisabled} placeholder="City  *" value={this.props.newUser.city} onChange={(e) => this.props.addCity(e.target.value.toUpperCase())} />
+                                <label>City </label><InputField className="input" type="text" placeholder="City  *" value={this.props.newUser.city} onChange={(e) => this.props.addCity(e.target.value.toUpperCase())} />
                                 <span>{this.props.newUser.state}</span>
 
-                                <label>State </label> <InputField className="input" type="text" disabled={this.state.inputDisabled} placeholder="State *" value={this.props.newUser.state} onChange={(e) => this.props.addState(e.target.value.toUpperCase())} />
+                                <label>State </label> <InputField className="input" type="text" placeholder="State *" value={this.props.newUser.state} onChange={(e) => this.props.addState(e.target.value.toUpperCase())} />
                                 <span>{this.props.newUser.zip}</span>
 
-                                <label>Zip Code </label> <InputField type="number" disabled={this.state.inputDisabled} className="input" value={this.props.newUser.zip} placeholder="Zip Code *" onChange={(e) => this.props.addZip(e.target.value)} />
+                                <label>Zip Code </label> <InputField type="number" className="input" value={this.props.newUser.zip} placeholder="Zip Code *" onChange={(e) => this.props.addZip(e.target.value)} />
                                 <span>{this.props.newUser.reference}</span>
 
-                                <label>Reference ID ?</label> <InputField className="input" type="number" disabled={this.state.inputDisabled} value={this.props.newUser.reference} placeholder="Reference ID *" onChange={(e) => this.props.addReference(e.target.value)} />
+                                <label>Reference ID ?</label> <InputField className="input" type="number" value={this.props.newUser.reference} placeholder="Reference ID *" onChange={(e) => this.props.addReference(e.target.value)} />
                                 <SelectDiv>
                                     <label style={pStyle}> Are you insured with Insurance Inc?</label>
-                                    <select disabled={this.state.inputDisabled} onChange={(e) => this.props.isInsured(e.target.value)}>
+                                    <select onChange={(e) => this.props.isInsured(e.target.value)}>
                                         <option type="text" value="select" >select</option>
                                         <option type="text" value="yes" >Yes</option>
                                         <option type="text" value="no" >No</option>
@@ -204,8 +204,9 @@ class Input extends Component {
                                 <ButtonDiv>
 
                                     <Button style={btnStyle} className="btn" onClick={() => this.props.clearFields()}>Cancel</Button>
-                                    <Button style={btnStyle} type="submit" className="btn" onClick={() => this.addProfile()}>Submit</Button>
-                                    <Button style={btnStyle} onClick={() => this.nextPage()} className="btn" >Continue</Button>
+                                    {!this.state.edit ? <Button style={btnStyle} type="submit" onClick={this.addProfile}>Submit</Button> :
+                                        <Button style={btnStyle} type="submit" onClick={this.editProfile}>Save</Button>}
+
                                 </ButtonDiv>
 
 
