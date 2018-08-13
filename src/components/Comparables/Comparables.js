@@ -4,11 +4,12 @@ import { getComparables } from '../../ducks/reducer';
 import { connect } from 'react-redux';
 import { Button } from 'react-bootstrap';
 import styled from 'styled-components';
+import Comp from '../Comp/Comp';
 
 
 const btnStyle = {
     margin: '5px',
-    width: '80px',
+    width: '100px',
     background: '#26436d',
     color: 'white',
     padding: '0 1.5 rem'
@@ -30,8 +31,10 @@ class Comparables extends Component {
     constructor() {
         super()
         this.state = {
-            ref_id: ''
+            ref_id: '',
+            comp: false
         }
+        this.hideComp = this.hideComp.bind(this)
     }
     componentDidMount() {
         axios.get(`/api/comparables/${this.props.reference}`).then(res => {
@@ -40,6 +43,16 @@ class Comparables extends Component {
             this.setState({
                 ref_id: res.data.ref_id,
             })
+        })
+    }
+    showComp() {
+        this.setState({
+            comp: true
+        })
+    }
+    hideComp() {
+        this.setState({
+            comp: false
         })
     }
     nextPage() {
@@ -54,7 +67,7 @@ class Comparables extends Component {
     render() {
 
         const newComparables = this.props.comparables.map((comparable, i) => (
-            <div className="table" key={i}>
+            <div className="table animated bounceInRight" key={i}>
                 <tbody style={listStyle} >
                     <tr>
                         <th> Reference ID </th>
@@ -101,15 +114,17 @@ class Comparables extends Component {
             </div>
         ));
         return (
-            <div className="App">
+            <div >
                 <h1>View Comparables</h1>
                 <P> See how your vehicle's Actual Cash Value(ACV) compares with other similar vehicles within a 500 miles radius of your Zip Code</P>
                 <P>Please note that your value is an aggregate of the tabulated values adjusting for Condition and mileage among other things.</P>
 
                 {newComparables}
-                <Button style={btnStyle} bsStyle="primary" className="btn" onClick={() => this.backPage()}>Back</Button>
+               {this.state.comp? <Comp hideComp={this.hideComp} />: null}
+                <Button style={btnStyle} bsStyle="primary" onClick={() => this.backPage()}>Back</Button>
 
-                <Button style={btnStyle} bsStyle="primary" className="btn" onClick={() => this.nextPage()}>Continue</Button>
+                <Button style={btnStyle} bsStyle="primary" onClick={() => this.nextPage()}>Continue</Button>
+                <Button style={btnStyle} bsStyle="primary" onClick={() => this.showComp()}>View Chart</Button>
 
             </div>
         );

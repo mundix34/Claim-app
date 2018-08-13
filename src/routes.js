@@ -15,7 +15,6 @@ import Comparables from './components/Comparables/Comparables';
 import Maps from './components/Maps/Maps';
 import Help from './components/Help/Help';
 import Footer from './components/Footer/Footer';
-import CompChart from './components/CompChart/CompChart';
 
 export default (
     <Switch>
@@ -34,7 +33,6 @@ export default (
         <Route path="/review" component={Review} />
         <Route path="/help" component={Help} />
         <Route path="/footer" component={Footer} />
-        <Route path="/chart" component={CompChart} />
         <Route path='/facebook' component={() => window.location = 'https://facebook.com'}/>
         <Route path='/twitter' component={() => window.location = 'https://twitter.com'}/>
         <Route path='/youtube' component={() => window.location = 'https://youtube.com'}/>

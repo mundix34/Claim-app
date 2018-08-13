@@ -52,7 +52,7 @@ function Header(props) {
               Summary
             </NavItem>
             <NavItem eventKey={3} componentClass={Link} href="/end" to="/end">
-              Help
+              Help Center
             </NavItem>
             <NavItem eventKey={3} componentClass={Link} href="/" to="/">
               Logout

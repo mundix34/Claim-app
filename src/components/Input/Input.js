@@ -77,10 +77,22 @@ class Input extends Component {
         this.state = {
             ref_id: '',
             stateUser: [],
-            disableInput: false
+            edit: false,
+            inputDisabled: false
 
         }
         this.nextPage = this.nextPage.bind(this);
+        this.showEdit = this.showEdit.bind(this);
+    }
+    componentDidMount() {
+        axios.get('/api/user_data').then(res => {
+            this.props.addUserInfo(res.data)
+        })
+    }
+    componentDidUpdate() {
+        axios.get('/api/user_data').then(res => {
+            this.props.addUserInfo(res.data)
+        })
     }
 
     addProfile() {
@@ -102,16 +114,32 @@ class Input extends Component {
                 this.props.addProfile(res.data)
                 this.setState({
                     ref_id: res.data.ref_id,
-                    stateUser: [res.data]
+                    stateUser: [res.data],
+                    inputDisabled: !this.state.inputDisabled,
+                    // edit: true
                 })
             })
         }
     }
-    componentDidUpdate() {
-        axios.get('/api/user_data').then(res => {
-            this.props.addUserInfo(res.data)
+    
+    showEdit(){
+        this.setState({
+            edit: true
         })
     }
+    hideEdit(){
+        this.setState({
+            edit: false
+        })
+    }
+    showHistoryModal() {
+        this.setState({ showHistory: true });
+      }
+      closeHistoryModal() {
+        this.setState({ showHistory: false });
+      }
+      
+    
     editProfile() {
         axios.put(`/api/update_user/${this.props.user.user_id}`, this.props.newUser).then(res => {
             this.props.addProfile(res.data)
@@ -149,25 +177,25 @@ class Input extends Component {
                             <form style={formStyle} onSubmit={e => e.preventDefault()}>
                                 <label> Fields with an asterisk (*) are Required</label>
                                 <span>{this.props.newUser.addressOne}</span>
-                                <label>Address 1  </label><InputField className="input" type="text" placeholder="Address Line 1   * " value={this.props.newUser.addressOne} onChange={(e) => this.props.addAddressOne(e.target.value.toUpperCase())} />
+                                <label>Address 1  </label><InputField className="input" type="text" disabled={this.state.inputDisabled} placeholder="Address Line 1   * " value={this.props.newUser.addressOne} onChange={(e) => this.props.addAddressOne(e.target.value.toUpperCase())} />
                                 <span>{this.props.newUser.addressTwo}</span>
 
-                                <label>Address 2 (Optional) </label><InputField type="text" className="input" placeholder="Address Line 2" value={this.props.newUser.addressTwo} onChange={(e) => this.props.addAddressTwo(e.target.value.toUpperCase())} />
+                                <label>Address 2 (Optional) </label><InputField type="text" disabled={this.state.inputDisabled} className="input" placeholder="Address Line 2" value={this.props.newUser.addressTwo} onChange={(e) => this.props.addAddressTwo(e.target.value.toUpperCase())} />
                                 <span>{this.props.newUser.city}</span>
 
-                                <label>City </label><InputField className="input" type="text" placeholder="City  *" value={this.props.newUser.city} onChange={(e) => this.props.addCity(e.target.value.toUpperCase())} />
+                                <label>City </label><InputField className="input" type="text" disabled={this.state.inputDisabled} placeholder="City  *" value={this.props.newUser.city} onChange={(e) => this.props.addCity(e.target.value.toUpperCase())} />
                                 <span>{this.props.newUser.state}</span>
 
-                                <label>State </label> <InputField className="input" type="text" placeholder="State *" value={this.props.newUser.state} onChange={(e) => this.props.addState(e.target.value.toUpperCase())} />
+                                <label>State </label> <InputField className="input" type="text" disabled={this.state.inputDisabled} placeholder="State *" value={this.props.newUser.state} onChange={(e) => this.props.addState(e.target.value.toUpperCase())} />
                                 <span>{this.props.newUser.zip}</span>
 
-                                <label>Zip Code </label> <InputField type="number" className="input" value={this.props.newUser.zip} placeholder="Zip Code *" onChange={(e) => this.props.addZip(e.target.value)} />
+                                <label>Zip Code </label> <InputField type="number" disabled={this.state.inputDisabled} className="input" value={this.props.newUser.zip} placeholder="Zip Code *" onChange={(e) => this.props.addZip(e.target.value)} />
                                 <span>{this.props.newUser.reference}</span>
 
-                                <label>Reference ID ?</label> <InputField className="input" type="number" value={this.props.newUser.reference} placeholder="Reference ID *" onChange={(e) => this.props.addReference(e.target.value)} />
+                                <label>Reference ID ?</label> <InputField className="input" type="number" disabled={this.state.inputDisabled} value={this.props.newUser.reference} placeholder="Reference ID *" onChange={(e) => this.props.addReference(e.target.value)} />
                                 <SelectDiv>
                                     <label style={pStyle}> Are you insured with Insurance Inc?</label>
-                                    <select onChange={(e) => this.props.isInsured(e.target.value)}>
+                                    <select disabled={this.state.inputDisabled} onChange={(e) => this.props.isInsured(e.target.value)}>
                                         <option type="text" value="select" >select</option>
                                         <option type="text" value="yes" >Yes</option>
                                         <option type="text" value="no" >No</option>
