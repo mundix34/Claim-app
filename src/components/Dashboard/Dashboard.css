@@ -9,3 +9,6 @@ tr:nth-child(odd) {
 .deductible{
     color: #ba0343;
 }
+.settlement{
+    font-size: 1.7rem;
+}

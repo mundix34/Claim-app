@@ -2,41 +2,58 @@ nav.navbar, .navbar-default {
     background-color: #26436d !important;
     height: 150px;
   padding: 20px;
-  color: white;
+  /* color: white; */
   }
   
   .navbar-default {
     background-image: none;
     border: none;
-    border-radius: 0;
+    border-radius: 10px;
   }
   
   .navbar-default .navbar-nav > li > a {
     color: white;
+    font-size: 1.8rem;
+    
+  
   }
   
   .navbar-default .navbar-brand {
     color: white;
+    height: 90px;
   }
   
   .navbar-default .navbar-toggle {
     border-color: white;
+    
   }
   
   .navbar-default .navbar-toggle .icon-bar {
-    background-color: white;
+    /* background-color: white; */
+    margin: 10px;
+
   }
   
   .navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover {
-    background-color: transparent;
+    /* background-color: black; */
+    height: 80px;
+
   }
   
   .navbar-default .navbar-brand:focus, .navbar-default .navbar-brand:hover {
     color: white;
-    background-color: transparent;
+    /* background-color: black; */
   }
   
   .navbar-default .navbar-nav>li>a:focus, .navbar-default .navbar-nav>li>a:hover {
     color: white;
-    background-color: transparent;
+    /* background-color: black; */
+  }
+  .logo{
+    margin: 10px;
+  }
+  .new-div{
+    /* margin-left: 160px; */
+    /* display: flex; */
+    /* flex-direction: column; */
   }

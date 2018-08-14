@@ -16,8 +16,8 @@ const btnStyle = {
 
 class Stripe extends Component {
     stripePage() {
-        // let { REACT_APP_CLIENT_ID_STRIPE } = process.env;
-        window.location = `https://dashboard.stripe.com/oauth/authorize?response_type=code&client_id=ca_DPYBWGMAwnTG8uj3o2tMNK5Z3SSD06Uh&scope=read_write`
+        let { REACT_APP_STRIPE_URI } = process.env;
+        window.location = REACT_APP_STRIPE_URI// when hosting, you only need to change the client id since you are now using the test client id, also you need to give stripe your https redirect page
     
       }
 

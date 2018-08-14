@@ -18,83 +18,75 @@ background: #133260;
 font-family: farquhar;
 `
 
-// function componentDidMount() {
-//   axios.get('/api/user_data').then(res => {
-//       this.props.addUserInfo(res.data)
-//   })
-// }
-// function componentDidUpdate() {
-//   axios.get('/api/user_data').then(res => {
-//       this.props.addUserInfo(res.data)
-//   })
-// }
+
 function Header(props) {
-    return (
-      props.user.first_last?(
-        <Outer >
-            <Navbar default collapseOnSelect >
-        <Navbar.Header className = "nav-header">
-          <Navbar.Brand >
-          <div style={{display: 'flex'}}>
-            <img className = "logo" src="../images/images_logo_cropped.png" alt='logo' rounded/>
-            <div>Insurance Inc.</div>
+  return (
+    props.user.first_last ? (
+      <Outer >
+        <Navbar default collapseOnSelect >
+          <Navbar.Header className="nav-header">
+            <Navbar.Brand >
+              <div className="new-div">
+                <img className="logo" src="../images/images_logo_cropped.png" alt='logo' rounded />
+                <h1>Insurance Inc.</h1>
+
+              </div>
+            </Navbar.Brand>
+            <Navbar.Toggle />
+          </Navbar.Header>
+          <Navbar.Collapse>
+            <Nav pullRight>
               
-               </div>
-          </Navbar.Brand>
-          <Navbar.Toggle />
-        </Navbar.Header>
-        <Navbar.Collapse>
-          <Nav pullRight>
-            <NavItem eventKey={2} componentClass={Link} href="/dashboard" to="/dashboard">
-        <Img src={props.user.picture} alt="pic" />
+              <NavItem eventKey={1} componentClass={Link} href="/dashboard" to="/dashboard">
+                Summary
             </NavItem>
-            <NavItem eventKey={2} componentClass={Link} href="/dashboard" to="/dashboard">
-              Summary
+              <NavItem eventKey={2} componentClass={Link} href="/end" to="/end">
+                Help Center
             </NavItem>
-            <NavItem eventKey={3} componentClass={Link} href="/end" to="/end">
-              Help Center
+              <NavItem eventKey={3} componentClass={Link} href="/" to="/">
+                Logout
             </NavItem>
-            <NavItem eventKey={3} componentClass={Link} href="/" to="/">
-              Logout
+            <NavItem eventKey={4} componentClass={Link} href="/dashboard" to="/dashboard">
+                <Img src={props.user.picture} alt="pic" />
+              </NavItem>
+            </Nav>
+          </Navbar.Collapse>
+        </Navbar>
+      </Outer>)
+      :
+
+      <Outer>
+        <Navbar default collapseOnSelect>
+          <Navbar.Header>
+            <Navbar.Brand>
+              <div style={{ display: 'flex' }}>
+                <Image className="logo" src="../images/images_logo_cropped.png" alt='logo' rounded />
+                <h1>Insurance Inc.</h1>
+              </div>
+
+            </Navbar.Brand>
+            <Navbar.Toggle />
+          </Navbar.Header>
+          <Navbar.Collapse>
+            <Nav pullRight>
+              <NavItem eventKey={3} componentClass={Link} href="/end" to="/end">
+                Help Center
             </NavItem>
-          </Nav>
-        </Navbar.Collapse>
-      </Navbar>
-        </Outer>)
-        :
-        
-        <Outer>
-            <Navbar default collapseOnSelect>
-        <Navbar.Header>
-          <Navbar.Brand>
-            <div style={{display: 'flex'}}>
-            <Image className = "logo" src="../images/images_logo_cropped.png" alt='logo' rounded/>
-            <h1>Insurance Inc.</h1>
-            </div>
- 
-          </Navbar.Brand>
-          <Navbar.Toggle />
-        </Navbar.Header>
-        <Navbar.Collapse>
-          <Nav pullRight>
-            <NavItem eventKey={3} componentClass={Link} href="/end" to="/end">
-              Help Center
+              <NavItem>
+                |
             </NavItem>
-            <NavItem>
-              |
+              <NavItem eventKey={4} componentClass={Link} href="/" to="/">
+                Login
             </NavItem>
-            <NavItem eventKey={4} componentClass={Link} href="/" to="/">
-              Login
-            </NavItem>
-          </Nav>
-        </Navbar.Collapse>
-      </Navbar>
-        </Outer>
-    )
+            </Nav>
+          </Navbar.Collapse>
+        </Navbar>
+      </Outer>
+  )
 }
 function mapStateToProps(state) {
   return {
-      user: state.user
+    user: state.user
   }
 }
 

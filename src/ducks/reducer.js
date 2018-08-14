@@ -8,7 +8,8 @@ const initialState = {
     city: '',
     state: '',
     zip: '',
-    reference:'',
+    reference: '',
+    claim: '',
     insured: ''
 };
 const ADD_ADDRESSONE = "ADD_ADDRESSONE";
@@ -23,7 +24,7 @@ const GET_CLAIM_SUMMARY = "GET_CLAIM_SUMMARY";
 const GET_COMPARABLES = "GET_COMPARABLES";
 const ADD_PROFILE = "ADD_PROFILE";
 const CLEAR_FIELDS = "CLEAR_FIELDS";
-// const DISABLE_INPUT = "DISABLE_INPUT";
+
 
 export function addUserInfo(user) {
     return {

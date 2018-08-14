@@ -7,59 +7,74 @@ massive = require('massive');
 require('dotenv').config();
 const claim = require('./controllers/claim_controller');
 const us = require('./controllers/user_controller');
-const review = require('./controllers/reviews_controller')
+const review = require('./controllers/reviews_controller');
+const md = require('./controllers/middleware_controller');
 
 
-const { SERVER_PORT, REACT_APP_DOMAIN, REACT_APP_CLIENT_ID, CLIENT_SECRET, SESSION_SECRET, CONNECTION_STRING} = process.env;
+const { SERVER_PORT, REACT_APP_DOMAIN, REACT_APP_CLIENT_ID, REACT_APP_CLIENT_ID_STRIPE, CLIENT_SECRET, SESSION_SECRET, CONNECTION_STRING } = process.env;
 
 
 app.use(bodyParser.json());
-app.use(session ({
+app.use(session({
     secret: SESSION_SECRET,
     resave: false,
     saveUninitialized: false
 }))
+app.use(md.bypassAuthInDevelopment({ 
+    user_id: 1,
+    ref_id: 1591,
+    first_last: 'Rachel K',
+    email: 'mundix34@gmail.com',
+    auth_id: 'google-oauth2|115448227667362892125',
+    picture: 'https://lh5.googleusercontent.com/-rAbq9zdM7UQ/AAAAAAAAAAI/AAAAAAAAAJQ/eRYy3NjE4RM/photo.jpg',
+    address_1: '',
+    address_2: '',
+    city: '',
+    state: '',
+    zip:'',
+    is_insured: ''
+
+}));
 app.get('/auth/callback', async (req, res) => {
-    let payload ={
-        client_id:REACT_APP_CLIENT_ID,
+    let payload = {
+        client_id: REACT_APP_CLIENT_ID,
         client_secret: CLIENT_SECRET,
         code: req.query.code,
         grant_type: 'authorization_code',
         redirect_uri: `http://${req.headers.host}/auth/callback`
     }
 
-    let resWithToken= await axios.post(`https://${REACT_APP_DOMAIN}/oauth/token`, payload)
+    let resWithToken = await axios.post(`https://${REACT_APP_DOMAIN}/oauth/token`, payload)
     // console.log(resWithToken.data.access_token);
 
-    
+
 
     let resWithUserData = await axios.get(`https://${REACT_APP_DOMAIN}/userinfo?access_token=${resWithToken.data.access_token}`)
     console.log(resWithUserData.data);
     const dbSet = req.app.get('db');
-    let {sub, email, name, picture} = resWithUserData.data
+    let { sub, email, name, picture } = resWithUserData.data
     let foundUser = await dbSet.find_user([sub])
-    if(foundUser[0]){
+    if (foundUser[0]) {
         req.session.user = foundUser[0]
         res.redirect('/#/registration')
-    } else{
-       let createdUser=  await dbSet.create_user([name, email, sub, picture])
-       req.session.user = createdUser[0]
-       res.redirect('/#/registration')
-// console.log("i am", req.session.user);
+    } else {
+        let createdUser = await dbSet.create_user([name, email, sub, picture])
+        req.session.user = createdUser[0]
+        res.redirect('/#/registration')
+        // console.log("i am", req.session.user);
 
     }
 });
 
-
 app.get('/api/user_data', (req, res) => {
-    if(req.session.user){
+    if (req.session.user) {
         res.status(200).send(req.session.user)
     } else {
         res.status(401).send('You are not authorized')
     }
 
 });
-app.get('/api/logout', (req, res) => { 
+app.get('/api/logout', (req, res) => {
     req.session.destroy();
     res.send()
 })
@@ -76,7 +91,7 @@ app.get('/api/comparables/:id', claim.getComparables);
 
 
 
-massive(CONNECTION_STRING).then(dbSet =>{
+massive(CONNECTION_STRING).then(dbSet => {
     app.set('db', dbSet)
 })
 

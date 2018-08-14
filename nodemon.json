@@ -1,3 +1,15 @@
 {
-    "ignore": ["src"]
-}
+    "restartable": "rs",
+    "ignore": [
+      ".git",
+      "node_modules/**/node_modules"
+    ],
+    "watch": [
+      "server/",
+      "db/"
+    ],
+    "env": {
+      "NODE_ENV": "development"
+    },
+    "ext": "js json sql"
+  }

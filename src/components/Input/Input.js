@@ -162,7 +162,7 @@ class Input extends Component {
                 <P> Zip Code: {item.zip} </P>
                 <P> Reference Number: {item.ref_id} </P>
                 <P> Email Address: {this.props.user.email} </P>
-                <P> Email Address: {this.props.user.insured} </P>
+                <P> Customer Insured? {this.props.user.insured==='true'? 'Yes': 'No'}</P>
                 <Button style={btnStyle} type="submit" className="btn" onClick={() => this.showEdit()}>Edit</Button>
                 <Button style={btnStyle} onClick={() => this.nextPage()} className="btn" >Continue</Button>
 

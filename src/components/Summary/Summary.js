@@ -84,7 +84,7 @@ class Summary extends Component {
                     </tr>
                     <tr>
                         <th> Net Settlement</th>
-                        <td>  ${claim.settlement}</td>
+                        <td className= " settlement animated bounce" ><strong> ${claim.settlement} </strong></td>
                     </tr>
                 </tbody>
 

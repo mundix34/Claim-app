@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { Button } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 
 
 const btnStyle = {
     margin: '5px',
     width: '120px',
-    background: '#26436d',
+    background: '#87D37C',
     color: 'white',
     padding: '0 1.5 rem'
 
@@ -16,6 +16,19 @@ const btnStyle = {
 
 
 class StripeDone extends Component {
+    constructor(){
+        super()
+        this.state={
+            user: {}
+        }
+    }
+    componentDidMount(){
+        axios.get('https://dashboard.stripe.com/oauth/authorize?response_type=code&client_id=ca_DPYBIC0Oxyl40SYCCKpRwmCoXt2pEQIG&scope=read_write').then(res =>{
+            console.log( 'yes', res );
+            
+            this.setState({user: res.data })
+        })
+    }
 
 
     nextPage() {

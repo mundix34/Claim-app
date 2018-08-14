@@ -7,3 +7,6 @@ td, th {
 tr:nth-child(odd) {
     background-color: #eee;
 }
+.settlement{
+    font-size: 1.7rem;
+}
