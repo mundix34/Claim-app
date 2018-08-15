@@ -11,9 +11,9 @@ module.exports = {
         
     },
     getComparables: (req, res, next) =>{
-        let {params} = req;
+        let {params, query} = req;
         const dbSet = req.app.get('db');
-        dbSet.find_comparable(params.id)        
+        dbSet.find_comparable([params.id, query.desc])        
             .then((claim) => res.status(200).send(claim))
             .catch(err => res.status(404).send({ errorMessage: 'Oops, encountered error' }));
             
