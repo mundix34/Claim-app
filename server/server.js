@@ -12,7 +12,7 @@ const md = require('./controllers/middleware_controller');
 var nodemailer = require('nodemailer');
 
 
-const { SERVER_PORT, REACT_APP_DOMAIN, REACT_APP_CLIENT_ID, REACT_APP_CLIENT_ID_STRIPE, CLIENT_SECRET, SESSION_SECRET, CONNECTION_STRING } = process.env;
+const { SERVER_PORT, REACT_APP_DOMAIN, REACT_APP_CLIENT_ID, G_PASS, GMAIL, CLIENT_SECRET, SESSION_SECRET, CONNECTION_STRING } = process.env;
 
 
 app.use(bodyParser.json());
@@ -27,7 +27,7 @@ app.use(md.bypassAuthInDevelopment({
     user_id: 1,
     ref_id: 1591,
     first_last: 'Rachel K',
-    email: 'mundix34@gmail.com',
+    email: GMAIL,
     auth_id: 'google-oauth2|115448227667362892125',
     picture: 'https://lh5.googleusercontent.com/-rAbq9zdM7UQ/AAAAAAAAAAI/AAAAAAAAAJQ/eRYy3NjE4RM/photo.jpg',
     address_1: '',
@@ -94,16 +94,16 @@ var transporter = nodemailer.createTransport({
     secure: false,
     port: SERVER_PORT,
     auth: {
-      user: 'mundix34@gmail.com',
-      pass: 'ustarabu'
+      user: GMAIL,
+      pass: G_PASS
     }
   });
   
   var mailOptions = {
     from: 'mundix34@gmail.com',
     to: 'wariararachel@yahoo.com',
-    subject: 'Sending Email using Node.js',
-    text: 'That was easy!'
+    subject: 'Claim has been Received',
+    text: 'We have received your claim, please allow for 24 hours after your title has been received to process payment!'
   };
   
   transporter.sendMail(mailOptions, function(error, info){
