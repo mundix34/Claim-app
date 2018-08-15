@@ -4,3 +4,9 @@
 .not-showing{
     display: none;
 }
+.select{
+    height: 50%;
+    width: 80%;
+    /* background: #efb247; */
+
+}

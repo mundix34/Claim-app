@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addAddressOne, addAddressTwo, addCity, addReference, isInsured, addState, addZip, addProfile, clearFields, addUserInfo } from '../../ducks/reducer';
+import { addFirstName, addLastName, addClaim, addAddressOne, addAddressTwo, addCity, addReference, isInsured, addState, addZip, addProfile, clearFields, addUserInfo } from '../../ducks/reducer';
 import axios from 'axios';
 import styled from 'styled-components';
 import { Col, Row, Button } from 'react-bootstrap';
@@ -40,7 +40,9 @@ const btnStyle = {
     width: '80px',
     background: '#26436d',
     color: 'white',
-    padding: '0 1.5 rem'
+    padding: '0 1.5 rem',
+  textTransform: 'uppercase'
+
 
 }
 const pStyle = {
@@ -102,15 +104,21 @@ class Input extends Component {
     }
 
     addProfile() {
-        if (!this.props.newUser.addressOne) {
+        if (!this.props.newUser.firstName) {
+            alert('FirstName is required')
+        } else if (!this.props.newUser.lastName) {
+            alert('Last Name is required')
+        } else if (!this.props.newUser.address_1) {
             alert('Address is required')
-        } else if (!this.props.newUser.city) {
+        }  else if (!this.props.newUser.city) {
             alert('City is required')
-        } else if (!this.props.newUser.zip) {
         } else if (!this.props.newUser.state) {
             alert('State is required')
         } else if (!this.props.newUser.zip) {
             alert('Zip Code is required')
+        }
+        else if (!this.props.newUser.claim) {
+            alert('Claim Number is required')
         }
         else if (!this.props.newUser.reference) {
             alert('Reference Number is required')
@@ -155,11 +163,14 @@ class Input extends Component {
     render() {
         const newStateUser = this.state.stateUser.map((item, i) => (
             <Outer style={listStyle} className=" animated bounceInRight" key={i}>
+                <P> firstName: {item.firstName} </P>
+                <P> lastName: {item.lastName} </P>
                 <P> AddressOne: {item.address_1} </P>
                 <P> AddressTwo: {item.address_2} </P>
                 <P> city: {item.city} </P>
                 <P> State: {item.state} </P>
                 <P> Zip Code: {item.zip} </P>
+                <P> Claim Number: {item.claim} </P>
                 <P> Reference Number: {item.ref_id} </P>
                 <P> Email Address: {this.props.user.email} </P>
                 <P> Customer Insured? {this.props.user.insured==='true'? 'Yes': 'No'}</P>
@@ -176,6 +187,12 @@ class Input extends Component {
                         <FormDiv className={this.state.form ? "animated slideInLeft" : "not-showing animated slideInLeft"}>
                             <form style={formStyle} onSubmit={e => e.preventDefault()}>
                                 <label> Fields marked with an asterisk (*) are Required</label>
+                                <span>{this.props.newUser.firstName}</span>
+                                <label>First Name  </label><InputField className="input" type="text" placeholder="First Name   * " value={this.props.newUser.firstName} onChange={(e) => this.props.addFirstName(e.target.value.toUpperCase())} />
+
+                                <span>{this.props.newUser.lastName}</span>
+                                <label>Last Name </label><InputField className="input" type="text" placeholder="Last Name   * " value={this.props.newUser.lastName} onChange={(e) => this.props.addLastName(e.target.value.toUpperCase())} />
+
                                 <span>{this.props.newUser.addressOne}</span>
                                 <label>Address 1  </label><InputField className="input" type="text" placeholder="Address Line 1   * " value={this.props.newUser.addressOne} onChange={(e) => this.props.addAddressOne(e.target.value.toUpperCase())} />
                                 <span>{this.props.newUser.addressTwo}</span>
@@ -189,13 +206,16 @@ class Input extends Component {
                                 <label>State </label> <InputField className="input" type="text" placeholder="State *" value={this.props.newUser.state} onChange={(e) => this.props.addState(e.target.value.toUpperCase())} />
                                 <span>{this.props.newUser.zip}</span>
 
+                                <label>Claim Number </label> <InputField type="number" className="input" value={this.props.newUser.claim} placeholder="Claim Number *" onChange={(e) => this.props.addClaim(e.target.value)} />
+                                <span>{this.props.newUser.claim}</span>
+
                                 <label>Zip Code </label> <InputField type="number" className="input" value={this.props.newUser.zip} placeholder="Zip Code *" onChange={(e) => this.props.addZip(e.target.value)} />
                                 <span>{this.props.newUser.reference}</span>
 
                                 <label>Reference ID ?</label> <InputField className="input" type="number" value={this.props.newUser.reference} placeholder="Reference ID *" onChange={(e) => this.props.addReference(e.target.value)} />
                                 <SelectDiv>
                                     <label style={pStyle}> Are you insured with Insurance Inc?</label>
-                                    <select onChange={(e) => this.props.isInsured(e.target.value)}>
+                                    <select className="select" onChange={(e) => this.props.isInsured(e.target.value)}>
                                         <option type="text" value="select" >select</option>
                                         <option type="text" value="yes" >Yes</option>
                                         <option type="text" value="no" >No</option>
@@ -231,16 +251,19 @@ class Input extends Component {
 function mapStateToProps(state) {
     return {
         newUser: {
+            firstName: state.firstName,
+            lastName: state.lastName,
             addressOne: state.addressOne,
             addressTwo: state.addressTwo,
             city: state.city,
             state: state.state,
             zip: state.zip,
             reference: state.reference,
+            claim: state.claim,
             insured: state.insured,
         },
         user: state.user,
     }
 }
 
-export default connect(mapStateToProps, { addAddressOne, addAddressTwo, addCity, addReference, isInsured, addState, addZip, addProfile, clearFields, addUserInfo })(Input)
+export default connect(mapStateToProps, { addFirstName, addLastName, addClaim, addAddressOne, addAddressTwo, addCity, addReference, isInsured, addState, addZip, addProfile, clearFields, addUserInfo })(Input)
