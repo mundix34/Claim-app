@@ -5,20 +5,22 @@ import { connect } from 'react-redux';
 import { Button } from 'react-bootstrap';
 // import styled from 'styled-components';
 import { Bar, Pie, Line } from 'react-chartjs-2';
-import './Comp.css'
+import './Chart.css'
 
 const btnStyle = {
     margin: '5px',
-    width: '80px',
+    width: '100px',
     background: '#26436d',
     color: 'white',
-    padding: '0 1.5 rem'
+    padding: '0 1.5 rem',
+    textTransform: 'uppercase'
+
 
 }
 
 
 
-class Comp extends Component {
+class Chart extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -108,28 +110,35 @@ class Comp extends Component {
         return (
             <div className="chart-wrapper animated fadeInUpBig">
                 <div className="chart-content ">
-                    {this.state.bar? <Bar
+                    {this.state.bar ? <Bar
                         data={this.state.chartData}
+                        width={100}
+                        height={100}
                         options={{
+                            maintainAspectRatio: false,
                             title: {
                                 display: this.props.displayTitle,
                                 text: `${this.state.year} ${this.state.make} ${this.state.model} Within 500 Miles Radius of Zip Code ${this.state.zip}`,
                                 fontSize: 20,
-                                fontColor: 'black'
+                                fontColor: '#4f5759'
                             },
                             legend: {
                                 display: this.props.displayLegend,
                                 position: this.props.legendPosition
                             }
                         }}
-                    />: null}
+                    /> : null}
                     {this.state.pie ? <Pie
                         data={this.state.chartData}
+                        width={100}
+                        height={100}
                         options={{
                             title: {
                                 display: this.props.displayTitle,
                                 text: `${this.state.year} ${this.state.make} ${this.state.model} Within 500 Miles Radius of Zip Code ${this.state.zip}`,
-                                fontSize: 20
+                                fontSize: 20,
+                                fontColor: '#4f5759'
+
                             },
                             legend: {
                                 display: this.props.displayLegend,
@@ -139,11 +148,15 @@ class Comp extends Component {
                     /> : null}
                     {this.state.line ? <Line
                         data={this.state.chartData}
+                        width={100}
+                        height={100}
                         options={{
                             title: {
                                 display: this.props.displayTitle,
                                 text: `${this.state.year} ${this.state.make} ${this.state.model} Within 500 Miles Radius of Zip Code ${this.state.zip}`,
-                                fontSize: 20
+                                fontSize: 20,
+                                fontColor: '#4f5759'
+
                             },
                             legend: {
                                 display: this.props.displayLegend,
@@ -153,7 +166,7 @@ class Comp extends Component {
                     /> : null}
                     <Button style={btnStyle} onClick={() => this.showPie()}> Pie Chart</Button>
                     <Button style={btnStyle} onClick={() => this.showLine()}> Line Chart</Button>
-                    <Button className = "close" onClick={() => this.props.hideComp()}><i className="far fa-window-close"></i></Button>
+                    <Button className="close" onClick={() => this.props.hideChart()}><i className="far fa-window-close"></i></Button>
 
                 </div>
             </div>
@@ -167,4 +180,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps, { getComparables })(Comp)
+export default connect(mapStateToProps, { getComparables })(Chart)

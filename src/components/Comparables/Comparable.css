@@ -1,0 +1,12 @@
+.comp-outer{
+    padding: 1em;
+    height: 100%;
+    width: 100%;
+    margin: 1em;
+}
+.table-render{
+    height: 60%;
+    width: 40%;
+    padding: 1em;
+    margin: 1em;
+}

@@ -102,9 +102,9 @@ class Review extends Component {
   render() {
     const reviews = this.state.reviews.map((review, i) => (
       <div className="list" key={i}>
+      <Button className="delete" onClick={() => this.deleteReview(review.id)}> X </Button>
         <h3> {review.title} </h3>
         <p> {review.content} </p>
-        <Button className="delete" onClick={() => this.deleteReview(review.id)}> X </Button>
       </div>
     ));
     return (

@@ -4,7 +4,7 @@ import { getComparables } from '../../ducks/reducer';
 import { connect } from 'react-redux';
 import { Button } from 'react-bootstrap';
 import styled from 'styled-components';
-import Comp from '../Comp/Comp';
+import Chart from '../Chart/Chart';
 
 
 const btnStyle = {
@@ -32,9 +32,9 @@ class Comparables extends Component {
         super()
         this.state = {
             ref_id: '',
-            comp: false
+            chart: false
         }
-        this.hideComp = this.hideComp.bind(this)
+        this.hideChart = this.hideChart.bind(this)
     }
     componentDidMount() {
         axios.get(`/api/comparables/${this.props.reference}`).then(res => {
@@ -45,14 +45,14 @@ class Comparables extends Component {
             })
         })
     }
-    showComp() {
+    showChart() {
         this.setState({
-            comp: true
+            chart: true
         })
     }
-    hideComp() {
+    hideChart() {
         this.setState({
-            comp: false
+            chart: false
         })
     }
     nextPage() {
@@ -114,17 +114,17 @@ class Comparables extends Component {
             </div>
         ));
         return (
-            <div >
+            <div className="comp-outer">
                 <h1>View Comparables</h1>
                 <P> See how your vehicle's Actual Cash Value(ACV) compares with other similar vehicles within a 500 miles radius of your Zip Code</P>
                 <P>Please note that your value is an aggregate of the tabulated values adjusting for Condition and mileage among other things.</P>
 
-                {newComparables}
-               {this.state.comp? <Comp hideComp={this.hideComp} />: null}
+                <div className="table-render">{newComparables} </div>
+               {this.state.chart? <Chart hideChart={this.hideChart} />: null}
                 <Button style={btnStyle} bsStyle="primary" onClick={() => this.backPage()}>Back</Button>
-
+                <Button style={btnStyle} bsStyle="primary" onClick={() => this.showChart()}>View Chart</Button>
                 <Button style={btnStyle} bsStyle="primary" onClick={() => this.nextPage()}>Continue</Button>
-                <Button style={btnStyle} bsStyle="primary" onClick={() => this.showComp()}>View Chart</Button>
+
 
             </div>
         );

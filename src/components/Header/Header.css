@@ -1,14 +1,15 @@
 nav.navbar, .navbar-default {
-    background-color: #26436d !important;
-    height: 150px;
-  padding: 20px;
-  /* color: white; */
+  background-color: #26436d !important;
+  height: 100%;
+  color: white;
+  margin-bottom: 1em;
+  padding-bottom: 1em;
   }
   
   .navbar-default {
     background-image: none;
     border: none;
-    border-radius: 10px;
+    border-radius: 0;
   }
   
   .navbar-default .navbar-nav > li > a {
@@ -29,31 +30,25 @@ nav.navbar, .navbar-default {
   }
   
   .navbar-default .navbar-toggle .icon-bar {
-    /* background-color: white; */
-    margin: 10px;
+    background-color: #ffffff;
 
   }
   
   .navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover {
-    /* background-color: black; */
-    height: 80px;
+    background-color: transparent;
 
   }
   
   .navbar-default .navbar-brand:focus, .navbar-default .navbar-brand:hover {
     color: white;
-    /* background-color: black; */
+    background-color: transparent;
   }
   
   .navbar-default .navbar-nav>li>a:focus, .navbar-default .navbar-nav>li>a:hover {
     color: white;
-    /* background-color: black; */
+    background-color: transparent;
   }
-  .logo{
-    margin: 10px;
-  }
-  .new-div{
-    /* margin-left: 160px; */
-    /* display: flex; */
-    /* flex-direction: column; */
+  
+  @media(min-width: 768px){
+    
   }

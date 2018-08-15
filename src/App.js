@@ -9,6 +9,10 @@ const Outer = styled.div`
 text-align: center;
   height: 100vh;
   width: 100%;
+  margin: 0;
+  padding: 0;
+
+
 
 `
 const Article = styled.article`
@@ -17,28 +21,31 @@ width: 100%;
 display: flex;
 flex-direction: column;
 padding: 1em;
+margin: 0;
+  padding: 0;
+
 
 
 `
 const Head = styled.header`
 flex-shrink: 0;
-backgound: #26436d;
+backgound: #ebeef4;
+
 
 
 `
 const Main = styled.main`
 justify-content: flex-start;
 flex-grow: 1;
-background: #edf1f7;
-padding: 2em;
+background: #ebeef4;
 
 
 `
 const Foot = styled.footer`
 flex-shrink: 0;
-height:25%;
-background: #d0dff4;
-
+background: #d2d7e0;
+overflow: hidden;
+height: 250px;
 
 `
 

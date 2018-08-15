@@ -47,7 +47,7 @@ function Header(props) {
                 Logout
             </NavItem>
             <NavItem eventKey={4} componentClass={Link} href="/dashboard" to="/dashboard">
-                <Img src={props.user.picture} alt="pic" />
+                <Img className="profile-pic" src={props.user.picture} alt="pic" />
               </NavItem>
             </Nav>
           </Navbar.Collapse>
