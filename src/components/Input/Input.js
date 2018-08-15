@@ -26,6 +26,8 @@ margin-top: 20px;
 const FormDiv = styled.div`
 box-shadow: 0 0 20px 0 rgba(72, 94, 116, 0.7);
 padding: 1.5rem;
+border-radius: 0.5rem;
+margin: 1em;
 
 `
 
@@ -37,7 +39,7 @@ const formStyle = {
 }
 const btnStyle = {
     margin: '5px',
-    width: '80px',
+    width: '100px',
     background: '#26436d',
     color: 'white',
     padding: '0 1.5 rem',
@@ -92,23 +94,23 @@ class Input extends Component {
         this.addProfile = this.addProfile.bind(this);
         this.editProfile = this.editProfile.bind(this);
     }
-    componentDidMount() {
-        axios.get('/api/user_data').then(res => {
-            this.props.addUserInfo(res.data)
-        })
-    }
-    componentDidUpdate() {
-        axios.get('/api/user_data').then(res => {
-            this.props.addUserInfo(res.data)
-        })
-    }
+    // componentDidMount() {
+    //     axios.get('/api/user_data').then(res => {            
+    //         this.props.addUserInfo(res.data)
+    //     })
+    // }
+    // componentDidUpdate() {
+    //     axios.get('/api/user_data').then(res => {
+    //         this.props.addUserInfo(res.data)
+    //     })
+    // }
 
     addProfile() {
         if (!this.props.newUser.firstName) {
             alert('FirstName is required')
         } else if (!this.props.newUser.lastName) {
             alert('Last Name is required')
-        } else if (!this.props.newUser.address_1) {
+        } else if (!this.props.newUser.addressOne) {
             alert('Address is required')
         }  else if (!this.props.newUser.city) {
             alert('City is required')
@@ -125,11 +127,13 @@ class Input extends Component {
         }
         else {
             axios.post(`/api/register/${this.props.user.user_id}`, this.props.newUser).then(res => {
-                this.props.addProfile(res.data)
+            console.log(res.data.response);
+                this.props.addProfile(res.data.response)
                 this.setState({
-                    ref_id: res.data.ref_id,
-                    stateUser: [res.data],
+                    ref_id: res.data.response.ref_id,
+                    stateUser: [res.data.response],
                     form: false
+                
 
                 })
             })
@@ -163,8 +167,8 @@ class Input extends Component {
     render() {
         const newStateUser = this.state.stateUser.map((item, i) => (
             <Outer style={listStyle} className=" animated bounceInRight" key={i}>
-                <P> firstName: {item.firstName} </P>
-                <P> lastName: {item.lastName} </P>
+                <P> firstName: {item.given_name} </P>
+                <P> lastName: {item.family_name} </P>
                 <P> AddressOne: {item.address_1} </P>
                 <P> AddressTwo: {item.address_2} </P>
                 <P> city: {item.city} </P>
@@ -195,8 +199,8 @@ class Input extends Component {
 
                                 <span>{this.props.newUser.addressOne}</span>
                                 <label>Address 1  </label><InputField className="input" type="text" placeholder="Address Line 1   * " value={this.props.newUser.addressOne} onChange={(e) => this.props.addAddressOne(e.target.value.toUpperCase())} />
-                                <span>{this.props.newUser.addressTwo}</span>
 
+                                <span>{this.props.newUser.addressTwo}</span>
                                 <label>Address 2 (Optional) </label><InputField type="text" className="input" placeholder="Address Line 2" value={this.props.newUser.addressTwo} onChange={(e) => this.props.addAddressTwo(e.target.value.toUpperCase())} />
                                 <span>{this.props.newUser.city}</span>
 
@@ -206,11 +210,12 @@ class Input extends Component {
                                 <label>State </label> <InputField className="input" type="text" placeholder="State *" value={this.props.newUser.state} onChange={(e) => this.props.addState(e.target.value.toUpperCase())} />
                                 <span>{this.props.newUser.zip}</span>
 
+                                <label>Zip Code </label> <InputField type="number" className="input" value={this.props.newUser.zip} placeholder="Zip Code *" onChange={(e) => this.props.addZip(e.target.value)} />
+                                <span>{this.props.newUser.reference}</span>
+
                                 <label>Claim Number </label> <InputField type="number" className="input" value={this.props.newUser.claim} placeholder="Claim Number *" onChange={(e) => this.props.addClaim(e.target.value)} />
                                 <span>{this.props.newUser.claim}</span>
 
-                                <label>Zip Code </label> <InputField type="number" className="input" value={this.props.newUser.zip} placeholder="Zip Code *" onChange={(e) => this.props.addZip(e.target.value)} />
-                                <span>{this.props.newUser.reference}</span>
 
                                 <label>Reference ID ?</label> <InputField className="input" type="number" value={this.props.newUser.reference} placeholder="Reference ID *" onChange={(e) => this.props.addReference(e.target.value)} />
                                 <SelectDiv>

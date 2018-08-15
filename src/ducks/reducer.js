@@ -164,7 +164,7 @@ export default function reducer(state = initialState, action) {
             return Object.assign({}, state, { comparables: action.payload })
         case ADD_PROFILE:
             let newUser = { ...state.user, ...action.payload }
-            return Object.assign({}, state, { user: newUser, addressOne: '', addressTwo: '', city: '', state: '', zip: '', reference: '' })
+            return Object.assign({}, state, { user: newUser})
         case CLEAR_FIELDS:
             return Object.assign({}, state, { addressOne: '', addressTwo: '', city: '', state: '', zip: '', reference: '' })
         default:
