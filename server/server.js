@@ -54,13 +54,13 @@ app.get('/auth/callback', async (req, res) => {
     let resWithUserData = await axios.get(`https://${REACT_APP_DOMAIN}/userinfo?access_token=${resWithToken.data.access_token}`)
     console.log(resWithUserData.data);
     const dbSet = req.app.get('db');
-    let { sub, email, name, picture } = resWithUserData.data
+    let { given_name, family_name, sub, email, name, picture } = resWithUserData.data
     let foundUser = await dbSet.find_user([sub])
     if (foundUser[0]) {
         req.session.user = foundUser[0]
         res.redirect('/#/registration')
     } else {
-        let createdUser = await dbSet.create_user([name, email, sub, picture])
+        let createdUser = await dbSet.create_user([given_name, family_name, name, email, sub, picture])
         req.session.user = createdUser[0]
         res.redirect('/#/registration')
 
@@ -89,30 +89,30 @@ app.delete('/api/review/:id', review.deleteReview);
 app.get('/api/comparables/:id', claim.getComparables);
 
 //Nodemailer Code
-var transporter = nodemailer.createTransport({
-    service: 'gmail',
-    secure: false,
-    port: SERVER_PORT,
-    auth: {
-      user: GMAIL,
-      pass: G_PASS
-    }
-  });
+// var transporter = nodemailer.createTransport({
+//     service: 'gmail',
+//     secure: false,
+//     port: SERVER_PORT,
+//     auth: {
+//       user: GMAIL,
+//       pass: G_PASS
+//     }
+//   });
   
-  var mailOptions = {
-    from: 'mundix34@gmail.com',
-    to: 'wariararachel@yahoo.com',
-    subject: 'Claim has been Received',
-    text: 'We have received your claim, please allow for 24 hours after your title has been received to process payment!'
-  };
+//   var mailOptions = {
+//     from: 'mundix34@gmail.com',
+//     to: 'wariararachel@yahoo.com',
+//     subject: 'Claim has been Received',
+//     text: 'We have received your claim, please allow for 24 hours after your title has been received to process payment!'
+//   };
   
-  transporter.sendMail(mailOptions, function(error, info){
-    if (error) {
-      console.log(error);
-    } else {
-      console.log('Email sent: ' + info.response);
-    }
-  });
+//   transporter.sendMail(mailOptions, function(error, info){
+//     if (error) {
+//       console.log(error);
+//     } else {
+//       console.log('Email sent: ' + info.response);
+//     }
+//   });
 
 
 

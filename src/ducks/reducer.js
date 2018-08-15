@@ -3,6 +3,8 @@ const initialState = {
     claims: [],
     summary: [],
     comparables: [],
+    firstName: '',
+    lastName: '',
     addressOne: '',
     addressTwo: '',
     city: '',
@@ -12,6 +14,9 @@ const initialState = {
     claim: '',
     insured: ''
 };
+const ADD_FIRSTNAME = "ADD_FIRSTNAME";
+const ADD_LASTNAME = "ADD_LASTNAME";
+const ADD_CLAIM = "ADD_CLAIM";
 const ADD_ADDRESSONE = "ADD_ADDRESSONE";
 const ADD_ADDRESSTWO = "ADD_ADDRESSTWO";
 const ADD_CITY = "ADD_CITY";
@@ -48,6 +53,25 @@ export function addProfile(response) {
     return {
         type: ADD_PROFILE,
         payload: response,
+    }
+}
+
+export function addClaim(claim) {
+    return {
+        type: ADD_CLAIM,
+        payload: claim
+    }
+}
+export function addFirstName(first) {
+    return {
+        type: ADD_FIRSTNAME,
+        payload: first
+    }
+}
+export function addLastName(last) {
+    return {
+        type: ADD_LASTNAME,
+        payload: last
     }
 }
 
@@ -97,10 +121,13 @@ export function clearFields() {
     return {
         type: CLEAR_FIELDS,
         payload: {
+            firstName: '',
+            lastName: '',
             addressOne: '',
             addressTwo: '',
             city: '',
             state: '',
+            claim: '',
             zip: 0,
             reference: 0
         }
@@ -111,6 +138,12 @@ export default function reducer(state = initialState, action) {
     switch (action.type) {
         case ADD_USER_INFO:
             return Object.assign({}, state, { user: action.payload })
+        case ADD_FIRSTNAME:
+            return Object.assign({}, state, { firstName: action.payload })
+        case ADD_LASTNAME:
+            return Object.assign({}, state, { lastName: action.payload })
+        case ADD_CLAIM:
+            return Object.assign({}, state, { claim: action.payload })
         case ADD_ADDRESSONE:
             return Object.assign({}, state, { addressOne: action.payload })
         case ADD_ADDRESSTWO:
