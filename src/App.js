@@ -8,7 +8,7 @@ import Sidebar from './components/Sidebar/Sidebar';
 
 const Outer = styled.div`
 text-align: center;
-  height: 100vh;
+  height: 120vh;
   width: 100%;
   margin: 0;
   padding: 0;
@@ -23,7 +23,7 @@ display: flex;
 flex-direction: column;
 padding: 1em;
 margin: 0;
-  padding: 0;
+padding: 0;
 
 
 
@@ -31,14 +31,22 @@ margin: 0;
 const Head = styled.header`
 flex-shrink: 0;
 backgound: #ebeef4;
+height: 14%;
+width: 100%;
+overflow: none;
+
 
 
 
 `
 const Main = styled.main`
-justify-content: flex-start;
+justify-content: space-between;
 flex-grow: 1;
 background: #ebeef4;
+display: flex;
+height: 61%;
+width: 100%;
+
 
 
 `
@@ -46,7 +54,9 @@ const Foot = styled.footer`
 flex-shrink: 0;
 background: #d2d7e0;
 overflow: hidden;
-height: 250px;
+height: 25%;
+width: 100%;
+
 
 `
 
@@ -59,9 +69,13 @@ class App extends Component {
           <Head>
             <Header />
           </Head>
-          <Main>
-            <Sidebar/>
-            {routes}
+          <Main className="main-wrapper">
+            <div className="side-bar">
+              <Sidebar />
+            </div>
+            <div className="routes">
+              {routes}
+            </div>
           </Main>
           <Foot>
             <Footer />

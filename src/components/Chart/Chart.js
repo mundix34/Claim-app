@@ -2,21 +2,21 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { getComparables } from '../../ducks/reducer';
 import { connect } from 'react-redux';
-import { Button } from 'react-bootstrap';
-// import styled from 'styled-components';
 import { Bar, Pie, Line } from 'react-chartjs-2';
 import './Chart.css'
-
-const btnStyle = {
-    margin: '5px',
-    width: '100px',
-    background: '#26436d',
-    color: 'white',
-    padding: '0 1.5 rem',
-    textTransform: 'uppercase'
+import styled from 'styled-components';
 
 
-}
+const Button = styled.button`
+margin: 1rem;
+  width: 150px;
+  background: #26436d;
+  color: white;
+  border: 0;
+  text-transform: uppercase;
+  height: 2.5em;
+  border-radius: 3px;
+`
 
 
 
@@ -133,6 +133,7 @@ class Chart extends Component {
                         width={100}
                         height={100}
                         options={{
+                            maintainAspectRatio: false,
                             title: {
                                 display: this.props.displayTitle,
                                 text: `${this.state.year} ${this.state.make} ${this.state.model} Within 500 Miles Radius of Zip Code ${this.state.zip}`,
@@ -151,6 +152,7 @@ class Chart extends Component {
                         width={100}
                         height={100}
                         options={{
+                            maintainAspectRatio: false,
                             title: {
                                 display: this.props.displayTitle,
                                 text: `${this.state.year} ${this.state.make} ${this.state.model} Within 500 Miles Radius of Zip Code ${this.state.zip}`,
@@ -164,8 +166,8 @@ class Chart extends Component {
                             }
                         }}
                     /> : null}
-                    <Button style={btnStyle} onClick={() => this.showPie()}> Pie Chart</Button>
-                    <Button style={btnStyle} onClick={() => this.showLine()}> Line Chart</Button>
+                    <Button onClick={() => this.showPie()}> Pie Chart</Button>
+                    <Button onClick={() => this.showLine()}> Line Chart</Button>
                     <Button className="close" onClick={() => this.props.hideChart()}><i className="far fa-window-close"></i></Button>
 
                 </div>

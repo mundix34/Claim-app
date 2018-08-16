@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
-import { Button } from 'react-bootstrap';
+import styled from 'styled-components';
 
-const btnStyle = {
-    margin: '5px',
-    width: '80px',
-    background: '#26436d',
-    color: 'white',
-    padding: '0 1.5 rem'
 
-}
-
+const Button = styled.button`
+margin: 1rem;
+  width: 150px;
+  background: #26436d;
+  color: white;
+  border: 0;
+  text-transform: uppercase;
+  height: 2.5em;
+  border-radius: 3px;
+`
 
 
 class Payment extends Component {
@@ -54,9 +56,9 @@ class Payment extends Component {
                         <option className = "option-title" type="text" value="check" >Receive a Check</option>
                         <option className = "option-title" type="text" value="agent" >Title for Check</option>
                     </select> <br />
-                <Button bsStyle="primary" style={btnStyle} onClick={() => this.backPage()}>Back to Profile</Button>
+                <Button onClick={() => this.backPage()}>Back to Profile</Button>
 
-                <Button bsStyle="primary" style={btnStyle} onClick={() => this.nextPage()}>Continue</Button>
+                <Button onClick={() => this.nextPage()}>Continue</Button>
 
 
                 

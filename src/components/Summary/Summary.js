@@ -2,17 +2,20 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { getClaimSummary } from '../../ducks/reducer';
 import { connect } from 'react-redux';
-import { Button } from 'react-bootstrap';
 import './Summary.css';
+import styled from 'styled-components';
 
-const btnStyle = {
-    margin: '5px',
-    width: '80px',
-    background: '#26436d',
-    color: 'white',
-    padding: '0 1.5 rem'
 
-}
+const Button = styled.button`
+margin: 1rem;
+  width: 150px;
+  background: #26436d;
+  color: white;
+  border: 0;
+  text-transform: uppercase;
+  height: 2.5em;
+  border-radius: 3px;
+`
 const listStyle = {
     boxShadow: '0 0 20px 0 rgba(72, 94, 116, 0.7)',
     padding: '1.5rem'
@@ -97,17 +100,9 @@ class Summary extends Component {
                 <p>Please review and confirm that you agree with the Actual Cash Value presented by the adjuster as shown above.<br />
                     Click continue if you agree.</p>
                 {newSummary}
-                <Button style={btnStyle} onClick={() => this.backPage()}>Previous</Button>
-
-                <Button style={btnStyle} onClick={() => this.nextPage()}>Continue</Button>
-                {/* {
-                    user.user_name? (
-                        <div>
-                            <h3> Hi  {user.user_name} !</h3>
-                            
-                        </div>
-                    ): "Please login"
-                } */}
+                <Button onClick={() => this.backPage()}>Previous</Button>
+                <Button onClick={() => this.nextPage()}>Continue</Button>
+            
 
             </div>
         );

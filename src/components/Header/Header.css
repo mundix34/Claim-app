@@ -1,6 +1,5 @@
 nav.navbar, .navbar-default {
   background-color: #26436d !important;
-  height: 100%;
   color: white;
   margin-bottom: 1em;
   padding-bottom: 1em;
@@ -10,18 +9,21 @@ nav.navbar, .navbar-default {
     background-image: none;
     border: none;
     border-radius: 0;
+
   }
   
   .navbar-default .navbar-nav > li > a {
     color: white;
     font-size: 1.8rem;
+
     
   
   }
   
   .navbar-default .navbar-brand {
     color: white;
-    height: 90px;
+  height: 100%;
+    
   }
   
   .navbar-default .navbar-toggle {
@@ -48,7 +50,15 @@ nav.navbar, .navbar-default {
     color: white;
     background-color: transparent;
   }
+  .new-div{
+    display:flex;
+  }
   
   @media(min-width: 768px){
+    .navbar-default .navbar-brand {
+      color: white;
+    height: 100%;
+      
+    }
     
   }

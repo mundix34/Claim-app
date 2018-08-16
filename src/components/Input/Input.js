@@ -3,8 +3,9 @@ import { connect } from 'react-redux';
 import { addFirstName, addLastName, addEmail, addClaim, addAddressOne, addAddressTwo, addCity, addReference, isInsured, addState, addZip, addProfile, clearFields, addUserInfo } from '../../ducks/reducer';
 import axios from 'axios';
 import styled from 'styled-components';
-import { Col, Row, Button } from 'react-bootstrap';
+import { Col, Row } from 'react-bootstrap';
 import './Input.css';
+
 
 
 
@@ -13,21 +14,17 @@ color: ddd;
 display: flex;
 flex-direction: column;
 justify-content: space-evenly;
-align-items: flex-start;
 margin-top: 20px;
-`
-const Outer1 = styled.div`
-color: ddd;
-display: flex;
-flex-direction: column;
-justify-content: space-evenly;
-margin-top: 20px;
+height: 100%;
+
 `
 const FormDiv = styled.div`
 box-shadow: 0 0 20px 0 rgba(72, 94, 116, 0.7);
 padding: 1.5rem;
 border-radius: 0.5rem;
 margin: 1em;
+height: 80%;
+
 
 `
 
@@ -37,18 +34,28 @@ const formStyle = {
     justifyContent: 'space-evenly',
     alignItems: 'flex start',
 }
-const btnStyle = {
-    margin: '5px',
-    width: '100px',
-    background: '#26436d',
-    color: 'white',
-    padding: '0 1.5 rem',
-  textTransform: 'uppercase'
-
-
-}
+const MapDiv = styled.div`
+color: ddd;
+display: flex;
+flex-direction: column;
+justify-content: space-evenly;
+align-items: flex-start;
+margin-top: 1rem;
+height: 100%;
+width: 40%;
+`
+const Button = styled.button`
+margin: 1rem;
+  width: 150px;
+  background: #26436d;
+  color: white;
+  border: 0;
+  text-transform: uppercase;
+  height: 2.5em;
+  border-radius: 3px;
+`
 const pStyle = {
-    marginRight: '10px',
+    marginRight: '1rem',
 
 
 }
@@ -166,7 +173,8 @@ class Input extends Component {
     }
     render() {
         const newStateUser = this.state.stateUser.map((item, i) => (
-            <Outer style={listStyle} className=" animated bounceInRight" key={i}>
+            <div style={listStyle} className=" animated bounceInRight" key={i}>
+                <div className="mapped-list">
                 <P> firstName: {item.given_name} </P>
                 <P> lastName: {item.family_name} </P>
                 <P> AddressOne: {item.address_1} </P>
@@ -176,20 +184,23 @@ class Input extends Component {
                 <P> Zip Code: {item.zip} </P>
                 <P> Claim Number: {item.claim} </P>
                 <P> Reference Number: {item.ref_id} </P>
-                <P> Email Address: {this.props.user.email} </P>
+                <P> Email {this.props.user.email} </P>
                 <P> Customer Insured? {this.props.user.insured==='true'? 'Yes': 'No'}</P>
                 <div className="mapped-btns"> 
-                <Button style={btnStyle} type="submit" className="btn" onClick={() => this.showEdit()}>Edit</Button>
-                <Button style={btnStyle} onClick={() => this.nextPage()} className="btn" >Continue</Button>
+                <Button className="hov" type="submit" onClick={() => this.showEdit()}>Edit</Button>
+                <Button className="hov" onClick={() => this.nextPage()} >Continue</Button>
+
+                </div>
+                
                     
                 </div>
                 
 
 
 
-            </Outer>))
+            </div>))
         return (
-            <Outer1>
+            <Outer>
                 <Row>
                     <Col xs="6">
                         <FormDiv className={this.state.form ? "animated slideInLeft" : "not-showing animated slideInLeft"}>
@@ -235,9 +246,9 @@ class Input extends Component {
                                 </SelectDiv>
                                 <ButtonDiv>
 
-                                    <Button style={btnStyle} className="btn" onClick={() => this.props.clearFields()}>Cancel</Button>
-                                    {!this.state.edit ? <Button style={btnStyle} type="submit" onClick={this.addProfile}>Submit</Button> :
-                                        <Button style={btnStyle} type="submit" onClick={this.editProfile}>Save</Button>}
+                                    <Button className="hov" onClick={() => this.props.clearFields()}>Cancel</Button>
+                                    {!this.state.edit ? <Button type="submit" onClick={this.addProfile}>Submit</Button> :
+                                        <Button className="hov" type="submit" onClick={this.editProfile}>Save</Button>}
 
                                 </ButtonDiv>
 
@@ -248,14 +259,14 @@ class Input extends Component {
                     </Col>
 
                     <Col xs="6">
-                        <span>{newStateUser}</span>
+                        <MapDiv>{newStateUser}</MapDiv>
                     </Col>
 
 
                 </Row>
 
 
-            </Outer1>
+            </Outer>
         );
     }
 }
