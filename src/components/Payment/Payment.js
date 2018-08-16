@@ -4,8 +4,8 @@ import styled from 'styled-components';
 
 const Button = styled.button`
 margin: 1rem;
-  width: 150px;
-  background: #26436d;
+width: 7em;
+background: #26436d;
   color: white;
   border: 0;
   text-transform: uppercase;

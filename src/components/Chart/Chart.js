@@ -9,7 +9,7 @@ import styled from 'styled-components';
 
 const Button = styled.button`
 margin: 1rem;
-  width: 150px;
+  width: 7em;
   background: #26436d;
   color: white;
   border: 0;
@@ -50,7 +50,7 @@ class Chart extends Component {
                 model: res.data[0].model,
                 zip: res.data[0].zip,
                 chartData: {
-                    labels: ['Your Value', 'Vehicle 1', 'Vehicle 2', 'Vehicle 3', res.data[0].value_4 ? 'Vehicle 4' : ''],
+                    labels: ['Your Vehicle', 'Vehicle 1', 'Vehicle 2', 'Vehicle 3', res.data[0].value_4 ? 'Vehicle 4' : ''],
                     datasets: [
                         {
                             label: 'Actual Cash Value',

@@ -3,8 +3,6 @@ import { connect } from 'react-redux';
 import { addFirstName, addLastName, addEmail, addClaim, addAddressOne, addAddressTwo, addCity, addReference, isInsured, addState, addZip, addProfile, clearFields, addUserInfo } from '../../ducks/reducer';
 import axios from 'axios';
 import styled from 'styled-components';
-import { Col, Row } from 'react-bootstrap';
-import Edit from '../Edit/Edit'
 import './Input.css';
 
 
@@ -123,7 +121,7 @@ class Input extends Component {
             alert('Last Name is required')
         } else if (!this.props.newUser.addressOne) {
             alert('Address is required')
-        } else if (!this.props.newUser.city) {
+        }  else if (!this.props.newUser.city) {
             alert('City is required')
         } else if (!this.props.newUser.state) {
             alert('State is required')
@@ -138,13 +136,13 @@ class Input extends Component {
         }
         else {
             axios.post(`/api/register/${this.props.user.user_id}`, this.props.newUser).then(res => {
-                console.log(res.data.response);
+            console.log(res.data.response);
                 this.props.addProfile(res.data.response)
                 this.setState({
                     ref_id: res.data.response.ref_id,
                     stateUser: [res.data.response],
                     form: false
-
+                
 
                 })
             })
@@ -179,26 +177,26 @@ class Input extends Component {
         const newStateUser = this.state.stateUser.map((item, i) => (
             <div style={listStyle} className=" animated bounceInRight" key={i}>
                 <div className="mapped-list">
-                    <P> firstName: {item.given_name} </P>
-                    <P> lastName: {item.family_name} </P>
-                    <P> AddressOne: {item.address_1} </P>
-                    <P> AddressTwo: {item.address_2} </P>
-                    <P> city: {item.city} </P>
-                    <P> State: {item.state} </P>
-                    <P> Zip Code: {item.zip} </P>
-                    <P> Claim Number: {item.claim} </P>
-                    <P> Reference Number: {item.ref_id} </P>
-                    <P> Email {this.props.user.email} </P>
-                    <P> Customer Insured? {this.props.user.insured === 'true' ? 'Yes' : 'No'}</P>
-                    <div className="mapped-btns">
-                        <Button className="hov" type="submit" onClick={() => this.showEdit()}>Edit</Button>
-                        <Button className="hov" onClick={() => this.nextPage()} >Continue</Button>
-
-                    </div>
-
+                <P> firstName: {item.given_name} </P>
+                <P> lastName: {item.family_name} </P>
+                <P> AddressOne: {item.address_1} </P>
+                <P> AddressTwo: {item.address_2} </P>
+                <P> city: {item.city} </P>
+                <P> State: {item.state} </P>
+                <P> Zip Code: {item.zip} </P>
+                <P> Claim Number: {item.claim} </P>
+                <P> Reference Number: {item.ref_id} </P>
+                <P> Email {this.props.user.email} </P>
+                <P> Customer Insured? {this.props.user.insured==='true'? 'Yes': 'No'}</P>
+                <div className="mapped-btns"> 
+                <Button className="hov" type="submit" onClick={() => this.showEdit()}>Edit</Button>
+                <Button className="hov" onClick={() => this.nextPage()} >Continue</Button>
 
                 </div>
-
+                
+                    
+                </div>
+                
 
 
 
@@ -263,9 +261,7 @@ class Input extends Component {
                     </Col>
 
                     <Col xs="6">
-                        <MapDiv>
-                            <Edit newStateUser={newStateUser} />
-                        </MapDiv>
+                        <MapDiv>{newStateUser}</MapDiv>
                     </Col>
 
 
