@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addFirstName, addLastName, addClaim, addAddressOne, addAddressTwo, addCity, addReference, isInsured, addState, addZip, addProfile, clearFields, addUserInfo } from '../../ducks/reducer';
+import { addFirstName, addLastName, addEmail, addClaim, addAddressOne, addAddressTwo, addCity, addReference, isInsured, addState, addZip, addProfile, clearFields, addUserInfo } from '../../ducks/reducer';
 import axios from 'axios';
 import styled from 'styled-components';
 import { Col, Row, Button } from 'react-bootstrap';
@@ -178,8 +178,12 @@ class Input extends Component {
                 <P> Reference Number: {item.ref_id} </P>
                 <P> Email Address: {this.props.user.email} </P>
                 <P> Customer Insured? {this.props.user.insured==='true'? 'Yes': 'No'}</P>
+                <div className="mapped-btns"> 
                 <Button style={btnStyle} type="submit" className="btn" onClick={() => this.showEdit()}>Edit</Button>
                 <Button style={btnStyle} onClick={() => this.nextPage()} className="btn" >Continue</Button>
+                    
+                </div>
+                
 
 
 
@@ -196,6 +200,9 @@ class Input extends Component {
 
                                 <span>{this.props.newUser.lastName}</span>
                                 <label>Last Name </label><InputField className="input" type="text" placeholder="Last Name   * " value={this.props.newUser.lastName} onChange={(e) => this.props.addLastName(e.target.value.toUpperCase())} />
+
+                                <span>{this.props.newUser.email}</span>
+                                <label>Email </label><InputField className="input" type="email" placeholder="Email   * " value={this.props.newUser.email} onChange={(e) => this.props.addEmail(e.target.value)} />
 
                                 <span>{this.props.newUser.addressOne}</span>
                                 <label>Address 1  </label><InputField className="input" type="text" placeholder="Address Line 1   * " value={this.props.newUser.addressOne} onChange={(e) => this.props.addAddressOne(e.target.value.toUpperCase())} />
@@ -266,9 +273,10 @@ function mapStateToProps(state) {
             reference: state.reference,
             claim: state.claim,
             insured: state.insured,
+            email: state.email
         },
         user: state.user,
     }
 }
 
-export default connect(mapStateToProps, { addFirstName, addLastName, addClaim, addAddressOne, addAddressTwo, addCity, addReference, isInsured, addState, addZip, addProfile, clearFields, addUserInfo })(Input)
+export default connect(mapStateToProps, { addFirstName, addLastName, addEmail, addClaim, addAddressOne, addAddressTwo, addCity, addReference, isInsured, addState, addZip, addProfile, clearFields, addUserInfo })(Input)

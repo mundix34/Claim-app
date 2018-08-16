@@ -4,6 +4,7 @@ import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import routes from './routes';
 import styled from 'styled-components';
+import Sidebar from './components/Sidebar/Sidebar';
 
 const Outer = styled.div`
 text-align: center;
@@ -59,6 +60,7 @@ class App extends Component {
             <Header />
           </Head>
           <Main>
+            <Sidebar/>
             {routes}
           </Main>
           <Foot>

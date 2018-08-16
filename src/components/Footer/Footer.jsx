@@ -27,7 +27,7 @@ export default function Footer() {
 
                 <div className="col-1">
                     <img className="logo" src="../images/images_logo_cropped.png" alt='logo' rounded />
-                    <h2>Insurance Inc.</h2>
+                    <h3>Insurance Inc.</h3>
                     <hr className="hr" />
                     <P style={{ color: '#2d323a' }}> Service First <span className="dot"> <i class="fas fa-circle"></i></span>Service Fast</P>
                     <hr className="hr" />

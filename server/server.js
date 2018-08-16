@@ -80,7 +80,6 @@ app.get('/api/logout', (req, res) => {
     res.send()
 })
 
-console.log(us.register.adminMessage)
 app.put('/api/update_user/:id', us.updateUser);
 app.get('/api/claim/:id', claim.getClaim);
 app.get('/api/reviews', review.getReviews);
@@ -91,15 +90,15 @@ app.post('/api/register/:id', (req, res) => {
     const dbSet = req.app.get('db');
     
          const userMessage='We have received your claim'       
-        const { firstName,lastName, addressOne, addressTwo, city, state, zip, reference, claim, insured} = req.body;
-        const AdminMessage = `<h3>A new claim has been received </h3>
+        const { firstName,lastName, addressOne, addressTwo, city, state, zip, reference, claim, insured, email} = req.body;
+        const adminMessage = `<h3>A new claim has been received </h3>
                 <ul>
                 <li>${ firstName } ${lastName}</li>
                 <li> ${ claim }</li>
                 <li> ${ insured }</li>
                 <li> ${ reference }</li>
                 </ul>`;
-        dbSet.post_user([req.params.id, reference, firstName, lastName, addressOne, addressTwo, city, state, zip, claim, insured])
+        dbSet.post_user([req.params.id, reference, firstName, lastName, email, addressOne, addressTwo, city, state, zip, claim, insured])
             .then(([response]) => res.status(200).send( {msg: userMessage, response}))
             .catch(err => {
                 res.status(500).send({ errorMessage: 'Oops, an error occured' })
@@ -115,14 +114,27 @@ app.post('/api/register/:id', (req, res) => {
                 }
               });
               
-              var mailOptions = {
+              var emailUserOptions = {
                 from: GMAIL,
-                // to: ,
+                to: email ,
                 subject: 'Claim has been Received',
-                text: 'We have received your claim, please allow for 24 hours after your title has been received to process payment!'
+                text: userMessage
+              };
+              var emailAdminOptions = {
+                from: GMAIL,
+                to:  GMAIL,
+                subject: 'User has been Received',
+                text: adminMessage
               };
               
-              transporter.sendMail(mailOptions, function(error, info){
+              transporter.sendMail(emailUserOptions, function(error, info){
+                if (error) {
+                  console.log(error);
+                } else {
+                  console.log('Email sent: ' + info.response);
+                }
+              });
+              transporter.sendMail(emailAdminOptions, function(error, info){
                 if (error) {
                   console.log(error);
                 } else {

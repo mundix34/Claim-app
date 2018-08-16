@@ -5,6 +5,7 @@ const initialState = {
     comparables: [],
     firstName: '',
     lastName: '',
+    email: '',
     addressOne: '',
     addressTwo: '',
     city: '',
@@ -17,6 +18,7 @@ const initialState = {
 const ADD_FIRSTNAME = "ADD_FIRSTNAME";
 const ADD_LASTNAME = "ADD_LASTNAME";
 const ADD_CLAIM = "ADD_CLAIM";
+const ADD_EMAIL = "ADD_EMAIL";
 const ADD_ADDRESSONE = "ADD_ADDRESSONE";
 const ADD_ADDRESSTWO = "ADD_ADDRESSTWO";
 const ADD_CITY = "ADD_CITY";
@@ -74,6 +76,12 @@ export function addLastName(last) {
         payload: last
     }
 }
+export function addEmail(email) {
+    return {
+        type: ADD_EMAIL,
+        payload: email
+    }
+}
 
 export function addAddressOne(addressOne) {
     return {
@@ -123,6 +131,7 @@ export function clearFields() {
         payload: {
             firstName: '',
             lastName: '',
+            email: '',
             addressOne: '',
             addressTwo: '',
             city: '',
@@ -142,6 +151,8 @@ export default function reducer(state = initialState, action) {
             return Object.assign({}, state, { firstName: action.payload })
         case ADD_LASTNAME:
             return Object.assign({}, state, { lastName: action.payload })
+        case ADD_EMAIL:
+            return Object.assign({}, state, { email: action.payload })
         case ADD_CLAIM:
             return Object.assign({}, state, { claim: action.payload })
         case ADD_ADDRESSONE:
@@ -164,7 +175,7 @@ export default function reducer(state = initialState, action) {
             return Object.assign({}, state, { comparables: action.payload })
         case ADD_PROFILE:
             let newUser = { ...state.user, ...action.payload }
-            return Object.assign({}, state, { user: newUser})
+            return Object.assign({}, state, { user: newUser, firstName: '', lastName: '', email: '', claim: '', addressOne: '', addressTwo: '', city: '', state: '', zip: '', reference: '' })
         case CLEAR_FIELDS:
             return Object.assign({}, state, { addressOne: '', addressTwo: '', city: '', state: '', zip: '', reference: '' })
         default:

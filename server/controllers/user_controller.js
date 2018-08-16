@@ -3,7 +3,7 @@ module.exports = {
     const dbSet = req.app.get('db');
     
          const userMessage='We have received your claim'       
-        const { firstName,lastName, addressOne, addressTwo, city, state, zip, reference, claim, insured} = req.body;
+        const { firstName,lastName, email, addressOne, addressTwo, city, state, zip, reference, claim, insured} = req.body;
         const AdminMessage = `<h3>A new claim has been received </h3>
                 <ul>
                 <li>${ firstName } ${lastName}</li>
@@ -11,7 +11,7 @@ module.exports = {
                 <li> ${ insured }</li>
                 <li> ${ reference }</li>
                 </ul>`;
-        dbSet.post_user([req.params.id, reference, firstName, lastName, addressOne, addressTwo, city, state, zip, claim, insured])
+        dbSet.post_user([req.params.id, reference, firstName, lastName, email, addressOne, addressTwo, city, state, zip, claim, insured])
             .then(([response]) => res.status(200).send( {msg: userMessage, response}))
             .catch(err => {
                 res.status(500).send({ errorMessage: 'Oops, an error occured' })
