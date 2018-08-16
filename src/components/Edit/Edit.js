@@ -113,7 +113,7 @@ class Edit extends Component {
             <Outer>
                 <Row>
                     <Col xs="6">
-                        <MapDiv>{newStateUser}</MapDiv>
+                        <MapDiv> New StateUser {newStateUser}</MapDiv>
                     </Col>
 
 

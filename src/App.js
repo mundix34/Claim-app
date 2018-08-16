@@ -5,6 +5,7 @@ import Footer from './components/Footer/Footer';
 import routes from './routes';
 import styled from 'styled-components';
 import Sidebar from './components/Sidebar/Sidebar';
+import './Reset.css';
 
 const Outer = styled.div`
 text-align: center;

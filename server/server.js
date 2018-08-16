@@ -14,7 +14,7 @@ var nodemailer = require('nodemailer');
 
 const { SERVER_PORT, REACT_APP_DOMAIN, REACT_APP_CLIENT_ID, G_PASS, GMAIL, CLIENT_SECRET, SESSION_SECRET, CONNECTION_STRING } = process.env;
 
-
+app.use( express.static( `${__dirname}/../build` ) );
 app.use(bodyParser.json());
 app.use(session({
     secret: SESSION_SECRET,

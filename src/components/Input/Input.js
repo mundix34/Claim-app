@@ -4,7 +4,6 @@ import { addFirstName, addLastName, addEmail, addClaim, addAddressOne, addAddres
 import axios from 'axios';
 import styled from 'styled-components';
 import { Col, Row } from 'react-bootstrap';
-import Edit from '../Edit/Edit'
 import './Input.css';
 
 
@@ -80,6 +79,14 @@ display: flex;
 justify-content: center;
 
 `
+const P = styled.p`
+font-weight: 600;
+`
+const listStyle = {
+    boxShadow: '0 0 20px 0 rgba(72, 94, 116, 0.7)',
+    padding: '1.5rem'
+}
+
 
 class Input extends Component {
     constructor(props) {
@@ -95,17 +102,18 @@ class Input extends Component {
         this.nextPage = this.nextPage.bind(this);
         this.showEdit = this.showEdit.bind(this);
         this.addProfile = this.addProfile.bind(this);
+        this.editProfile = this.editProfile.bind(this);
     }
-    // componentDidMount() {
-    //     axios.get('/api/user_data').then(res => {            
-    //         this.props.addUserInfo(res.data)
-    //     })
-    // }
-    // componentDidUpdate() {
-    //     axios.get('/api/user_data').then(res => {
-    //         this.props.addUserInfo(res.data)
-    //     })
-    // }
+    componentDidMount() {
+        axios.get('/api/user_data').then(res => {            
+            this.props.addUserInfo(res.data)
+        })
+    }
+    componentDidUpdate() {
+        axios.get('/api/user_data').then(res => {
+            this.props.addUserInfo(res.data)
+        })
+    }
 
     addProfile() {
         if (!this.props.newUser.firstName) {
@@ -149,12 +157,51 @@ class Input extends Component {
         })
     }
 
+
+    editProfile() {
+        axios.put(`/api/update_user/${this.props.user.user_id}`, this.props.newUser).then(res => {
+            this.props.addProfile(res.data)
+            this.setState({
+                ref_id: res.data.ref_id,
+                stateUser: [res.data],
+                form: false
+
+            })
+        })
+    }
     nextPage() {
         this.props.newUser.insured === "yes" ? this.props.history.push(`/dashboard/${this.state.ref_id}`) :
             this.props.newUser.insured === "no" ? this.props.history.push(`/summary/${this.state.ref_id}`) :
                 alert('please make a selection')
     }
     render() {
+        const newStateUser = this.state.stateUser.map((item, i) => (
+            <div style={listStyle} className=" animated bounceInRight" key={i}>
+                <div className="mapped-list">
+                    <P> firstName: {item.given_name} </P>
+                    <P> lastName: {item.family_name} </P>
+                    <P> AddressOne: {item.address_1} </P>
+                    <P> AddressTwo: {item.address_2} </P>
+                    <P> city: {item.city} </P>
+                    <P> State: {item.state} </P>
+                    <P> Zip Code: {item.zip} </P>
+                    <P> Claim Number: {item.claim} </P>
+                    <P> Reference Number: {item.ref_id} </P>
+                    <P> Email {this.props.user.email} </P>
+                    <P> Customer Insured? {this.props.user.insured === 'true' ? 'Yes' : 'No'}</P>
+                    <div className="mapped-btns">
+                        <Button className="hov" type="submit" onClick={() => this.showEdit()}>Edit</Button>
+                        <Button className="hov" onClick={() => this.nextPage()} >Continue</Button>
+
+                    </div>
+
+
+                </div>
+
+
+
+
+            </div>))
         return (
             <Outer>
                 <Row>
@@ -216,7 +263,7 @@ class Input extends Component {
 
                     <Col xs="6">
                         <MapDiv>
-                            <Edit/>
+                            {newStateUser}
                         </MapDiv>
                     </Col>
 
