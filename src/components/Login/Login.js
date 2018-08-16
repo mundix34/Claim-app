@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Button } from 'react-bootstrap';
 import './Login.css';
 import styled from 'styled-components';
 
@@ -9,14 +8,18 @@ font-family: Roboto, sans-serif;
 margin: 0 auto;
 margin-top: 180px;
 `
-const btnStyle = {
-  margin: '5px',
-  width: '150px',
-  background: '#26436d',
-  color: 'white',
-  border: '0',
-  textTransform: 'uppercase'
-}
+const Button = styled.button`
+margin: 1rem;
+  width: 150px;
+  background: #26436d;
+  color: white;
+  border: 0;
+  text-transform: uppercase;
+  height: 2.5em;
+  border-radius: 3px;
+`
+  
+
 const Icons = styled.div`
 font-size: 3em;
 margin: 1.5rem;
@@ -40,7 +43,7 @@ class Login extends Component {
           <i style={{ margin: '1.5rem' }} className="fas fa-car"></i>
         </Icons>
 
-        <Button style={btnStyle} onClick={this.login}> Login</Button>
+        <Button onClick={this.login}> Login</Button>
       </Outer>
     );
   }

@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { addUserInfo } from '../../ducks/reducer';
-import { Grid, Button } from 'react-bootstrap';
+import { Grid } from 'react-bootstrap';
 import './Registration.css';
 import styled from 'styled-components';
 
@@ -21,11 +21,16 @@ margin-top: 2em;
 
 `
 
-const btnStyle={
-    margin: '5px',
-    width: '70px',
-    background: '#26436d'
-}
+const Button = styled.button`
+margin: 1rem;
+  width: 150px;
+  background: #26436d;
+  color: white;
+  border: 0;
+  text-transform: uppercase;
+  height: 2.5em;
+  border-radius: 3px;
+`
 
 class Registration extends Component {
     componentDidMount() {
@@ -56,8 +61,7 @@ class Registration extends Component {
                         user.first_last ? (
                             <div>
                                 <H3> {user.first_last} !</H3>
-                                {/* <p>  Email: {user.email}</p> */}
-                                <Link to="/input"><Button style={btnStyle} bsStyle="primary" className="btn" >Register</Button></Link>
+                                <Link to="/input"><Button >Begin</Button></Link>
                             </div>
                         ) : "Please login"
                     }

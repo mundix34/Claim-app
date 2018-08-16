@@ -2,17 +2,20 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { getClaimSummary } from '../../ducks/reducer';
 import { connect } from 'react-redux';
-import { Button } from 'react-bootstrap';
 import './Dashboard.css';
+import styled from 'styled-components';
 
-const btnStyle = {
-    margin: '5px',
-    width: '80px',
-    background: '#26436d',
-    color: 'white',
-    padding: '0 1.5 rem'
 
-}
+const Button = styled.button`
+margin: 1rem;
+  width: 150px;
+  background: #26436d;
+  color: white;
+  border: 0;
+  text-transform: uppercase;
+  height: 2.5em;
+  border-radius: 3px;
+`
 const listStyle = {
     boxShadow: '0 0 20px 0 rgba(72, 94, 116, 0.7)',
     padding: '1.5rem'
@@ -100,9 +103,9 @@ class Dashboard extends Component {
                     Click continue if you Agree.</p>
                 {newSummary}
 
-                <Button style={btnStyle} className="btn" onClick={() => this.backPage()}>Previous</Button>
+                <Button onClick={() => this.backPage()}>Previous</Button>
 
-                <Button style={btnStyle} className="btn" onClick={() => this.nextPage()}>Continue</Button>
+                <Button onClick={() => this.nextPage()}>Continue</Button>
 
 
 

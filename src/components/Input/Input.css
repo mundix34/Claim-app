@@ -14,3 +14,16 @@
     display: flex;
     
 }
+.mapped-list{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 1rem;
+}
+label{
+    color: #4f5759;
+}
+.hov{
+    background: #efb247;
+  
+  }

@@ -1,8 +1,6 @@
 import React from 'react';
-import { Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { addUserInfo } from '../../ducks/reducer';
-// import axios from 'axios';
 import styled from 'styled-components';
 
 const P=styled.p`
@@ -11,27 +9,16 @@ font-size: 1.5rem;
 `
 
 
-
-
-const btnStyle = {
-    margin: '5px',
-    width: '150px',
-    background: '#26436d',
-    color: 'white',
-    padding: '0 1.5 rem'
-    
-
-}
-// function componentDidMount(props) {
-//     axios.get('/api/user_data').then(res => {
-//         props.addUserInfo(res.data)
-//     })
-// }
-// function componentDidUpdate(props) {
-//     axios.get('/api/user_data').then(res => {
-//         props.addUserInfo(res.data)
-//     })
-// }
+const Button = styled.button`
+margin: 1rem;
+  width: 150px;
+  background: #26436d;
+  color: white;
+  border: 0;
+  text-transform: uppercase;
+  height: 2.5em;
+  border-radius: 3px;
+`
 
  function Title (props){
     function previousPage(){
@@ -51,8 +38,8 @@ const btnStyle = {
         <P>Please see the sample image on the side as a guide</P>
 
         <P>Proceed to the next page for the payment info section</P>
-      <Button style={btnStyle} onClick = {() =>previousPage()}>Previous</Button>
-      <Button style={btnStyle} onClick = {() =>nextPage()}>Payment</Button>
+      <Button onClick = {() =>previousPage()}>Previous</Button>
+      <Button onClick = {() =>nextPage()}>Payment</Button>
 
 
 

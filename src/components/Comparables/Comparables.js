@@ -2,19 +2,20 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { getComparables } from '../../ducks/reducer';
 import { connect } from 'react-redux';
-import { Button } from 'react-bootstrap';
 import styled from 'styled-components';
 import Chart from '../Chart/Chart';
 
 
-const btnStyle = {
-    margin: '5px',
-    width: '100px',
-    background: '#26436d',
-    color: 'white',
-    padding: '0 1.5 rem'
-
-}
+const Button = styled.button`
+margin: 1rem;
+  width: 150px;
+  background: #26436d;
+  color: white;
+  border: 0;
+  text-transform: uppercase;
+  height: 2.5em;
+  border-radius: 3px;
+`
 const listStyle = {
     boxShadow: '0 0 20px 0 rgba(72, 94, 116, 0.7)',
     padding: '1.5rem',
@@ -121,9 +122,9 @@ class Comparables extends Component {
 
                 <div className="table-render">{newComparables} </div>
                {this.state.chart? <Chart hideChart={this.hideChart} />: null}
-                <Button style={btnStyle} bsStyle="primary" onClick={() => this.backPage()}>Back</Button>
-                <Button style={btnStyle} bsStyle="primary" onClick={() => this.showChart()}>View Chart</Button>
-                <Button style={btnStyle} bsStyle="primary" onClick={() => this.nextPage()}>Continue</Button>
+                <Button onClick={() => this.backPage()}>Back</Button>
+                <Button onClick={() => this.showChart()}>View Chart</Button>
+                <Button onClick={() => this.nextPage()}>Continue</Button>
 
 
             </div>
