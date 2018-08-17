@@ -14,7 +14,7 @@ text-align: center;
   margin: 0;
   padding: 0;
   @media(min-width: 593px){
-    height: 120vh;
+    height: 130vh;
     }
 
 
@@ -44,7 +44,8 @@ z-index: 5;
 margin-bottom: 0;
 padding-bottom: 2em;
 @media(min-width: 593px){
-  height: 10.6%;
+  height: 13.8%;
+  padding: 0.2rem;
   }
 
 
@@ -75,7 +76,6 @@ overflow: hidden;
 height: 25%;
 width: 100%;
 z-index: 5;
-
 
 
 `

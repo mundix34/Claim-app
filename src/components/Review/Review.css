@@ -1,11 +1,36 @@
 
-.list{
+.review-wrapper{
+  display: flex;
+  height: 100%;
+  width: 100%;
+
+}
+.review-form{
+  height: 100%;
+  width: 48%;
+}
+.review-list{
+  height: 100%;
+  width: 80%;
   border: 0.2px solid grey;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
+  padding: 1rem;
   flex-direction: column;
+}
+.map-review-list{
+  height: 20%;
+  width: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  background: pink;
+  flex-wrap: wrap;
   align-items: center;
-  padding: 1em;
+  padding: 1rem;
+  
+
+
 }
 .delete{
   align-self: flex-end;

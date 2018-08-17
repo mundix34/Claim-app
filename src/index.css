@@ -21,7 +21,21 @@ h1, h2, h3, h4, h5, h6 {
 p {
   color: ddd;
 }
+Button{
+  margin: 1rem;
+background: #26436d;
+  color: white;
+  border: 0;
+  text-transform: uppercase;
+  height: 2.5em;
+ border-radius: 3px;
+text-align: center;
+  transition: 0.3s;
+ 
+
+} 
 Button:hover{
   
  background:#efb247;
+  
 }

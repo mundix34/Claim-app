@@ -99,16 +99,16 @@ class Input extends Component {
         this.addProfile = this.addProfile.bind(this);
         this.editProfile = this.editProfile.bind(this);
     }
-    // componentDidMount() {
-    //     axios.get('/api/user_data').then(res => {            
-    //         this.props.addUserInfo(res.data)
-    //     })
-    // }
-    // componentDidUpdate() {
-    //     axios.get('/api/user_data').then(res => {
-    //         this.props.addUserInfo(res.data)
-    //     })
-    // }
+    componentDidMount() {
+        axios.get('/api/user_data').then(res => {            
+            this.props.addUserInfo(res.data)
+        })
+    }
+    componentDidUpdate() {
+        axios.get('/api/user_data').then(res => {
+            this.props.addUserInfo(res.data)
+        })
+    }
 
     addProfile() {
         if (!this.props.newUser.firstName) {

@@ -19,7 +19,7 @@ margin: 1.5rem;
 box-shadow: none;
 border: 1px solid grey;
 `
-const btnStyle={
+const btnStyle = {
   margin: '5px',
   width: '90px',
   background: '#26436d',
@@ -34,15 +34,17 @@ class Review extends Component {
       userId: null,
       title: '',
       content: '',
-      reviews: []
+      reviews: [],
+      rating: 0,
+      colorFill: false
 
 
     }
   }
 
-  logOut(){
+  logOut() {
     this.props.history.push("/")
-    }
+  }
   addTitle(val) {
     this.setState({
       title: val
@@ -53,7 +55,24 @@ class Review extends Component {
       content: val
     })
   }
-  
+  addRating(val) {
+    this.setState({
+      rating: val
+    })
+  }
+  // componentDidMount() {
+  //     axios.get('/api/user_data').then(res => {            
+  //         this.props.addUserInfo(res.data)
+  //     })
+  // }
+
+
+  componentDidUpdate() {
+    axios.get('/api/user_data').then(res => {
+      this.props.addUserInfo(res.data)
+    })
+  }
+
   componentDidMount() {
     axios.get('/api/reviews').then((res) => {
       console.log('test', this.props.user.user_id);
@@ -63,35 +82,35 @@ class Review extends Component {
       })
     })
   }
-  componentDidUpdate() {
-    axios.get('/api/reviews').then((res) => {
-      this.setState({
-        reviews: res.data,
-        userId: this.props.user.user_id
-      })
-    })
-  }
-  
+  // componentDidUpdate() {
+  //   axios.get('/api/reviews').then((res) => {
+  //     this.setState({
+  //       reviews: res.data,
+  //       userId: this.props.user.user_id
+  //     })
+  //   })
+  // }
+
   addReview() {
     let review = {
       userId: this.state.userId,
       title: this.state.title,
       content: this.state.content
     }
-    
+
 
     axios.post(`/api/review`, review).then(res => {
       console.log(res);
 
       this.setState({
-        
+
         reviews: res.data,
-         title: '', 
-         content: ''
+        title: '',
+        content: ''
       })
     })
   }
-  deleteReview(id) {    
+  deleteReview(id) {
     axios.delete(`/api/review/${id}`).then(res => {
       this.setState({
         reviews: res.data
@@ -101,32 +120,55 @@ class Review extends Component {
 
   render() {
     const reviews = this.state.reviews.map((review, i) => (
-      <div className="list" key={i}>
-      <Button className="delete" onClick={() => this.deleteReview(review.id)}> X </Button>
-        <h3> {review.title} </h3>
-        <p> {review.content} </p>
+      <div className="map-review-list" key={i}>
+        <div>
+          <h3> {review.title} </h3>
+          <p> {review.content} </p>
+          <div className="review-icons">
+            <i className={this.state.colorFill ? "review-icon far fa-star" : "review-icon-clicked far fa-star"}></i>
+            <i className={this.state.colorFill ? "review-icon far fa-star" : "review-icon-clicked far fa-star"}></i>
+            <i className={this.state.colorFill ? "review-icon far fa-star" : "review-icon-clicked far fa-star"}></i>
+            <i className={this.state.colorFill ? "review-icon far fa-star" : "review-icon-clicked far fa-star"}></i>
+            <i className={this.state.colorFill ? "review-icon far fa-star" : "review-icon-clicked far fa-star"}></i>
+          </div>
+        </div>
+        <button style={{ width: '2.2rem' }} className="delete" onClick={() => this.deleteReview(review.id)}> X </button>
       </div>
     ));
     return (
-      <div className="Review">
-        <form>
-          <h3> <span role="img" aria-label="hand">😇 </span> Leave a Feedback <span role="img" aria-label="hand"> 👍 </span></h3>
+      <div className="review-wrapper">
+        <form className="review-form">
+          <h3> Leave a Feedback</h3>
           <label>Title:</label> <Input className="Input" onChange={(e) => this.addTitle(e.target.value)} value={this.state.title}></Input><br />
           <label>Content:</label> <Textarea className="Input" onChange={(e) => this.addContent(e.target.value)} value={this.state.content}></Textarea><br />
+          <select>
+            <label> Rating </label>
+            <select className="select" onChange={(e) => this.addRating(e.target.value)}>
+              <option type="number" value="1">1</option>
+              <option type="number" value="2">2</option>
+              <option type="number" value="3">3</option>
+              <option type="number" value="4">4</option>
+              <option type="number" value="5">5</option>
+            </select>
+          </select>
           <Button style={btnStyle} onClick={() => this.addReview()}> Submit </Button>
-          <Button style = {btnStyle} onClick={() => this.logOut()}> Logout </Button>
+          <Button style={btnStyle} onClick={() => this.logOut()}> Logout </Button>
         </form>
-        <h3>{reviews}</h3>
+        <div className="review-list">
+          {reviews}
 
 
-      </div>
+        </div>
+
+
+      </div >
     );
   }
 }
 
 function mapStateToProps(state) {
   return {
-      user: state.user
+    user: state.user
   }
 }
 

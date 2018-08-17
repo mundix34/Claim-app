@@ -24,23 +24,7 @@ app.use(session({
     resave: false,
     saveUninitialized: false
 }))
-//bypass Login
 
-app.use(md.bypassAuthInDevelopment({ 
-    user_id: 1,
-    ref_id: 1591,
-    first_last: 'Rachel K',
-    email: GMAIL,
-    auth_id: 'google-oauth2|115448227667362892125',
-    picture: 'https://lh5.googleusercontent.com/-rAbq9zdM7UQ/AAAAAAAAAAI/AAAAAAAAAJQ/eRYy3NjE4RM/photo.jpg',
-    address_1: '',
-    address_2: '',
-    city: '',
-    state: '',
-    zip:'',
-    is_insured: ''
-
-}));
 app.get('/auth/callback', async (req, res) => {
     let payload = {
         client_id: REACT_APP_CLIENT_ID,
