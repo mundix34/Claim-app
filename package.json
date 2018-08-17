@@ -7,6 +7,7 @@
     "@fortawesome/free-solid-svg-icons": "^5.1.0-11",
     "@fortawesome/react-fontawesome": "0.1.0-11",
     "animate.css": "^3.7.0",
+    "aws-sdk": "^2.295.0",
     "axios": "^0.18.0",
     "chart.js": "^2.7.2",
     "dotenv": "^6.0.0",
@@ -43,5 +44,8 @@
     "/auth/callback": {
       "target": "http://localhost:4000"
     }
+  },
+  "devDependencies": {
+    "babel-plugin-dynamic-import-node": "^2.0.0"
   }
 }

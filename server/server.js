@@ -9,13 +9,16 @@ const claim = require('./controllers/claim_controller');
 const us = require('./controllers/user_controller');
 const review = require('./controllers/reviews_controller');
 const md = require('./controllers/middleware_controller');
-var nodemailer = require('nodemailer');
+const nodemailer = require('nodemailer');
+const AWS = require('aws-sdk');
 
 
-const { SERVER_PORT, REACT_APP_DOMAIN, REACT_APP_CLIENT_ID, G_PASS, GMAIL, CLIENT_SECRET, SESSION_SECRET, CONNECTION_STRING } = process.env;
+const { SERVER_PORT, REACT_APP_DOMAIN, REACT_APP_CLIENT_ID, G_PASS, GMAIL, CLIENT_SECRET, SESSION_SECRET, CONNECTION_STRING, AMAZON_KEY_ID,
+    AMAZON_ACCESS_KEY,AWS_REGION, AWS_BUCKET } = process.env;
 
 app.use( express.static( `${__dirname}/../build` ) );
-app.use(bodyParser.json());
+app.use(bodyParser.json({ limit: '50mb' }));
+app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
 app.use(session({
     secret: SESSION_SECRET,
     resave: false,
@@ -79,13 +82,15 @@ app.get('/api/logout', (req, res) => {
     req.session.destroy();
     res.send()
 })
-
+//endpoints
 app.put('/api/update_user/:id', us.updateUser);
 app.get('/api/claim/:id', claim.getClaim);
 app.get('/api/reviews', review.getReviews);
 app.post('/api/review', review.postReview);
 app.delete('/api/review/:id', review.deleteReview);
 app.get('/api/comparables/:id', claim.getComparables);
+
+//Post endpoint + Nodemailer code
 app.post('/api/register/:id', (req, res) => {
     const dbSet = req.app.get('db');
     
@@ -144,8 +149,38 @@ app.post('/api/register/:id', (req, res) => {
             
     });
 
+// AWS S3
+AWS.config.update({
+    accessKeyId: AMAZON_KEY_ID,
+    secretAccessKey: AMAZON_ACCESS_KEY,
+    region: AWS_REGION,
+  });
+  const S3 = new AWS.S3();
 
-// Nodemailer Code
+  app.post('/api/s3', (req, res) => {
+    const photo = req.body;
+  
+    const buf = new Buffer(photo.file.replace(/^data:image\/\w+;base64,/, ''), 'base64');
+  
+    const params = {
+      Bucket: AWS_BUCKET,
+      Body: buf,
+      Key: photo.filename,
+      ContentType: photo.filetype,
+      ACL: 'public-read',
+    };
+    S3.upload(params, (err, data) => {
+        let response, code;
+        if (err) {
+          response = err;
+          code = 500;
+        } else {
+          response = data;
+          code = 200;
+        }
+        res.status(code).send(response);
+      });
+    });
 
 
 
