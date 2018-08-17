@@ -9,10 +9,13 @@ import './Reset.css';
 
 const Outer = styled.div`
 text-align: center;
-  height: 120vh;
+  height: 170vh;
   width: 100%;
   margin: 0;
   padding: 0;
+  @media(min-width: 593px){
+    height: 120vh;
+    }
 
 
 
@@ -25,16 +28,24 @@ flex-direction: column;
 padding: 1em;
 margin: 0;
 padding: 0;
+background-position: center;
+background-size: cover;
+
 
 
 
 `
 const Head = styled.header`
 flex-shrink: 0;
-backgound: #ebeef4;
-height: 14%;
+backgound: red;
+height: 9.5%;
 width: 100%;
-overflow: none;
+z-index: 5;
+@media(min-width: 593px){
+  height: 13.6%;
+  }
+
+
 
 
 
@@ -45,8 +56,12 @@ justify-content: space-between;
 flex-grow: 1;
 background: #ebeef4;
 display: flex;
-height: 61%;
+height: 63%;
 width: 100%;
+padding: 0.5rem;
+@media(min-width: 593px){
+  height: 61%;
+  }
 
 
 
@@ -57,6 +72,8 @@ background: #d2d7e0;
 overflow: hidden;
 height: 25%;
 width: 100%;
+z-index: 5;
+
 
 
 `

@@ -7,6 +7,7 @@ import styled from 'styled-components';
 var { REACT_APP_GOOGLE_KEY } = process.env;
 
 const style = {
+    zIndex:1
     
 }
 

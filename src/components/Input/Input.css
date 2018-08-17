@@ -1,6 +1,4 @@
-/* .showing{
-    display: initial;
-} */
+
 .not-showing{
     display: none;
 }
@@ -23,7 +21,23 @@
 label{
     color: #4f5759;
 }
-/* .hov:hover{
-    background: #efb247;
-  
-  } */
+.form-style{
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        width: 100%;
+        background: yellow;
+        border-radius: 3px;
+        height: 100%;
+    }
+    @media(min-width: 593px){
+        .form-style{
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            width: 100%;
+            background: yellow;
+            border-radius: 3px;
+            height: 100%;
+        }
+      }

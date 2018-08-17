@@ -34,7 +34,7 @@ function Header(props) {
             </Navbar.Brand>
             <Navbar.Toggle />
           </Navbar.Header>
-          <Navbar.Collapse>
+          <Navbar.Collapse >
             <Nav pullRight>
               
               <NavItem eventKey={1} componentClass={Link} href="/dashboard" to="/dashboard">

@@ -91,13 +91,13 @@ app.post('/api/register/:id', (req, res) => {
     
          const userMessage='We have received your claim'       
         const { firstName,lastName, addressOne, addressTwo, city, state, zip, reference, claim, insured, email} = req.body;
-        const adminMessage = `<h3>A new claim has been received </h3>
-                <ul>
-                <li>${ firstName } ${lastName}</li>
-                <li> ${ claim }</li>
-                <li> ${ insured }</li>
-                <li> ${ reference }</li>
-                </ul>`;
+        const adminMessage = `A New Claim has been received
+                
+                User: ${ firstName } ${lastName}
+               Claim Number: ${ claim }
+                Reference Number: ${ reference }
+               Insured? ${ insured }
+                `;
         dbSet.post_user([req.params.id, reference, firstName, lastName, email, addressOne, addressTwo, city, state, zip, claim, insured])
             .then(([response]) => res.status(200).send( {msg: userMessage, response}))
             .catch(err => {

@@ -1,14 +1,40 @@
 .main-wrapper{
   /* display: flex; */
 }
-.sidebar{
-  background: pink;
-  width: 100%;
+.side-bar{
+  width: 18%;
   height: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  display: none;
+
 }
 .routes{
   background: green;
   width: 100%;
   height: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
   
 }
+@media(min-width: 593px){
+  .side-bar {
+  width: 18%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  /* vertical-align: baseline; */
+  display: block;
+  }
+  .routes{
+    background: green;
+    width: 82%;
+    height: 100%;
+    
+  }
+
+  
+}
+

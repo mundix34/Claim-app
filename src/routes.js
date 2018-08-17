@@ -16,6 +16,8 @@ import Maps from './components/Maps/Maps';
 import Help from './components/Help/Help';
 import Footer from './components/Footer/Footer';
 import StripeDone from './components/Stripe/StripeDone';
+import Profile from './components/Profile/Profile';
+import Privacy from './components/Privacy/Privacy';
 
 export default (
     <Switch>
@@ -34,6 +36,8 @@ export default (
         <Route path="/maps" component={Maps} />
         <Route path="/review" component={Review} />
         <Route path="/help" component={Help} />
+        <Route path="/profile" component={Profile} />
+        <Route path="/privacy" component={Privacy} />
         <Route path="/footer" component={Footer} />
         <Route path='/facebook' component={() => window.location = 'https://facebook.com'}/>
         <Route path='/twitter' component={() => window.location = 'https://twitter.com'}/>

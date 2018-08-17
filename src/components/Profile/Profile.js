@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { addFirstName, addLastName, addEmail, addClaim, addAddressOne, addAddressTwo, addCity, addReference, isInsured, addState, addZip, addProfile, clearFields, addUserInfo } from '../../ducks/reducer';
 import axios from 'axios';
 import styled from 'styled-components';
-import './Input.css';
+import './Profile.css';
 
 
 
@@ -83,32 +83,18 @@ const listStyle = {
 }
 
 
-class Input extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            ref_id: '',
-            stateUser: [],
-            edit: false,
-            inputDisabled: false,
-            form: true
-
-        }
-        this.nextPage = this.nextPage.bind(this);
-        this.showEdit = this.showEdit.bind(this);
-        this.addProfile = this.addProfile.bind(this);
-        this.editProfile = this.editProfile.bind(this);
+class Profile extends Component {
+    
+    componentDidMount() {
+        axios.get('/api/user_data').then(res => {            
+            this.props.addUserInfo(res.data)
+        })
     }
-    // componentDidMount() {
-    //     axios.get('/api/user_data').then(res => {            
-    //         this.props.addUserInfo(res.data)
-    //     })
-    // }
-    // componentDidUpdate() {
-    //     axios.get('/api/user_data').then(res => {
-    //         this.props.addUserInfo(res.data)
-    //     })
-    // }
+    componentDidUpdate() {
+        axios.get('/api/user_data').then(res => {
+            this.props.addUserInfo(res.data)
+        })
+    }
 
     addProfile() {
         if (!this.props.newUser.firstName) {
@@ -300,4 +286,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps, { addFirstName, addLastName, addEmail, addClaim, addAddressOne, addAddressTwo, addCity, addReference, isInsured, addState, addZip, addProfile, clearFields, addUserInfo })(Input)
+export default connect(mapStateToProps, { addFirstName, addLastName, addEmail, addClaim, addAddressOne, addAddressTwo, addCity, addReference, isInsured, addState, addZip, addProfile, clearFields, addUserInfo })(Profile)

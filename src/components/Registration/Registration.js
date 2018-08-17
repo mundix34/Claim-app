@@ -3,7 +3,6 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { addUserInfo } from '../../ducks/reducer';
-import { Grid } from 'react-bootstrap';
 import './Registration.css';
 import styled from 'styled-components';
 
@@ -12,6 +11,8 @@ import styled from 'styled-components';
 
 const Outer = styled.div`
 color: ddd;
+height: 100%;
+width: 100%;
 `
 
 const H3 = styled.h3`
@@ -55,7 +56,6 @@ class Registration extends Component {
 
         return (
             <Outer>
-                <Grid>
                     <h1 style ={{ fontFamily: 'Poiret One'}}>Welcome</h1>
                     {
                         user.first_last ? (
@@ -65,7 +65,6 @@ class Registration extends Component {
                             </div>
                         ) : "Please login"
                     }
-                </Grid>
             </Outer>
         );
     }
