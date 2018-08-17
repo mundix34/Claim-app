@@ -1,5 +1,9 @@
 .main-wrapper{
-  /* display: flex; */
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  width: 100%;
+  background: purple;
 }
 .side-bar{
   width: 18%;
@@ -26,12 +30,17 @@
   margin: 0;
   padding: 0;
   /* vertical-align: baseline; */
-  display: block;
+  display: flex;
+  
   }
   .routes{
     background: green;
     width: 82%;
     height: 100%;
+    padding: 0;
+    margin: 0;
+  vertical-align: baseline;
+
     
   }
 

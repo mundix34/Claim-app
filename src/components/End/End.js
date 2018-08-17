@@ -31,11 +31,17 @@ function End(props) {
     }
     return (
         <div>
-            <h3>Please contact Insurance Inc's Claim Office at 1 800 889 0045 to speak with a representative.</h3>
+            <h3>Please contact Insurance Inc's Claim Office at 1-800-889-0045 to speak with a representative.</h3>
             <P>To better assist you, If you disagree with the vehicle valuation, please provide comparable vehicle values using the following criteria to the following email.</P>
             <P>claims@insuranceinc.org</P>
             <P>Once your email has been received, an adjuster will be in touch with you within 48 hours</P>
             <P>Thank you for doing business with Insurance Inc.</P>
+            <P>
+                General InsuranceOnline AccountsBilling & PaymentsAgent SelectionOnline Access
+                What is the customer service phone number?
+                The State Farm toll-free customer service number is 1-800-889-0045.
+                Is there a toll-free number for a rate quote?
+                Is my account number the same as my policy number?.</P>
             <Button style={btnStyle} bsStyle="primary" onClick={() => nextPage()}>Feedback</Button>
             <Button style={btnStyle} bsStyle="primary" onClick={() => logOut()}>Logout</Button>
 

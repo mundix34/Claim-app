@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-// import { Jumbotron, Row, Column, Grid, Image, Button, Nav, Navbar, NavItem } from 'react-bootstrap';
 import './Footer.css'
 import styled from 'styled-components';
 
@@ -37,10 +36,10 @@ export default function Footer() {
                 <div className="col-2">
                 <div className="vert-line"></div>
 
-                    <div className="contact-icons">
-                        <i className=" phone fas fa-phone">   1 800 008 0011</i>
-                        <i className=" mail fas fa-envelope">  claims@insuranceinc.com</i>
-                        <i className=" address fas fa-map-marker-alt">  123 Main ST Provo Utah 84600</i>
+                    <div className="contact-icons-div">
+                        <Link to="/end"><i className=" phone fas fa-phone"> <span>1-800-008-0011 </span> </i></Link>
+                        <Link to="/end"><i className=" mail fas fa-envelope"> <span> claims@insuranceinc.com</span> </i></Link>
+                        <Link to="/end"> <i className=" address fas fa-map-marker-alt"> <span>123 Main ST Provo Utah 84600 </span></i> </Link>
                     </div>
                 </div>
 
