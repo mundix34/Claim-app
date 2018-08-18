@@ -7,7 +7,7 @@ import styled from 'styled-components';
 
 const btnStyle = {
     margin: '5px',
-    width: '80px',
+    width: '100px',
     background: '#26436d',
     color: 'white',
     padding: '0 1.5 rem'

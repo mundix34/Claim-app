@@ -5,8 +5,13 @@ import Footer from './components/Footer/Footer';
 import routes from './routes';
 import styled from 'styled-components';
 import Sidebar from './components/Sidebar/Sidebar';
-import './Reset.css';
+// import './Reset.css';
 
+// hStyle={
+//   color: '#2f2f30',
+//   fontSize: '1.5rem',
+//   transition: '0.3s'
+// }
 const Outer = styled.div`
 text-align: center;
   height: 170vh;
@@ -14,7 +19,7 @@ text-align: center;
   margin: 0;
   padding: 0;
   @media(min-width: 593px){
-    height: 130vh;
+    height: 170vh;
     }
 
 

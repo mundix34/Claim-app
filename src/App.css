@@ -23,7 +23,7 @@
 }
 @media(min-width: 593px){
   .side-bar {
-  width: 18%;
+  width: 22%;
   height: 100%;
   margin: 0;
   margin-left: 0;
@@ -35,7 +35,7 @@
   
   }
   .routes{
-    width: 82%;
+    width:78%;
     height: 100%;
     padding: 0;
     margin: 0;

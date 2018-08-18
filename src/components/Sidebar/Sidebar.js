@@ -10,14 +10,11 @@ width: 100%;
 padding: 0;
 margin-left:0;
 display: flex;
-font-size: 1em;
-color: white;
 background: #d0daef;
-transition: 0.5s ease-out;
+transition: 0.4s ease-out;
 
 &:hover{
  background: #26436d;
- color: white;
 }
 
 `
@@ -27,15 +24,15 @@ export default function Sidebar() {
         <Outer >
             <div className="side-sidebar">
 
-                <Link to="/profile"><div> <h6>Profile </h6></div></Link>
+                <Link to="/profile"> <h6 style={{color: '#2f2f30', fontSize: '1.5rem'}}>Profile </h6></Link>
                 <hr />
-                <Link to="/end"><div> <h6> Help</h6></div></Link>
-                <hr />
-
-                <Link to="/privacy"><div> <h6> FAQs</h6></div></Link>
+                <Link to="/end"> <h6 style={{color: '#2f2f30', fontSize: '1.5rem'}}> Help</h6></Link>
                 <hr />
 
-                <Link to="/"><div> <h6> Sign Out</h6></div></Link>
+                <Link to="/faq"> <h6 style={{color: '#2f2f30', fontSize: '1.5rem'}}> FAQs</h6></Link>
+                <hr />
+
+                <Link to="/"> <h6 style={{color: '#2f2f30', fontSize: '1.5rem'}}> Sign Out</h6></Link>
                 <hr />
             </div>
             <div className="sidebar-vert-line-wrapper">

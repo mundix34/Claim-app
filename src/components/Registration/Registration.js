@@ -10,13 +10,16 @@ import styled from 'styled-components';
 
 
 const Outer = styled.div`
-color: ddd;
 height: 100%;
 width: 100%;
+display: flex;
+align-items: center;
+justify-content: center;
+margin-top: 2em;
 `
 
 const H3 = styled.h3`
-font-family: 'Poiret One', cursive;
+font-family: helvetica, cursive;
 font-size: 1.5em;
 margin-top: 2em;
 
@@ -56,15 +59,16 @@ class Registration extends Component {
 
         return (
             <Outer>
-                    <h1 style ={{ fontFamily: 'Poiret One'}}>Welcome</h1>
-                    {
-                        user.first_last ? (
-                            <div>
-                                <H3> {user.first_last} !</H3>
-                                <Link to="/input"><Button >Begin</Button></Link>
-                            </div>
-                        ) : "Please login"
-                    }
+                {
+                    user.first_last ? (
+                        <div>
+                            <h1 style={{ fontFamily: 'Helvectica' }}>Welcome {user.first_last}</h1>
+                            <H3> Service First <span className="dot"> <i className="fas fa-circle"></i></span>Service Fast </H3>
+                            <Link to="/input"><Button >Begin</Button></Link>
+                            <p> Do you have a reference Id? <Link to="/end" ><span> whats this?</span></Link></p>
+                        </div>
+                    ) : "Please login"
+                }
             </Outer>
         );
     }
