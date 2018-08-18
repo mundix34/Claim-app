@@ -1,5 +1,5 @@
 UPDATE users
-SET ref_id =$2, address_1=$3, address_2=$4, city=$5, state=$6, zip=$7, is_insured=$8
+SET given_name =$2, family_name=$3, email=$4, address_1=$5, address_2=$6, city=$7, state=$8, zip=$9, claim=$10, ref_id=$11, is_insured=$12
 WHERE user_id = $1
 
 RETURNING *;

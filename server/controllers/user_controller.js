@@ -11,7 +11,7 @@ module.exports = {
                 <li> ${ insured }</li>
                 <li> ${ reference }</li>
                 </ul>`;
-        dbSet.post_user([req.params.id, reference, firstName, lastName, email, addressOne, addressTwo, city, state, zip, claim, insured])
+        dbSet.post_user([req.params.id, firstName, lastName, email, addressOne, addressTwo, city, state, zip, claim, reference, insured])
             .then(([response]) => res.status(200).send( {msg: userMessage, response}))
             .catch(err => {
                 res.status(500).send({ errorMessage: 'Oops, an error occured' })
@@ -20,8 +20,8 @@ module.exports = {
     },
     updateUser: (req, res) => {
         const dbSet = req.app.get('db');
-            const { addressOne, addressTwo, city, state, zip, reference, insured} = req.body;
-            dbSet.edit_user_info([req.params.id, reference, addressOne, addressTwo, city, state, zip, insured])
+            const { firstName,lastName, email, addressOne, addressTwo, city, state, zip, reference, claim, insured} = req.body;
+            dbSet.edit_user_info([req.params.id, reference, firstName,lastName, email, addressOne, addressTwo, city, state, zip, reference, claim, insured])
                 .then(([response]) => res.status(200).send(response))
                 .catch(err => {
                     res.status(500).send({ errorMessage: 'Oops, an error occured' })

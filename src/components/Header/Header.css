@@ -2,7 +2,7 @@ nav.navbar, .navbar-default {
   background-color: #26436d;
   color: white;
   margin-bottom: 0;
-  padding-bottom: 1.7rem;
+  padding-bottom: 0;
   height: 100%;
   }
   
@@ -62,11 +62,23 @@ nav.navbar, .navbar-default {
     padding: 0;
     margin: 0;
   }
+  .header-logo{
+    margin: 10px;
+    border-radius: 60%;
+    height: 90px;
+    display: none;
+    width: 75px;
+  }
   .iaeJYN {
     text-align: center;
     background: #133260;
     font-family: farquhar;
     height: 100%;
+}
+.container>.navbar-header {
+  margin-right: -15px;
+  margin-left: -15px;
+  background-color: #26436d;
 }
   
   @media(min-width: 768px){
@@ -78,4 +90,12 @@ nav.navbar, .navbar-default {
 .navbar-collapse.collapse {
     display: inline;
 }
+.navbar-right {
+    float: right!important;
+    margin-right: -15px;
+    padding-top: 1em;
+}
+
+
+
   }

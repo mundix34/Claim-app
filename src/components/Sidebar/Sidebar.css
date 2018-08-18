@@ -7,3 +7,27 @@
   --fontFam: 'Roboto', sans-serif;
   --fontSize: 14px;
 }*/
+
+.side-sidebar{
+  height: 100%;
+width: 90%;
+padding-left: 2em;
+margin-left: 0;
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+}
+.sidebar-vert-line-wrapper{
+  height: 100%;
+  width: 10%;
+  display: flex;
+  padding:0;
+  margin: 0;
+  justify-content: flex-end;
+
+}
+.sidebar-vert-line{
+  border-left: 1px solid gray;
+  height: 100%;
+
+}

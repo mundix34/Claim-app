@@ -8,7 +8,7 @@ import styled from 'styled-components';
 
 
 const Img = styled.img`
-height: 80px;
+height: 7rem;
 border-radius: 60%;
 `
 
@@ -27,7 +27,7 @@ function Header(props) {
           <Navbar.Header className="nav-header">
             <Navbar.Brand >
               <div className="new-div">
-                <img className="logo" src="../images/images_logo_cropped.png" alt='logo' rounded />
+                <img className="header-logo" src="../images/images_logo_cropped.png" alt='logo' rounded />
                 <h1>Insurance Inc.</h1>
 
               </div>
@@ -60,7 +60,7 @@ function Header(props) {
           <Navbar.Header>
             <Navbar.Brand>
               <div style={{ display: 'flex' }}>
-                <Image className="logo" src="../images/images_logo_cropped.png" alt='logo' rounded />
+                <Image className="header-logo" src="../images/images_logo_cropped.png" alt='logo' rounded />
                 <h1>Insurance Inc.</h1>
               </div>
 

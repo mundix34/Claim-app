@@ -58,10 +58,10 @@ const Main = styled.main`
 justify-content: space-between;
 flex-grow: 1;
 background: #ebeef4;
+margin: 0;
 display: flex;
 height: 63%;
 width: 100%;
-padding: 0.5rem;
 @media(min-width: 593px){
   height: 61%;
   }

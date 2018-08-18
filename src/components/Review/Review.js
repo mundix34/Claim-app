@@ -141,15 +141,13 @@ class Review extends Component {
           <h3> Leave a Feedback</h3>
           <label>Title:</label> <Input className="Input" onChange={(e) => this.addTitle(e.target.value)} value={this.state.title}></Input><br />
           <label>Content:</label> <Textarea className="Input" onChange={(e) => this.addContent(e.target.value)} value={this.state.content}></Textarea><br />
-          <select>
             <label> Rating </label>
-            <select className="select" onChange={(e) => this.addRating(e.target.value)}>
-              <option type="number" value="1">1</option>
-              <option type="number" value="2">2</option>
-              <option type="number" value="3">3</option>
-              <option type="number" value="4">4</option>
-              <option type="number" value="5">5</option>
-            </select>
+            <select className=" review-select" onChange={(e) => this.addRating(e.target.value)}>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
           </select>
           <Button style={btnStyle} onClick={() => this.addReview()}> Submit </Button>
           <Button style={btnStyle} onClick={() => this.logOut()}> Logout </Button>

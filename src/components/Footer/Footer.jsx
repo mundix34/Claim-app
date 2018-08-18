@@ -25,7 +25,7 @@ export default function Footer() {
             <div className="row-1">
 
                 <div className="col-1">
-                    <img className="logo" src="../images/images_logo_cropped.png" alt='logo' rounded />
+                    <img className="footer-logo" src="../images/images_logo_cropped.png" alt='logo' rounded />
                     <h3>Insurance Inc.</h3>
                     <hr className="hr" />
                     <P style={{ color: '#2d323a' }}> Service First <span className="dot"> <i class="fas fa-circle"></i></span>Service Fast</P>
@@ -37,9 +37,9 @@ export default function Footer() {
                 <div className="vert-line"></div>
 
                     <div className="contact-icons-div">
-                        <Link to="/end"><i className=" phone fas fa-phone"> <span>1-800-008-0011 </span> </i></Link>
-                        <Link to="/end"><i className=" mail fas fa-envelope"> <span> claims@insuranceinc.com</span> </i></Link>
-                        <Link to="/end"> <i className=" address fas fa-map-marker-alt"> <span>123 Main ST Provo Utah 84600 </span></i> </Link>
+                        <Link to="/phone"><i className=" phone fas fa-phone"> <span>1-800-008-0011 </span> </i></Link>
+                        <Link to="/email"><i className=" mail fas fa-envelope"> <span> claims@insuranceinc.com</span> </i></Link>
+                        <Link to="/address"> <i className=" address fas fa-map-marker-alt"> <span>123 Main ST Provo Utah 84600 </span></i> </Link>
                     </div>
                 </div>
 

@@ -2,8 +2,8 @@ module.exports = {
     postReview: (req, res) => {
     const dbSet = req.app.get('db');
     let {params} = req;
-        const { userId, title, content} = req.body;
-        dbSet.post_review([userId,title, content])
+        const { userId, title, content, rating} = req.body;
+        dbSet.post_review([userId,title, content, rating])
             .then((response) => res.status(200).send(response))
             .catch(err => {
                 res.status(500).send({ errorMessage: 'Oops, an error occured on your post review' })
@@ -35,7 +35,7 @@ module.exports = {
           } )
          .catch( err => {
             res.status(500).send({errorMessage: "Oops! Something went wrong."});
-            // console.log(err)
+            console.log(err)
           } )
         
     },

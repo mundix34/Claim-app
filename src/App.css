@@ -3,7 +3,6 @@
   margin: 0;
   height: 100%;
   width: 100%;
-  background: purple;
 }
 .side-bar{
   width: 18%;
@@ -15,7 +14,6 @@
 
 }
 .routes{
-  background: green;
   width: 100%;
   height: 100%;
   margin: 0;
@@ -28,13 +26,15 @@
   width: 18%;
   height: 100%;
   margin: 0;
+  margin-left: 0;
   padding: 0;
-  /* vertical-align: baseline; */
+  vertical-align: baseline;
   display: flex;
+  padding: 0;
+  background: #d0daef;
   
   }
   .routes{
-    background: green;
     width: 82%;
     height: 100%;
     padding: 0;

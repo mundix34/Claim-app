@@ -202,52 +202,42 @@ class Input extends Component {
                     <form className="form-style" onSubmit={e => e.preventDefault()}>
                     <label> Fields marked with an asterisk (*) are Required</label>
                         <div className="first-name">
-                            <span>{this.props.newUser.firstName}</span>
                             <label>First Name  </label><InputField className="input" type="text" placeholder="First Name   * " value={this.props.newUser.firstName} onChange={(e) => this.props.addFirstName(e.target.value.toUpperCase())} />
                         </div>
 
                         <div className="last-name">
-                            <span>{this.props.newUser.lastName}</span>
                             <label>Last Name </label><InputField className="input" type="text" placeholder="Last Name   * " value={this.props.newUser.lastName} onChange={(e) => this.props.addLastName(e.target.value.toUpperCase())} />
                         </div>
 
                         <div className="email">
-                            <span>{this.props.newUser.email}</span>
                             <label>Email </label><InputField className="input" type="email" placeholder="Email   * " value={this.props.newUser.email} onChange={(e) => this.props.addEmail(e.target.value)} />
                         </div>
 
                         <div className="address-1">
-                            <span>{this.props.newUser.addressOne}</span>
                             <label>Address 1  </label><InputField className="input" type="text" placeholder="Address Line 1   * " value={this.props.newUser.addressOne} onChange={(e) => this.props.addAddressOne(e.target.value.toUpperCase())} />
                         </div>
 
                         <div className="address-2">
-                            <span>{this.props.newUser.addressTwo}</span>
                             <label>Address 2 (Optional) </label><InputField type="text" className="input" placeholder="Address Line 2" value={this.props.newUser.addressTwo} onChange={(e) => this.props.addAddressTwo(e.target.value.toUpperCase())} />
                         </div>
 
                         <div className="city">
-                             <span>{this.props.newUser.city}</span>
                         <label>City </label><InputField className="input" type="text" placeholder="City  *" value={this.props.newUser.city} onChange={(e) => this.props.addCity(e.target.value.toUpperCase())} />
                         </div>
 
                         <div className="state">
-                            <span>{this.props.newUser.state}</span>
                         <label>State </label> <InputField className="input" type="text" placeholder="State *" value={this.props.newUser.state} onChange={(e) => this.props.addState(e.target.value.toUpperCase())} />
                         </div>
 
                         <div className="zip">
-                            <span>{this.props.newUser.zip}</span>
                         <label>Zip Code </label> <InputField type="number" className="input" value={this.props.newUser.zip} placeholder="Zip Code *" onChange={(e) => this.props.addZip(e.target.value)} />
                         </div>
 
                         <div className="ref">
-                            <span>{this.props.newUser.reference}</span>
                         <label>Claim Number </label> <InputField type="number" className="input" value={this.props.newUser.claim} placeholder="Claim Number *" onChange={(e) => this.props.addClaim(e.target.value)} />
                         </div>
 
                         <div className="claim">
-                            <span>{this.props.newUser.claim}</span>
                         <label>Reference ID ?</label> <InputField className="input" type="number" value={this.props.newUser.reference} placeholder="Reference ID *" onChange={(e) => this.props.addReference(e.target.value)} />
 
                         </div>
