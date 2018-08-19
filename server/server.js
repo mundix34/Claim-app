@@ -67,7 +67,8 @@ app.get('/api/logout', (req, res) => {
     res.send()
 })
 //endpoints
-app.put('/api/update_user/:id', us.updateUser);
+app.put('/api/update-user/:id', us.updateUser);
+app.get('/api/get-user/:id', us.getUser);
 app.get('/api/claim/:id', claim.getClaim);
 app.get('/api/reviews', review.getReviews);
 app.post('/api/review', review.postReview);

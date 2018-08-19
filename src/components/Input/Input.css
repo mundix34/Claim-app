@@ -9,6 +9,7 @@
 }
 .mapped-btns{
     display: flex;
+    margin: 1em;
     
 }
 .mapped-list{

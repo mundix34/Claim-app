@@ -26,7 +26,7 @@ class Payment extends Component {
     
     nextPage() {
         this.state.selectMethod ==='stripe'? this.props.history.push("/stripe"):
-        this.state.selectMethod ==='check'?this.props.history.push("/input"):
+        this.state.selectMethod ==='check'?this.props.history.push("/profile"):
         this.props.history.push("/maps")
 
     }

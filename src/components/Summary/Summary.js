@@ -31,8 +31,9 @@ class Summary extends Component {
         }
     }
     componentDidMount() {
+        console.log(this.props.reference)
         axios.get(`/api/claim/${this.props.reference}`).then(res => {
-            console.log(res);
+            console.log(res.data);
             this.props.getClaimSummary(res.data)
             this.setState({
                 ref_id: res.data.ref_id,

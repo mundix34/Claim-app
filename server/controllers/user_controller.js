@@ -27,6 +27,16 @@ module.exports = {
                     res.status(500).send({ errorMessage: 'Oops, an error in update occured' })
                     console.log(err);
                 })
-        }
+        },
+        getUser: (req, res, next) =>{
+            let {params} = req;
+            const dbSet = req.app.get('db');
+            dbSet.get_user(params.id)        
+                .then((user) => res.status(200).send(user))
+                .catch(err => res.status(404).send({ errorMessage: 'Oops, encountered error' }));
+                
+        
+            
+        },
         
 }

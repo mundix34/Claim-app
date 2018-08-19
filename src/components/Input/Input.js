@@ -10,11 +10,10 @@ import './Input.css';
 
 const Outer = styled.div`
 color: ddd;
+height: 100%;
 display: flex;
 flex-direction: column;
-justify-content: flex-start;
-background: pink;
-height: 100%;
+justify-content: space-evenly;
 width: 100%;
 padding: 0;
 margin: 0;
@@ -72,6 +71,7 @@ const ButtonDiv = styled.div`
 display: flex;
  justify-content: flex-start;
  align-items: flex-start;
+ margin: 2rem;
 
 `
 const P = styled.p`
@@ -94,7 +94,8 @@ class Input extends Component {
             msg:'',
             edit: false,
             inputDisabled: false,
-            form: true
+            form: true,
+            profile: false
 
         }
         this.nextPage = this.nextPage.bind(this);
@@ -159,7 +160,7 @@ class Input extends Component {
 
 
     editProfile() {
-        axios.put(`/api/update_user/${this.state.user_id}`, this.props.newUser).then(res => {            
+        axios.put(`/api/update-user/${this.state.user_id}`, this.props.newUser).then(res => {            
             this.props.addProfile(res.data)
             this.setState({
                 ref_id: res.data.ref_id,

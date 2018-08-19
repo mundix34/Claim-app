@@ -30,8 +30,9 @@ const IS_INSURED = "IS_INSURED";
 const ADD_USER_INFO = "ADD_USER_INFO";
 const GET_CLAIM_SUMMARY = "GET_CLAIM_SUMMARY";
 const GET_COMPARABLES = "GET_COMPARABLES";
-const ADD_PROFILE = "ADD_PROFILE";
-const ADD_PROFILE_NEW = "ADD_PROFILE_NEW";
+const ADD_PROFILE = "ADD_PROFILE";//response is object, needs array
+const ADD_PROFILE_NEW = "ADD_PROFILE_NEW";//response is array
+const GET_USER_PROFILE = "GET_USER_PROFILE";
 const CLEAR_FIELDS = "CLEAR_FIELDS";
 
 
@@ -53,15 +54,21 @@ export function getComparables(comps) {
         payload: comps
     }
 }
-export function addProfile(response) {
+export function addProfile(response) {//response is object, needs array
     return {
         type: ADD_PROFILE,
         payload: response,
     }
 }
-export function addProfileNew(response) {
+export function addProfileNew(response) {//response is array!
     return {
         type: ADD_PROFILE_NEW,
+        payload: response,
+    }
+}
+export function getUserProfile(response) {
+    return {
+        type: GET_USER_PROFILE,
         payload: response,
     }
 }
@@ -181,6 +188,8 @@ export default function reducer(state = initialState, action) {
             return Object.assign({}, state, { summary: action.payload })
         case GET_COMPARABLES:
             return Object.assign({}, state, { comparables: action.payload })
+        case GET_USER_PROFILE:
+            return Object.assign({}, state, { userArray: action.payload })
         case ADD_PROFILE:
             let newUser = { ...state.user, ...action.payload }
             return Object.assign({}, state, { user: newUser})

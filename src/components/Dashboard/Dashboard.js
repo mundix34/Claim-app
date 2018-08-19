@@ -49,7 +49,7 @@ class Dashboard extends Component {
 
 
     render() {
-console.log(this.props.history.location.pathName);
+// console.log(this.props.history.location.pathName);
 
         const newSummary = this.props.summary.map((claim, i) => (
             <div className="list animated bounceInLeft " key={i}>
