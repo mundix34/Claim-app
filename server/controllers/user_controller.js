@@ -21,10 +21,10 @@ module.exports = {
     updateUser: (req, res) => {
         const dbSet = req.app.get('db');
             const { firstName,lastName, email, addressOne, addressTwo, city, state, zip, reference, claim, insured} = req.body;
-            dbSet.edit_user_info([req.params.id, reference, firstName,lastName, email, addressOne, addressTwo, city, state, zip, reference, claim, insured])
+            dbSet.edit_user_info([req.params.id, firstName, lastName, email, addressOne, addressTwo, city, state, zip, claim, reference, insured])
                 .then(([response]) => res.status(200).send(response))
                 .catch(err => {
-                    res.status(500).send({ errorMessage: 'Oops, an error occured' })
+                    res.status(500).send({ errorMessage: 'Oops, an error in update occured' })
                     console.log(err);
                 })
         }

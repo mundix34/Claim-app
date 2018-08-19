@@ -43,13 +43,13 @@ background-size: cover;
 const Head = styled.header`
 flex-shrink: 0;
 backgound: red;
-height: 7.5%;
+height: 9%;
 width: 100%;
 z-index: 5;
 margin-bottom: 0;
 padding-bottom: 2em;
 @media(min-width: 593px){
-  height: 13.8%;
+  height: 10.8%;
   padding: 0.2rem;
   }
 
