@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addFirstName, addLastName, addEmail, addClaim, addAddressOne, addAddressTwo, addCity, addReference, isInsured, addState, addZip, addProfile, clearFields, addUserInfo } from '../../ducks/reducer';
+import { addFirstName, addLastName, addEmail, addClaim, addAddressOne, addAddressTwo, addCity, addReference, isInsured, addState, addZip, addProfile, addProfileNew, clearFields, addUserInfo } from '../../ducks/reducer';
 import axios from 'axios';
 import styled from 'styled-components';
 import './Input.css';
@@ -13,7 +13,6 @@ color: ddd;
 display: flex;
 flex-direction: column;
 justify-content: flex-start;
-// align
 background: pink;
 height: 100%;
 width: 100%;
@@ -28,20 +27,14 @@ border-radius: 0.5rem;
 margin: 0.5rem;
 height: 60%;
 width: 100%;
-background: red;
 margin-bottom: 0.5rem;
 
 
 `
 const MapDiv = styled.div`
 color: ddd;
-// display: flex;
-// flex-direction: column;
-// justify-content: flex-start;
-// align-items: flex-start;
 height: 40%;
 width: 100%;
-background: green;
 margin: 0.5rem;
 
 `
@@ -86,7 +79,8 @@ font-weight: 600;
 `
 const listStyle = {
     boxShadow: '0 0 20px 0 rgba(72, 94, 116, 0.7)',
-    padding: '1.5rem'
+    padding: '1.5rem',
+    height:'100%'
 }
 
 
@@ -95,7 +89,9 @@ class Input extends Component {
         super(props)
         this.state = {
             ref_id: '',
+            user_id: '',
             stateUser: [],
+            msg:'',
             edit: false,
             inputDisabled: false,
             form: true
@@ -139,11 +135,13 @@ class Input extends Component {
         }
         else {
             axios.post(`/api/register/${this.props.user.user_id}`, this.props.newUser).then(res => {
-                console.log(res.data.response);
-                this.props.addProfile(res.data.response)
+                console.log('respect', res.data.response);
+                this.props.addProfileNew([res.data.response])
                 this.setState({
                     ref_id: res.data.response.ref_id,
+                    user_id: res.data.response.user_id,
                     stateUser: [res.data.response],
+                    msg: res.data.msg,
                     form: false
 
 
@@ -154,16 +152,14 @@ class Input extends Component {
 
     showEdit() {
         this.setState({
-            form: true,
+            form: !this.state.form,
             edit: true
         })
     }
 
 
     editProfile() {
-        axios.put(`/api/update_user/${this.props.user.user_id}`, this.props.newUser).then(res => {
-            console.log("testing update", res.data);
-            
+        axios.put(`/api/update_user/${this.state.user_id}`, this.props.newUser).then(res => {            
             this.props.addProfile(res.data)
             this.setState({
                 ref_id: res.data.ref_id,
@@ -179,7 +175,7 @@ class Input extends Component {
                 alert('please make a selection')
     }
     render() {
-        const newStateUser = this.state.stateUser.map((item, i) => (
+        const newStateUser = this.props.userArray.map((item, i) => (
             <div style={listStyle} className=" animated bounceInRight" key={i}>
                 <div className="mapped-list">
                     <P> firstName: {item.given_name} </P>
@@ -299,7 +295,8 @@ function mapStateToProps(state) {
             email: state.email
         },
         user: state.user,
+        userArray: state.userArray
     }
 }
 
-export default connect(mapStateToProps, { addFirstName, addLastName, addEmail, addClaim, addAddressOne, addAddressTwo, addCity, addReference, isInsured, addState, addZip, addProfile, clearFields, addUserInfo })(Input)
+export default connect(mapStateToProps, { addProfileNew, addFirstName, addLastName, addEmail, addClaim, addAddressOne, addAddressTwo, addCity, addReference, isInsured, addState, addZip, addProfile, clearFields, addUserInfo })(Input)

@@ -13,9 +13,9 @@ const Outer = styled.div`
 height: 100%;
 width: 100%;
 display: flex;
-align-items: center;
+align-items: flex-start;
 justify-content: center;
-margin-top: 2em;
+margin-top: 3em;
 `
 
 const H3 = styled.h3`

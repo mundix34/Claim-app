@@ -56,7 +56,7 @@ class Payment extends Component {
                         <option className = "option-title" type="text" value="check" >Receive a Check</option>
                         <option className = "option-title" type="text" value="agent" >Title for Check</option>
                     </select> <br />
-                <Button onClick={() => this.backPage()}>Back to Profile</Button>
+                <Button onClick={() => this.backPage()}>To Profile</Button>
 
                 <Button onClick={() => this.nextPage()}>Continue</Button>
 

@@ -1,6 +1,27 @@
-.title-status{
-    color: black;
+.title-status-wrapper{
     display: flex;
     flex-direction: column;
     padding-left: 1em;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+.title-status{
+    height: 25%;
+    width: 100%;
+}
+.upload{
+    height: 80%;
+    width: 100%;
+    padding: 1rem;
+
+
+}
+.img-display{
+    height: 80%;
+    width: 100%;
+    border-radius: 3px;
+
+
 }

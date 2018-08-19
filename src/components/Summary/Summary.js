@@ -31,7 +31,6 @@ class Summary extends Component {
         }
     }
     componentDidMount() {
-        console.log(this.props.reference)
         axios.get(`/api/claim/${this.props.reference}`).then(res => {
             console.log(res);
             this.props.getClaimSummary(res.data)
@@ -110,8 +109,10 @@ class Summary extends Component {
 }
 function mapStateToProps(state) {
     return {
+        summary: state.summary,
+        userArray: state.userArray,
         reference: state.user.ref_id,
-        summary: state.summary
+
     }
 }
 

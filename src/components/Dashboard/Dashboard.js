@@ -117,8 +117,10 @@ console.log(this.props.history.location.pathName);
 }
 function mapStateToProps(state) {
     return {
+        summary: state.summary,
+        userArray: state.userArray,
         reference: state.user.ref_id,
-        summary: state.summary
+
     }
 }
 
