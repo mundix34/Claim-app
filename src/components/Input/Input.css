@@ -16,6 +16,7 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    align-items: flex-start;
     padding: 1rem;
 }
 label{
@@ -25,19 +26,40 @@ label{
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
+        align-items: flex-start;
+        flex-wrap: wrap;
         width: 100%;
         background: yellow;
         border-radius: 3px;
         height: 100%;
+        padding: 1rem;
     }
-    @media(min-width: 593px){
+    .input-fields-div{
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+
+    }
+    
+    /* @media(min-width: 593px){
         .form-style{
             display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        width: 100%;
+        background: yellow;
+        border-radius: 3px;
+        height: 100%;
+        padding: 1rem;
+        }
+      } */
+    /* .form-style{
+         display: flex;
             flex-direction: column;
             flex-wrap: wrap;
             width: 100%;
-            background: yellow;
+            background: orange;
             border-radius: 3px;
             height: 100%;
-        }
-      }
+    } */

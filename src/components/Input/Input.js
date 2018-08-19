@@ -12,8 +12,8 @@ const Outer = styled.div`
 color: ddd;
 display: flex;
 flex-direction: column;
-justify-content: space-evenly;
-margin-top: 1em;
+justify-content: flex-start;
+// align
 background: pink;
 height: 100%;
 width: 100%;
@@ -23,27 +23,31 @@ margin: 0;
 `
 const FormDiv = styled.div`
 box-shadow: 0 0 20px 0 rgba(72, 94, 116, 0.7);
-padding: 1.5rem;
+padding: 1rem;
 border-radius: 0.5rem;
-margin: 1em;
-height: 100%;
-width: 50%;
+margin: 0.5rem;
+height: 60%;
+width: 100%;
 background: red;
+margin-bottom: 0.5rem;
+
 
 `
 const MapDiv = styled.div`
 color: ddd;
-display: flex;
-flex-direction: column;
-justify-content: space-evenly;
-align-items: flex-start;
-margin-top: 1rem;
-height: 100%;
-width: 50%;
+// display: flex;
+// flex-direction: column;
+// justify-content: flex-start;
+// align-items: flex-start;
+height: 40%;
+width: 100%;
+background: green;
+margin: 0.5rem;
+
 `
 const Button = styled.button`
-margin: 1rem;
-  width: 150px;
+margin: 0.5rem;
+  width: 100px;
   background: #26436d;
   color: white;
   border: 0;
@@ -59,8 +63,10 @@ const pStyle = {
 }
 const SelectDiv = styled.div`
 display: flex;
-justify-content: space-evenly;
+justify-content: flex-start;
 margin: 1.4rem auto;
+height: 3.5em;
+width: 22rem;
 `
 const InputField = styled.input`
 border-radius: 5px;
@@ -71,7 +77,8 @@ flexBasis: 4px;
 `
 const ButtonDiv = styled.div`
 display: flex;
-justify-content: center;
+ justify-content: flex-start;
+ align-items: flex-start;
 
 `
 const P = styled.p`
@@ -99,16 +106,16 @@ class Input extends Component {
         this.addProfile = this.addProfile.bind(this);
         this.editProfile = this.editProfile.bind(this);
     }
-    componentDidMount() {
-        axios.get('/api/user_data').then(res => {            
-            this.props.addUserInfo(res.data)
-        })
-    }
-    componentDidUpdate() {
-        axios.get('/api/user_data').then(res => {
-            this.props.addUserInfo(res.data)
-        })
-    }
+    // componentDidMount() {
+    //     axios.get('/api/user_data').then(res => {
+    //         this.props.addUserInfo(res.data)
+    //     })
+    // }
+    // componentDidUpdate() {
+    //     axios.get('/api/user_data').then(res => {
+    //         this.props.addUserInfo(res.data)
+    //     })
+    // }
 
     addProfile() {
         if (!this.props.newUser.firstName) {
@@ -155,6 +162,8 @@ class Input extends Component {
 
     editProfile() {
         axios.put(`/api/update_user/${this.props.user.user_id}`, this.props.newUser).then(res => {
+            console.log("testing update", res.data);
+            
             this.props.addProfile(res.data)
             this.setState({
                 ref_id: res.data.ref_id,
@@ -200,55 +209,58 @@ class Input extends Component {
             <Outer>
                 <FormDiv className={this.state.form ? "animated slideInLeft" : "not-showing animated slideInLeft"}>
                     <form className="form-style" onSubmit={e => e.preventDefault()}>
-                    <label> Fields marked with an asterisk (*) are Required</label>
-                        <div className="first-name">
-                            <label>First Name  </label><InputField className="input" type="text" placeholder="First Name   * " value={this.props.newUser.firstName} onChange={(e) => this.props.addFirstName(e.target.value.toUpperCase())} />
+                        <label> Fields marked with an asterisk (*) are Required</label>
+                        <div className="input-fields-div">
+                            <label>First Name  </label><InputField className="input-field" type="text" placeholder="First Name   * " value={this.props.newUser.firstName} onChange={(e) => this.props.addFirstName(e.target.value.toUpperCase())} />
                         </div>
 
-                        <div className="last-name">
-                            <label>Last Name </label><InputField className="input" type="text" placeholder="Last Name   * " value={this.props.newUser.lastName} onChange={(e) => this.props.addLastName(e.target.value.toUpperCase())} />
+                        <div className="input-fields-div">
+                            <label>Last Name </label><InputField className="input-field" type="text" placeholder="Last Name   * " value={this.props.newUser.lastName} onChange={(e) => this.props.addLastName(e.target.value.toUpperCase())} />
                         </div>
 
-                        <div className="email">
-                            <label>Email </label><InputField className="input" type="email" placeholder="Email   * " value={this.props.newUser.email} onChange={(e) => this.props.addEmail(e.target.value)} />
+                        <div className="input-fields-div">
+                            <label>Email </label><InputField className="input-field" type="email" placeholder="Email   * " value={this.props.newUser.email} onChange={(e) => this.props.addEmail(e.target.value)} />
                         </div>
 
-                        <div className="address-1">
-                            <label>Address 1  </label><InputField className="input" type="text" placeholder="Address Line 1   * " value={this.props.newUser.addressOne} onChange={(e) => this.props.addAddressOne(e.target.value.toUpperCase())} />
+                        <div className="input-fields-div">
+                            <label>Address 1  </label><InputField className="input-field" type="text" placeholder="Address Line 1   * " value={this.props.newUser.addressOne} onChange={(e) => this.props.addAddressOne(e.target.value.toUpperCase())} />
                         </div>
 
-                        <div className="address-2">
-                            <label>Address 2 (Optional) </label><InputField type="text" className="input" placeholder="Address Line 2" value={this.props.newUser.addressTwo} onChange={(e) => this.props.addAddressTwo(e.target.value.toUpperCase())} />
+                        <div className="input-fields-div">
+                            <label>Address 2 </label><InputField type="text" className="input-field" placeholder="Address Line 2" value={this.props.newUser.addressTwo} onChange={(e) => this.props.addAddressTwo(e.target.value.toUpperCase())} />
                         </div>
 
-                        <div className="city">
-                        <label>City </label><InputField className="input" type="text" placeholder="City  *" value={this.props.newUser.city} onChange={(e) => this.props.addCity(e.target.value.toUpperCase())} />
+                        <div className="input-fields-div">
+                            <label>City </label><InputField className="input-field" type="text" placeholder="City  *" value={this.props.newUser.city} onChange={(e) => this.props.addCity(e.target.value.toUpperCase())} />
                         </div>
 
-                        <div className="state">
-                        <label>State </label> <InputField className="input" type="text" placeholder="State *" value={this.props.newUser.state} onChange={(e) => this.props.addState(e.target.value.toUpperCase())} />
+                        <div className="input-fields-div">
+                            <label>State </label> <InputField className="input-field" type="text" placeholder="State *" value={this.props.newUser.state} onChange={(e) => this.props.addState(e.target.value.toUpperCase())} />
                         </div>
 
-                        <div className="zip">
-                        <label>Zip Code </label> <InputField type="number" className="input" value={this.props.newUser.zip} placeholder="Zip Code *" onChange={(e) => this.props.addZip(e.target.value)} />
+                        <div className="input-fields-div">
+                            <label>Zip Code </label> <InputField type="number" className="input-field" value={this.props.newUser.zip} placeholder="Zip Code *" onChange={(e) => this.props.addZip(e.target.value)} />
                         </div>
 
-                        <div className="ref">
-                        <label>Claim Number </label> <InputField type="number" className="input" value={this.props.newUser.claim} placeholder="Claim Number *" onChange={(e) => this.props.addClaim(e.target.value)} />
+                        <div className="input-fields-div">
+                            <label>Claim Number </label> <InputField type="number" className="input-field" value={this.props.newUser.claim} placeholder="Claim Number *" onChange={(e) => this.props.addClaim(e.target.value)} />
+                            
                         </div>
 
-                        <div className="claim">
-                        <label>Reference ID ?</label> <InputField className="input" type="number" value={this.props.newUser.reference} placeholder="Reference ID *" onChange={(e) => this.props.addReference(e.target.value)} />
+                        <div className="input-fields-div">
+                            <label>Reference ID ?</label> <InputField className="input-field" type="number" value={this.props.newUser.reference} placeholder="Reference ID *" onChange={(e) => this.props.addReference(e.target.value)} />
 
                         </div>
-                        <SelectDiv>
-                            <label style={pStyle}> Are you insured with Insurance Inc?</label>
-                            <select className="select" onChange={(e) => this.props.isInsured(e.target.value)}>
-                                <option type="text" value="select" >select</option>
-                                <option type="text" value="yes" >Yes</option>
-                                <option type="text" value="no" >No</option>
-                            </select>
-                        </SelectDiv>
+                        <div className="input-fields-div">
+                            <SelectDiv>
+                                <label style={pStyle}> Are you insured with Insurance Inc?</label>
+                                <select className="select" onChange={(e) => this.props.isInsured(e.target.value)}>
+                                    <option type="text" value="select" >select</option>
+                                    <option type="text" value="yes" >Yes</option>
+                                    <option type="text" value="no" >No</option>
+                                </select>
+                            </SelectDiv>
+                        </div>
 
                         <ButtonDiv>
                             <Button className="hov" onClick={() => this.props.clearFields()}>Cancel</Button>

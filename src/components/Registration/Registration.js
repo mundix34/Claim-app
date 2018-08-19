@@ -42,11 +42,11 @@ class Registration extends Component {
             this.props.addUserInfo(res.data)
         })
     }
-    componentDidUpdate() {
-        axios.get('/api/user_data').then(res => {
-            this.props.addUserInfo(res.data)
-        })
-    }
+    // componentDidUpdate() {
+    //     axios.get('/api/user_data').then(res => {
+    //         this.props.addUserInfo(res.data)
+    //     })
+    // }
     logOut() {
         axios.get('/api/logout').then(res => {
             this.props.history.push('/')
