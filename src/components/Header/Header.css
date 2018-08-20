@@ -89,6 +89,12 @@ nav.navbar, .navbar-default {
       height: 100%;
       
     }
+    .navbar-brand {
+      float: left;
+      /* padding: 15px 15px; */
+      font-size: 18px;
+      line-height: 20px;
+  }
 .navbar-collapse.collapse {
     display: inline;
 }

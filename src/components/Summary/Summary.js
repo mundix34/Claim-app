@@ -112,7 +112,7 @@ function mapStateToProps(state) {
     return {
         summary: state.summary,
         userArray: state.userArray,
-        reference: state.user.ref_id,
+        reference: state.userArray[0].ref_id,
 
     }
 }

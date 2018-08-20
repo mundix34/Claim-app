@@ -24,22 +24,64 @@
   margin: 0;
   display: flex;
   flex-direction: column;
-  background: pink;
   flex-wrap: wrap;
   align-items: center;
   padding: 1rem;
-  
-
 
 }
-.delete{
-  align-self: flex-end;
-  
-}
+
 p{
   font-weight: 300;
   font-size: 1em;
 }
 h3{
   font-size: 1.2em;
+}
+.review-select{
+margin: 1rem;  
+}
+.review-icon{
+  margin: 0.5rem;
+  font-size: 1.5rem;
+  
+
+
+}
+.review-icon-clicked{
+  margin: 0.5rem;
+  font-size: 1.5rem;
+  color: #efb247;
+
+}
+.review-form{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  
+}
+.review-btns{
+  display: flex;
+}
+.review-icon-close {
+  bottom: 10px;
+  left: 10px;
+  font-size: 2rem;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 3;
+}
+.review-close-div{
+  margin: 1rem;
+    background: none;
+    color:#242526;
+    border: 0;
+    text-transform: uppercase;
+    height: 2.5em;
+    border-radius: 3px;
+    text-align: center;
+    -webkit-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
+
 }

@@ -4,7 +4,7 @@ import { getComparables } from '../../ducks/reducer';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import Chart from '../Chart/Chart';
-
+import Maps from '../Maps/Maps';
 
 const Button = styled.button`
 margin: 1rem;
@@ -33,7 +33,8 @@ class Comparables extends Component {
         super()
         this.state = {
             ref_id: '',
-            chart: false
+            chart: false,
+            showMap: false
         }
         this.hideChart = this.hideChart.bind(this)
     }
@@ -43,6 +44,7 @@ class Comparables extends Component {
             this.props.getComparables(res.data)
             this.setState({
                 ref_id: res.data.ref_id,
+                user_id: res.data.user_id
             })
         })
     }
@@ -125,6 +127,7 @@ class Comparables extends Component {
                 <Button onClick={() => this.backPage()}>Back</Button>
                 <Button onClick={() => this.showChart()}>View Chart</Button>
                 <Button onClick={() => this.nextPage()}>Continue</Button>
+                {this.state.showMap? <Maps userId={this.props.userId}/>: null}
 
 
             </div>
@@ -133,7 +136,8 @@ class Comparables extends Component {
 }
 function mapStateToProps(state) {
     return {
-        reference: state.user.ref_id,
+        reference: state.userArray[0].ref_id,
+        userId: state.user.user_id,
         comparables: state.comparables
     }
 }

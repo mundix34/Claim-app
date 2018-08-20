@@ -9,13 +9,13 @@ import { addUserInfo } from '../../ducks/reducer';
 
 const Textarea = styled.textarea`
 border-radius: 6px;
-margin: 1.5rem;
+margin: 1rem;
 border: 1px solid grey;
 
 `
 const Input = styled.input`
 border-radius: 6px;
-margin: 1.5rem;
+margin: 1rem;
 box-shadow: none;
 border: 1px solid grey;
 `
@@ -28,15 +28,15 @@ const btnStyle = {
 
 
 class Review extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
-      userId: null,
+      userId: this.props.userId,
       title: '',
       content: '',
       reviews: [],
       rating: 0,
-      colorFill: false
+      colorFill: true
 
 
     }
@@ -60,53 +60,36 @@ class Review extends Component {
       rating: val
     })
   }
-  // componentDidMount() {
-  //     axios.get('/api/user_data').then(res => {            
-  //         this.props.addUserInfo(res.data)
-  //     })
-  // }
-
-
-  componentDidUpdate() {
-    axios.get('/api/user_data').then(res => {
-      this.props.addUserInfo(res.data)
-    })
-  }
 
   componentDidMount() {
     axios.get('/api/reviews').then((res) => {
-      console.log('test', this.props.user.user_id);
+      console.log('testing review', this.props.user.user_id);
       this.setState({
         reviews: res.data,
-        userId: this.props.user.user_id
+        userId: this.props.userId
       })
     })
   }
-  // componentDidUpdate() {
-  //   axios.get('/api/reviews').then((res) => {
-  //     this.setState({
-  //       reviews: res.data,
-  //       userId: this.props.user.user_id
-  //     })
-  //   })
-  // }
-
+  
   addReview() {
     let review = {
       userId: this.state.userId,
       title: this.state.title,
-      content: this.state.content
+      content: this.state.content,
+      rating: this.state.rating
     }
 
 
     axios.post(`/api/review`, review).then(res => {
       console.log(res);
-
+      let newReviews=[...this.state.reviews, ...res.data]
       this.setState({
 
-        reviews: res.data,
+        reviews: newReviews,
         title: '',
-        content: ''
+        content: '',
+        rating: '',
+        colorFill: true
       })
     })
   }
@@ -119,20 +102,58 @@ class Review extends Component {
   }
 
   render() {
-    const reviews = this.state.reviews.map((review, i) => (
+    const newReviews = this.state.reviews.map((review, i) => (
       <div className="map-review-list" key={i}>
         <div>
           <h3> {review.title} </h3>
           <p> {review.content} </p>
-          <div className="review-icons">
-            <i className={this.state.colorFill ? "review-icon far fa-star" : "review-icon-clicked far fa-star"}></i>
-            <i className={this.state.colorFill ? "review-icon far fa-star" : "review-icon-clicked far fa-star"}></i>
-            <i className={this.state.colorFill ? "review-icon far fa-star" : "review-icon-clicked far fa-star"}></i>
-            <i className={this.state.colorFill ? "review-icon far fa-star" : "review-icon-clicked far fa-star"}></i>
-            <i className={this.state.colorFill ? "review-icon far fa-star" : "review-icon-clicked far fa-star"}></i>
-          </div>
+          { review.rating===1? 
+          <div className="review-icons-wrapper">
+            <i className={!this.state.colorFill ? "review-icon far fa-star" : "review-icon-clicked fas fa-star"}></i>
+            <i className="review-icon far fa-star"></i>
+            <i className="review-icon far fa-star"></i>
+            <i className="review-icon far fa-star"></i>
+            <i className="review-icon far fa-star"></i>
+          </div>:
+          review.rating===2?
+          <div className="review-icons-wrapper">
+            <i className={!this.state.colorFill ? "review-icon far fa-star" : "review-icon-clicked fas fa-star"}></i>
+            <i className={!this.state.colorFill ? "review-icon far fa-star" : "review-icon-clicked fas fa-star"}></i>
+            <i className="review-icon far fa-star"></i>
+            <i className="review-icon far fa-star"></i>
+            <i className="review-icon far fa-star"></i>
+
+          </div>:
+          review.rating===3?
+          <div className="review-icons-wrapper">
+            <i className={!this.state.colorFill ? "review-icon far fa-star" : "review-icon-clicked fas fa-star"}></i>
+            <i className={!this.state.colorFill ? "review-icon far fa-star" : "review-icon-clicked fas fa-star"}></i>
+            <i className={!this.state.colorFill ? "review-icon far fa-star" : "review-icon-clicked fas fa-star"}></i>
+            <i className="review-icon far fa-star"></i>
+            <i className="review-icon far fa-star"></i>
+
+          </div>:
+          review.rating===4?
+          <div className="review-icons-wrapper">
+            <i className={!this.state.colorFill ? "review-icon far fa-star" : "review-icon-clicked fas fa-star"}></i>
+            <i className={!this.state.colorFill ? "review-icon far fa-star" : "review-icon-clicked fas fa-star"}></i>
+            <i className={!this.state.colorFill ? "review-icon far fa-star" : "review-icon-clicked fas fa-star"}></i>
+            <i className={!this.state.colorFill ? "review-icon far fa-star" : "review-icon-clicked fas fa-star"}></i>
+            <i className="review-icon far fa-star"></i>
+
+          </div>:
+          review.rating===5?
+          <div className="review-icons-wrapper">
+            <i className={!this.state.colorFill ? "review-icon far fa-star" : "review-icon-clicked fas fa-star"}></i>
+            <i className={!this.state.colorFill ? "review-icon far fa-star" : "review-icon-clicked fas fa-star"}></i>
+            <i className={!this.state.colorFill ? "review-icon far fa-star" : "review-icon-clicked fas fa-star"}></i>
+            <i className={!this.state.colorFill ? "review-icon far fa-star" : "review-icon-clicked fas fa-star"}></i>
+            <i className={!this.state.colorFill ? "review-icon far fa-star" : "review-icon-clicked fas fa-star"}></i>
+          </div>:
+          null
+          }
         </div>
-        <button style={{ width: '2.2rem' }} className="delete" onClick={() => this.deleteReview(review.id)}> X </button>
+        <div className="review-close-div" onClick={() => this.deleteReview(review.id)}> <i className="review-icon-close far fa-window-close"></i> </div>
       </div>
     ));
     return (
@@ -143,18 +164,21 @@ class Review extends Component {
           <label>Content:</label> <Textarea className="Input" onChange={(e) => this.addContent(e.target.value)} value={this.state.content}></Textarea><br />
             <label> Rating </label>
             <select className=" review-select" onChange={(e) => this.addRating(e.target.value)}>
+              <option value="select">select</option>
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
               <option value="4">4</option>
               <option value="5">5</option>
           </select>
-          <Button style={btnStyle} onClick={() => this.addReview()}> Submit </Button>
+          <div className="review-btns">
           <Button style={btnStyle} onClick={() => this.logOut()}> Logout </Button>
+          <Button style={btnStyle} onClick={() => this.addReview()}> Submit </Button>
+          </div>
         </form>
-        <div className="review-list">
-          {reviews}
 
+        <div className="review-list">
+          {newReviews}
 
         </div>
 
@@ -166,7 +190,8 @@ class Review extends Component {
 
 function mapStateToProps(state) {
   return {
-    user: state.user
+    user: state.user,
+    userId: state.user.user_id
   }
 }
 

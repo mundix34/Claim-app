@@ -19,6 +19,16 @@ module.exports = {
             
     
         
+    },
+    getCoords:(req, res, next) =>{
+        let {params} = req;
+        const dbSet = req.app.get('db');
+        dbSet.get_coords([params.id])        
+            .then((coords) => res.status(200).send(coords))
+            .catch(err => res.status(404).send({ errorMessage: 'Oops, encountered error in coords' }));
+            
+    
+        
     }
     
 }

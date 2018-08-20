@@ -15,7 +15,6 @@ height: 100%;
 width: 100%;
 padding: 0;
 margin: 0;
-background: green;
 
 
 `
@@ -26,7 +25,6 @@ color: ddd;
 margin-top: 1rem;
 height: 100%;
 width: 100%;
-background: pink;
 `
 const Button = styled.button`
 margin: 1rem;

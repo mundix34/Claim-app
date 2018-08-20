@@ -74,6 +74,7 @@ app.get('/api/reviews', review.getReviews);
 app.post('/api/review', review.postReview);
 app.delete('/api/review/:id', review.deleteReview);
 app.get('/api/comparables/:id', claim.getComparables);
+app.get('/api/coords/:id', claim.getCoords);
 
 //Post endpoint + Nodemailer code
 app.post('/api/register/:id', (req, res) => {

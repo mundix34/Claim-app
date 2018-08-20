@@ -5,13 +5,7 @@ import Footer from './components/Footer/Footer';
 import routes from './routes';
 import styled from 'styled-components';
 import Sidebar from './components/Sidebar/Sidebar';
-// import './Reset.css';
 
-// hStyle={
-//   color: '#2f2f30',
-//   fontSize: '1.5rem',
-//   transition: '0.3s'
-// }
 const Outer = styled.div`
 text-align: center;
   height: 170vh;
@@ -43,13 +37,12 @@ background-size: cover;
 const Head = styled.header`
 flex-shrink: 0;
 backgound: red;
-height: 9%;
+height: 9.5%;
 width: 100%;
 z-index: 5;
 margin-bottom: 0;
-padding-bottom: 2em;
 @media(min-width: 593px){
-  height: 10.8%;
+  height: 9.8%;
   padding: 0.2rem;
   }
 
