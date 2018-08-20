@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addFirstName, addLastName, addEmail, addClaim, addAddressOne, addAddressTwo, addCity, addReference, isInsured, addState, addZip, addProfile, addProfileNew, clearFields, addUserInfo } from '../../ducks/reducer';
+import { getUserProfile, addFirstName, addLastName, addEmail, addClaim, addAddressOne, addAddressTwo, addCity, addReference, isInsured, addState, addZip, addProfile, addProfileNew, clearFields, addUserInfo } from '../../ducks/reducer';
 import axios from 'axios';
 import styled from 'styled-components';
 import './Input.css';
+import Review from '../Review/Review';
 
 
 
@@ -95,6 +96,7 @@ class Input extends Component {
             edit: false,
             form: true,
             profile: false,
+            review: false
 
         }
         this.nextPage = this.nextPage.bind(this);
@@ -102,6 +104,14 @@ class Input extends Component {
         this.addProfile = this.addProfile.bind(this);
         this.editProfile = this.editProfile.bind(this);
     }
+    componentDidMount() {
+        axios.get(`/api/get-user/${this.props.user.user_id}`).then(res => {
+            this.props.getUserProfile(res.data)
+            
+        })
+    
+    }
+    
 
     addProfile() {
         if (!this.props.newUser.firstName) {
@@ -132,11 +142,12 @@ class Input extends Component {
                     user_id: res.data.response.user_id,
                     stateUser: [res.data.response],
                     msg: res.data.msg,
-                    form: false
+                    form: false,
+                    review: true
 
 
                 })
-                alert(res.data.msg)
+                
             })
         }
     }
@@ -151,14 +162,16 @@ class Input extends Component {
 
     editProfile() {
         axios.put(`/api/update-user/${this.state.user_id}`, this.props.newUser).then(res => {            
-            this.props.addProfile(res.data)
+            this.props.addProfileNew(res.data)
             this.setState({
                 ref_id: res.data.ref_id,
-                stateUser: [res.data],
                 form: false
 
             })
+            this.componentDidMount()
+            
         })
+        
     }
     nextPage() {
         this.props.newUser.insured === "yes" ? this.props.history.push(`/dashboard/${this.state.ref_id}`) :
@@ -264,6 +277,10 @@ class Input extends Component {
                 <MapDiv>
                     {newStateUser}
                 </MapDiv>
+                <div style={{display:'none'}}>
+
+                {this.state.review? <Review msg={this.state.msg}/>: null}
+                </div>
 
             </Outer>
         );
@@ -290,4 +307,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps, { addProfileNew, addFirstName, addLastName, addEmail, addClaim, addAddressOne, addAddressTwo, addCity, addReference, isInsured, addState, addZip, addProfile, clearFields, addUserInfo })(Input)
+export default connect(mapStateToProps, { getUserProfile, addProfileNew, addFirstName, addLastName, addEmail, addClaim, addAddressOne, addAddressTwo, addCity, addReference, isInsured, addState, addZip, addProfile, clearFields, addUserInfo })(Input)

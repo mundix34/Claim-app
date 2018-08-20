@@ -60,6 +60,9 @@ class Profile extends Component {
 
     
     
+    backPage() {
+         this.props.history.push("/input")
+    }
     nextPage() {
          this.props.history.push("/payment")
     }
@@ -80,7 +83,7 @@ class Profile extends Component {
                     <P> Email {item.email} </P>
                     <P> Customer Insured? {item.insured === 'true' ? 'Yes' : 'No'}</P>
                     <div className="mapped-btns">
-                        <Button className="hov" onClick={() => this.nextPage()} >Edit</Button>
+                        <Button className="hov" onClick={() => this.backPage()} >Edit</Button>
                         <Button className="hov" onClick={() => this.nextPage()} >Confirm</Button>
 
                     </div>

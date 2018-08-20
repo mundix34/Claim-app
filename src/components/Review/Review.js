@@ -40,13 +40,15 @@ class Review extends Component {
       content: '',
       reviews: [],
       rating: 0,
-      colorFill: true
+      colorFill: true,
+      msg: this.props.msg
 
 
     }
   }
 
   logOut() {
+    alert('Thank you for doing business with us, A rep will be in touch')
     this.props.history.push("/")
   }
   addTitle(val) {
