@@ -147,6 +147,7 @@ class Input extends Component {
 
 
                 })
+                alert(res.data.msg)
             })
         }
     }

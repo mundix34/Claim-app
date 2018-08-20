@@ -44,7 +44,7 @@ export default (
         <Route path='/youtube' component={() => window.location = 'https://youtube.com'} />
         <Route path='/stripesite' component={() => window.location = 'https://connect.stripe.com/oauth/authorize?'} />
         <Route path="/phone" component={() => (
-            <p> Our Phone Number is 1-800-889-0045</p>
+            <h6> Our Phone Number is 1-800-889-0045</h6>
         )} />
         <Route path="/faq" component={() => (
             <div>

@@ -65,7 +65,7 @@ class Registration extends Component {
                             <h1 style={{ fontFamily: 'Helvectica' }}>Welcome {user.first_last}</h1>
                             <H3> Service First <span className="dot"> <i className="fas fa-circle"></i></span>Service Fast </H3>
                             <Link to="/input"><Button >Begin</Button></Link>
-                            <p> Do you have a reference Id? <Link to="/end" ><span> whats this?</span></Link></p>
+                            <p style={{ fontWeight: '300', fontSize: '1.8rem'}}> Do you have a reference Id? <Link to="/end" ><span> whats this?</span></Link></p>
                         </div>
                     ) : "Please login"
                 }

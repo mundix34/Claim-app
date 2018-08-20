@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 import { addUserInfo } from '../../ducks/reducer';
 
 
+
 const Textarea = styled.textarea`
 border-radius: 6px;
 margin: 1rem;
@@ -25,6 +26,9 @@ const btnStyle = {
   background: '#26436d',
   color: 'white'
 }
+const P = styled.p`
+font-weight: 400;
+`
 
 
 class Review extends Component {
@@ -106,7 +110,7 @@ class Review extends Component {
       <div className="map-review-list" key={i}>
         <div>
           <h3> {review.title} </h3>
-          <p> {review.content} </p>
+          <P> {review.content} </P>
           { review.rating===1? 
           <div className="review-icons-wrapper">
             <i className={!this.state.colorFill ? "review-icon far fa-star" : "review-icon-clicked fas fa-star"}></i>

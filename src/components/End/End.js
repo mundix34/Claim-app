@@ -42,6 +42,8 @@ function End(props) {
                 The State Farm toll-free customer service number is 1-800-889-0045.
                 Is there a toll-free number for a rate quote?
                 Is my account number the same as my policy number?.</P>
+            <P>Address: 123 Main St Provo, Utah 84600</P>
+
             <Button style={btnStyle} bsStyle="primary" onClick={() => nextPage()}>Feedback</Button>
             <Button style={btnStyle} bsStyle="primary" onClick={() => logOut()}>Logout</Button>
 

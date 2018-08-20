@@ -35,12 +35,12 @@ class Login extends Component {
   render() {
     return (
       <Outer>
-        <h1>Start a Claim</h1>
+        <h1 style={{ fontSize: '3em', margin: '1em'}}>Start a Claim</h1>
         <Icons>
 
-          <i style={{ margin: '1.5rem' }} className="fas fa-car-crash"></i>
-          <i style={{ margin: '1.5rem' }} className="fas fa-angle-double-right"></i>
-          <i style={{ margin: '1.5rem' }} className="fas fa-car"></i>
+          <i style={{ margin: '1.5rem', color: '#26436d', fontSize: '1.8em' }} className="fas fa-car-crash"></i>
+          <i style={{ margin: '1.5rem', color: '#26436d', fontSize: '1.8em'}} className="fas fa-angle-double-right"></i>
+          <i style={{ margin: '1.5rem', color: '#26436d', fontSize: '1.8em' }} className="fas fa-car"></i>
         </Icons>
 
         <Button onClick={this.login}> Login</Button>

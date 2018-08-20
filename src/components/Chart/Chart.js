@@ -41,7 +41,6 @@ class Chart extends Component {
 
     componentDidMount() {
         axios.get(`/api/comparables/${this.props.reference}`).then(res => {
-            console.log(res.data[0].acv);
             this.props.getComparables(res.data)
             this.setState({
                 ref_id: res.data.ref_id,

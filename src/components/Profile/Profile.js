@@ -61,7 +61,7 @@ class Profile extends Component {
     
     
     nextPage() {
-         this.props.history.push("/end")
+         this.props.history.push("/payment")
     }
 
     render() {

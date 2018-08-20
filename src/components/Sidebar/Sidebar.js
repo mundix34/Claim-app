@@ -15,6 +15,7 @@ transition: 0.4s ease-out;
 
 &:hover{
  background: #26436d;
+ color: white !important;
 }
 
 `
@@ -24,15 +25,15 @@ export default function Sidebar() {
         <Outer >
             <div className="side-sidebar">
 
-                <Link to="/profile"> <h6 style={{color: '#2f2f30', fontSize: '1.5rem'}}>Profile </h6></Link>
+                <Link to="/profile"> <h6 style={{color: '#2f2f30'}}>Profile </h6></Link>
                 <hr />
-                <Link to="/end"> <h6 style={{color: '#2f2f30', fontSize: '1.5rem'}}> Help</h6></Link>
-                <hr />
-
-                <Link to="/faq"> <h6 style={{color: '#2f2f30', fontSize: '1.5rem'}}> FAQs</h6></Link>
+                <Link to="/end"> <h6 style={{color: '#2f2f30'}}> Help</h6></Link>
                 <hr />
 
-                <Link to="/"> <h6 style={{color: '#2f2f30', fontSize: '1.5rem'}}> Sign Out</h6></Link>
+                <Link to="/faq"> <h6 style={{color: '#2f2f30'}}> FAQs</h6></Link>
+                <hr />
+
+                <Link to="/"> <h6 style={{color: '#2f2f30'}}> Sign Out</h6></Link>
                 <hr />
             </div>
             <div className="sidebar-vert-line-wrapper">

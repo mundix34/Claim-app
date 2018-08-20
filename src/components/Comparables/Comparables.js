@@ -136,7 +136,7 @@ class Comparables extends Component {
 }
 function mapStateToProps(state) {
     return {
-        reference: state.userArray[0].ref_id,
+        reference: state.user.ref_id,
         userId: state.user.user_id,
         comparables: state.comparables
     }
