@@ -91,11 +91,10 @@ class Input extends Component {
             ref_id: '',
             user_id: '',
             stateUser: [],
-            msg:'',
+            msg: '',
             edit: false,
-            inputDisabled: false,
             form: true,
-            profile: false
+            profile: false,
 
         }
         this.nextPage = this.nextPage.bind(this);
@@ -103,16 +102,6 @@ class Input extends Component {
         this.addProfile = this.addProfile.bind(this);
         this.editProfile = this.editProfile.bind(this);
     }
-    // componentDidMount() {
-    //     axios.get('/api/user_data').then(res => {
-    //         this.props.addUserInfo(res.data)
-    //     })
-    // }
-    // componentDidUpdate() {
-    //     axios.get('/api/user_data').then(res => {
-    //         this.props.addUserInfo(res.data)
-    //     })
-    // }
 
     addProfile() {
         if (!this.props.newUser.firstName) {
@@ -183,7 +172,7 @@ class Input extends Component {
                     <P> firstName: {item.given_name} </P>
                     <P> lastName: {item.family_name} </P>
                     <P> AddressOne: {item.address_1} </P>
-                    <P> AddressTwo: {item.address_2} </P>
+                    {item.address_2? <P> AddressTwo: {item.address_2} </P>: null}
                     <P> city: {item.city} </P>
                     <P> State: {item.state} </P>
                     <P> Zip Code: {item.zip} </P>

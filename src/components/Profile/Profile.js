@@ -70,7 +70,7 @@ class Profile extends Component {
                 <div className="mapped-list">
                     <P> firstName: {item.given_name} </P>
                     <P> lastName: {item.family_name} </P>
-                    <P> AddressOne: {item.address_1} </P>
+                   {item.address_2? <P> AddressOne: {item.address_1} </P>: null}
                     <P> AddressTwo: {item.address_2} </P>
                     <P> city: {item.city} </P>
                     <P> State: {item.state} </P>

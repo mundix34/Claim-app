@@ -47,7 +47,7 @@ class Payment extends Component {
     render() {
         
         return (
-            <div>
+            <div style={{ paddingTop: '2rem'}}>
                 <h4>Payments are now conveniently issued using Stripe App , You also have the option of picking up a check at your Agent's office if you are insured. Otherwise you can opt to simply receive a check at your mailing address</h4>
                 <select onChange={(e) => this.handleTitleStatus(e.target.value)}>
 

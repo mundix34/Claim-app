@@ -37,12 +37,12 @@ class Stripe extends Component {
     render() {
 
         return (
-            <div className="App">
+            <div style={{ paddingTop: '2rem'}}>
                 <h4>Sign up for Stripe Pay</h4>
-
-
+                <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem'}}>
                 <Button style={btnStyle} onClick={() => this.backPage()}>Previous</Button> <br/>
                 <Button style={btnStyle} onClick={() => this.stripePage()}>Stripe</Button> <br/>
+                </div>
 
 
 

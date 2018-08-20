@@ -31,12 +31,12 @@ class TitleStatus extends Component {
     }
 
     handlePage() {
-        this.state.haveTitle === 'yes' ? this.props.history.push("/title") :
-            this.state.haveTitle === 'other' ? this.props.history.push("/End") : alert('Please make a selection')
+        this.state.haveTitle === 'yes' ? this.props.history.push("/payment") :
+            this.state.haveTitle === 'other' ? this.props.history.push("/end") : alert('Please make a selection')
 
     }
     backPage() {
-        this.props.history.push("/title-status")
+        this.props.history.push("/title")
 
     }
     handleTitleStatus(val) {
@@ -72,22 +72,24 @@ class TitleStatus extends Component {
         return (
             <div className="title-status-wrapper">
 
-            <div className="title-status">
-                <h4 className="semi-heading">In this section you will identify the status of your title, if you have lost or misplaced your title please select "Other"</h4>
-                <label>Do you possess your vehicle's title </label> 
-                <select onChange={(e) => this.handleTitleStatus(e.target.value)}>
-                    <option className="option-title" type="text" value="select" >select</option>
-                    <option className="option-title" type="text" value="yes" >Yes</option>
-                    <option className="option-title" type="text" value="other" >Other</option>
-                </select> <br />
+                <div className="title-status">
+                    <h4 className="semi-heading">In this section you will identify the status of your title, if you have lost or misplaced your title please select "Other"</h4>
+                    <label>Do you possess your vehicle's title </label>
+                    <select onChange={(e) => this.handleTitleStatus(e.target.value)}>
+                        <option className="option-title" type="text" value="select" >select</option>
+                        <option className="option-title" type="text" value="yes" >Yes</option>
+                        <option className="option-title" type="text" value="other" >Other</option>
+                    </select> <br />
 
-                <Button onClick={() => this.backPage()}>Back</Button>
-                <Button onClick={() => this.handlePage()}>Continue</Button>
-            </div>
-            <div className="upload">
-                <h4>Upload a photo of your title completed correctly to get paid instantly.</h4>
+                </div>
+                <div className="upload">
+                    <h4>Upload a photo of your title completed correctly to get paid instantly.</h4>
                     <input type="file" id="real" onChange={this.handlePhoto} />
+                    <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem'}}>
+                    <Button onClick={() => this.backPage()}>Back</Button>
                     <Button onClick={this.sendPhoto}>upload</Button>
+                    <Button onClick={() => this.handlePage()}>Continue</Button>
+                    </div>
                     <div className="img-display">
                         <img src={this.state.img} alt="pic" />
                     </div>

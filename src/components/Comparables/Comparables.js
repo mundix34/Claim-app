@@ -59,7 +59,7 @@ class Comparables extends Component {
         })
     }
     nextPage() {
-        this.props.history.push('/title-status')
+        this.props.history.push('/title')
     }
     backPage() {
         this.props.history.push(`/summary/${this.state.ref_id}`)
@@ -137,7 +137,7 @@ class Comparables extends Component {
 function mapStateToProps(state) {
     return {
         reference: state.user.ref_id,
-        userId: state.user.user_id,
+        userId: state.userArray[0].user_id,
         comparables: state.comparables
     }
 }

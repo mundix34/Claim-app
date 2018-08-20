@@ -22,10 +22,10 @@ background: #26436d;
 
  function Title (props){
     function previousPage(){
-        props.history.push('/title-status')
+        props.history.push('/comparable')
     }
     function nextPage(){
-        props.history.push('/payment')
+        props.history.push('/title-status')
     }
     return(
         <div>
@@ -52,7 +52,7 @@ background: #26436d;
 }
 function mapStateToProps(state) {
     return {
-        user: state.user
+        user: state.userArray[0]
     }
 }
 
