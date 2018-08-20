@@ -13,7 +13,7 @@ const nodemailer = require('nodemailer');
 const AWS = require('aws-sdk');
 
 
-const { SERVER_PORT, REACT_APP_DOMAIN, REACT_APP_CLIENT_ID, G_PASS, GMAIL, CLIENT_SECRET, SESSION_SECRET, CONNECTION_STRING, AMAZON_KEY_ID,
+const { SERVER_PORT, PROTOCOL, REACT_APP_DOMAIN, REACT_APP_CLIENT_ID, G_PASS, GMAIL, CLIENT_SECRET, SESSION_SECRET, CONNECTION_STRING, AMAZON_KEY_ID,
     AMAZON_ACCESS_KEY,AWS_REGION, AWS_BUCKET } = process.env;
 
 app.use( express.static( `${__dirname}/../build` ) );
@@ -31,7 +31,7 @@ app.get('/auth/callback', async (req, res) => {
         client_secret: CLIENT_SECRET,
         code: req.query.code,
         grant_type: 'authorization_code',
-        redirect_uri: `http://${req.headers.host}/auth/callback`
+        redirect_uri: `${PROTOCOL}://${req.headers.host}/auth/callback`
     }
 
     let resWithToken = await axios.post(`https://${REACT_APP_DOMAIN}/oauth/token`, payload)
