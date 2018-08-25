@@ -21,14 +21,14 @@ margin: 0;
 
 `
 const FormDiv = styled.div`
-box-shadow: 0 0 20px 0 rgba(72, 94, 116, 0.7);
 padding: 1rem;
 border-radius: 0.5rem;
 margin: 0.5rem;
 height: 60%;
 width: 100%;
-margin-bottom: 0.5rem;
-
+display: flex;
+justify-content: flex-start;
+align-items: center;
 
 `
 const MapDiv = styled.div`
@@ -104,7 +104,7 @@ class Input extends Component {
         this.addProfile = this.addProfile.bind(this);
         this.editProfile = this.editProfile.bind(this);
     }
-    componentDidMount() {
+    componentDidUpdate() {
         axios.get(`/api/get-user/${this.props.user.user_id}`).then(res => {
             this.props.getUserProfile(res.data)
             
@@ -135,7 +135,6 @@ class Input extends Component {
         }
         else {
             axios.post(`/api/register/${this.props.user.user_id}`, this.props.newUser).then(res => {
-                console.log('respect', res.data.response);
                 this.props.addProfileNew([res.data.response])
                 this.setState({
                     ref_id: res.data.response.ref_id,
@@ -168,7 +167,7 @@ class Input extends Component {
                 form: false
 
             })
-            this.componentDidMount()
+            this.componentDidUpdate()
             
         })
         
@@ -254,7 +253,7 @@ class Input extends Component {
                         <div className="input-fields-div">
                             <SelectDiv>
                                 <label style={pStyle}> Are you insured with Insurance Inc?</label>
-                                <select className="select" onChange={(e) => this.props.isInsured(e.target.value)}>
+                                <select className="input-select" onChange={(e) => this.props.isInsured(e.target.value)}>
                                     <option type="text" value="select" >select</option>
                                     <option type="text" value="yes" >Yes</option>
                                     <option type="text" value="no" >No</option>
