@@ -39,6 +39,8 @@ h3{
 }
 .review-select{
 margin: 1rem;  
+border: 1px solid gray;
+
 }
 .review-icon{
   margin: 0.5rem;
