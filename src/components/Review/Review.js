@@ -69,7 +69,7 @@ class Review extends Component {
 
   componentDidMount() {
     axios.get('/api/reviews').then((res) => {
-      console.log('testing review', this.props.user.user_id);
+      // console.log('testing review', this.props.user.user_id);
       this.setState({
         reviews: res.data,
         userId: this.props.userId

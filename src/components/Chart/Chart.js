@@ -169,7 +169,7 @@ class Chart extends Component {
                     <Button onClick={() => this.showLine()}> Line Chart</Button>
 
                 </div>
-                <button className="close" onClick={() => this.props.hideChart()}><i className="far fa-window-close"></i></button>
+                <button className="close" onClick={() => this.props.hideChart()}><i className=" chart-icon far fa-window-close"></i></button>
 
             </div>
         );

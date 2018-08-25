@@ -34,3 +34,8 @@
     cursor: pointer;
     z-index: 3;
   }
+  .chart-icon{
+    color: red;
+    font-size: 1rem;
+    background: red;
+  }
