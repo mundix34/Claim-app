@@ -49,11 +49,6 @@ margin: 0.5rem;
   border-radius: 3px;
 
 `
-const pStyle = {
-    marginRight: '1rem',
-
-
-}
 const SelectDiv = styled.div`
 display: flex;
 justify-content: flex-start;
@@ -252,7 +247,7 @@ class Input extends Component {
                         </div>
                         <div className="input-fields-div">
                             <SelectDiv>
-                                <label style={pStyle}> Are you insured with Insurance Inc?</label>
+                                <label className="last-label"> Are you insured with Insurance Inc?</label>
                                 <select className="input-select" onChange={(e) => this.props.isInsured(e.target.value)}>
                                     <option type="text" value="select" >select</option>
                                     <option type="text" value="yes" >Yes</option>
