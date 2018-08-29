@@ -36,6 +36,8 @@ background-size: cover;
 `
 const Head = styled.header`
 flex-shrink: 0;
+margin: 0;
+// padding: 0;
 backgound: red;
 height: 9.5%;
 width: 100%;
