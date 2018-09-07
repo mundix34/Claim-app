@@ -136,8 +136,8 @@ class Input extends Component {
                     user_id: res.data.response.user_id,
                     stateUser: [res.data.response],
                     msg: res.data.msg,
-                    form: false,
-                    review: true
+                    form: false
+                    // review: true
 
 
                 })
@@ -185,8 +185,8 @@ class Input extends Component {
                     <P> Zip Code: {item.zip} </P>
                     <P> Claim Number: {item.claim} </P>
                     <P> Reference Number: {item.ref_id} </P>
-                    <P> Email {this.props.user.email} </P>
-                    <P> Customer Insured? {this.props.user.insured === 'true' ? 'Yes' : 'No'}</P>
+                    <P> Email {item.email} </P>
+                    <P> Customer Insured? {item.is_insured ? 'Yes' : 'No'}</P>
                     <div className="mapped-btns">
                         <Button className="hov" type="submit" onClick={() => this.showEdit()}>Edit</Button>
                         <Button className="hov" onClick={() => this.nextPage()} >Continue</Button>

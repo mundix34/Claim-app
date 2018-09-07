@@ -1,6 +1,6 @@
 
 .not-showing{
-    display: none;
+    display: none !important;
 }
 .input-select{
     height: 50%;
