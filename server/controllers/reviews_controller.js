@@ -10,7 +10,7 @@ module.exports = {
                 console.log(err);
             })
     },
-    getReviews: (req, res, next) =>{
+    getReviews: (req, res) =>{
         const dbSet = req.app.get('db');
         dbSet.get_reviews()        
             .then((response) => res.status(200).send(response))
@@ -26,7 +26,7 @@ module.exports = {
             
         
     },
-    deleteReview: (req, res, next) =>{
+    deleteReview: (req, res) =>{
         const dbSet = req.app.get('db');
         const {params} = req;
         dbSet.delete_review([ params.id ])

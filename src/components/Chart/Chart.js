@@ -59,6 +59,7 @@ class Chart extends Component {
                                 res.data[0].value_2,
                                 res.data[0].value_3,
                                 res.data[0].value_4,
+                                200//a fix to bar 2 not showing for ref_id=1490?
                             ],
                             backgroundColor: [
                                 'rgba(255, 99, 132, 0.6)',
